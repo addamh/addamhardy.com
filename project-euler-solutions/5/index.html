@@ -1,0 +1,107 @@
+---
+layout: post
+mathjax: true
+comments: true
+date: 2012-12-11
+title: [Project Euler] #5 Solution
+excerpt: |
+    This page presents solutions to Project Euler Problem 5 in Java and Ruby.
+tags:
+- project euler problem 5 solution
+- project euler problem 5 answer
+- project euler problem 5 java
+- project euler problem 5 ruby
+---
+
+<div class="euler">
+
+<h2>Overview</h2>
+<div class="divider">&nbsp;</div>
+
+<h3>Question</h3>
+<p>2520 is the smallest number that can be divided by each
+of the numbers from 1 to 10 without any remainder.</p>
+<p>What is the smallest positive number that is evenly divisible
+by all of the numbers from 1 to 20?</p>
+
+
+
+<style type="text/css">
+h3.answer_toggle:hover {
+    color: #01579F;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.answer {
+    display: none;
+}
+</style>
+<script type="text/javascript">
+    function toggleAnswer() {
+        $('.answer').css('display', 'block');
+        //$('.answer_toggle').removeClass('answer_toggle');
+        $('.answer_toggle').text("answer")
+    }
+</script>
+<h3 class="answer_toggle" onclick="toggleAnswer();">click for answer</h3>
+<pre class="answer">232792560
+</pre>
+
+
+
+
+
+<h2>Solutions</h2>
+<div class="divider">&nbsp;</div>
+
+<h3>Java </h3>
+``` java divisible.java https://raw.github.com/addamh/euler/master/005/divisible.java download
+
+
+public class divisible {
+   public static void main(String[] args) {
+      final long MAX = 20;
+      find: for (long i = MAX; ; i++) {
+         for(long j = 2; j <= MAX; j++) if(i % j != 0) continue find;
+         System.out.println(i);
+         break;
+      }
+   }
+}
+```
+
+
+{% highlight console %}
+$ time bash divisible.java
+real	0m5.519s
+user	0m6.041s
+sys	0m0.102s
+{% endhighlight %}
+
+
+
+<h3>Ruby </h3>
+``` ruby divisible.rb https://raw.github.com/addamh/euler/master/005/divisible.rb download
+#!/usr/bin/env ruby
+
+require "rational"
+
+def smallest_divisor_for_range(start, stop)
+  numbers = Range.new(start, stop).to_a
+  numbers.inject(numbers.shift) { |lcm, n| lcm.lcm(n) }
+end
+
+puts smallest_divisor_for_range(1, 20)
+```
+
+
+{% highlight console %}
+$ time ruby divisible.rb
+real	0m0.023s
+user	0m0.019s
+sys	0m0.003s
+{% endhighlight %}
+
+
+
+</div>

@@ -1,0 +1,72 @@
+---
+layout: post
+mathjax: true
+comments: true
+date: 2012-12-09
+title: [Project Euler] #7 Solution
+excerpt: |
+    This page presents a Ruby solution to Project Euler Problem 7.
+tags:
+- project euler problem 7 solution
+- project euler problem 7 answer
+- project euler problem 7 ruby
+---
+
+<div class="euler">
+
+<h2>Overview</h2>
+<div class="divider">&nbsp;</div>
+
+<h3>Question</h3>
+<p>By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, 
+we can see that the 6th prime is 13.</p>
+<p>What is the 10001st prime number?</p>
+
+
+
+<style type="text/css">
+h3.answer_toggle:hover {
+    color: #01579F;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.answer {
+    display: none;
+}
+</style>
+<script type="text/javascript">
+    function toggleAnswer() {
+        $('.answer').css('display', 'block');
+        //$('.answer_toggle').removeClass('answer_toggle');
+        $('.answer_toggle').text("answer")
+    }
+</script>
+<h3 class="answer_toggle" onclick="toggleAnswer();">click for answer</h3>
+<pre class="answer">104743
+</pre>
+
+
+
+
+
+<h2>Solutions</h2>
+<div class="divider">&nbsp;</div>
+
+<h3>Ruby </h3>
+``` ruby find_prime.rb https://raw.github.com/addamh/euler/master/007/find_prime.rb download
+#!/usr/bin/env ruby
+require 'mathn'
+puts Prime.take(10001).last
+```
+
+
+{% highlight console %}
+$ time ruby find_prime.rb
+real	0m0.405s
+user	0m0.398s
+sys	0m0.005s
+{% endhighlight %}
+
+
+
+</div>

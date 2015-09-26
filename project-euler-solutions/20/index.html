@@ -1,0 +1,81 @@
+---
+layout: post
+mathjax: true
+comments: true
+date: 2012-12-15
+title: [Project Euler] #20 Solution
+excerpt: |
+    This page presents a Ruby solution to Project Euler Problem 20.
+tags:
+- project euler problem 20 solution
+- project euler problem 20 answer
+- project euler problem 20 ruby
+---
+
+<div class="euler">
+
+<h2>Overview</h2>
+<div class="divider">&nbsp;</div>
+
+<h3>Question</h3>
+<p>
+\(n!\) means \(n \times (n − 1) \times ... \times 3 \times 2 \times 1\).
+</p>
+
+<p>
+For example, \(10!\) = 10  9  ...  3  2  1 = 3628800,
+and the sum of the digits in the number \(10!\) is 3 + 6 + 2 + 8 + 8 + 0 + 0 = 27.
+</p>
+
+<p>
+Find the sum of the digits in the number \(100!\).
+</p>
+
+
+
+
+<style type="text/css">
+h3.answer_toggle:hover {
+    color: #01579F;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.answer {
+    display: none;
+}
+</style>
+<script type="text/javascript">
+    function toggleAnswer() {
+        $('.answer').css('display', 'block');
+        //$('.answer_toggle').removeClass('answer_toggle');
+        $('.answer_toggle').text("answer")
+    }
+</script>
+<h3 class="answer_toggle" onclick="toggleAnswer();">click for answer</h3>
+<pre class="answer">648</pre>
+
+
+
+
+
+<h2>Solutions</h2>
+<div class="divider">&nbsp;</div>
+
+<h3>Ruby </h3>
+``` ruby factorialSum.rb https://raw.github.com/addamh/euler/master/020/factorialSum.rb download
+#!/usr/bin/env ruby
+
+puts 100.downto(1).to_a.reduce(&:*).to_s.each_char.to_a.map!{|k| k.to_i}.reduce(:+)
+```
+
+
+{% highlight console %}
+$ time ruby factorialSum.rb
+real	0m0.455s
+user	0m0.431s
+sys	0m0.021s
+{% endhighlight %}
+
+
+
+</div>

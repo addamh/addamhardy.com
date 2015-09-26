@@ -1,0 +1,100 @@
+---
+layout: post
+mathjax: true
+comments: true
+date: 2012-12-15
+title: [Project Euler] #67 Solution
+excerpt: |
+    This page presents a Ruby solution to Project Euler Problem 67.
+tags:
+- project euler problem 67 solution
+- project euler problem 67 answer
+- project euler problem 67 ruby
+---
+
+<div class="euler">
+
+<h2>Overview</h2>
+<div class="divider">&nbsp;</div>
+
+<h3>Question</h3>
+<p>
+By starting at the top of the triangle below and moving to adjacent numbers on the row below, the maximum total from top to bottom is 23.
+</p>
+
+<pre><code>   <span style="color:#FF0000;">3</span>
+  <span style="color:#FF0000;">7</span> 4
+ 2 <span style="color:#FF0000;">4</span> 6
+8 5 <span style="color:#FF0000;">9</span> 3
+</code></pre>
+
+<p>
+That is, \(3 + 7 + 4 + 9 = 23\).
+</p>
+
+<p>
+Find the maximum total from top to bottom in <a href="http://projecteuler.net/project/triangle.txt">triangle.txt</a> (right click and 'Save Link/Target As...'), a 15K text file containing a triangle with one-hundred rows.
+</p>
+
+<p>
+NOTE: This is a much more difficult version of Problem 18. It is not possible to try every route to solve this problem, as there are 299 altogether! If you could check one trillion (\(10^12\)) routes every second it would take over twenty billion years to check them all. There is an efficient algorithm to solve it. ;o)
+</p>
+
+
+
+
+<style type="text/css">
+h3.answer_toggle:hover {
+    color: #01579F;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.answer {
+    display: none;
+}
+</style>
+<script type="text/javascript">
+    function toggleAnswer() {
+        $('.answer').css('display', 'block');
+        //$('.answer_toggle').removeClass('answer_toggle');
+        $('.answer_toggle').text("answer")
+    }
+</script>
+<h3 class="answer_toggle" onclick="toggleAnswer();">click for answer</h3>
+<pre class="answer">7273</pre>
+
+
+
+
+
+<h2>Solutions</h2>
+<div class="divider">&nbsp;</div>
+
+<h3>Ruby </h3>
+``` ruby largeTriangleSum.rb https://raw.github.com/addamh/euler/master/067/largeTriangleSum.rb download
+#!/usr/bin/env ruby
+
+file = File.open("/Users/addam/dev/euler/067/triangle.txt", "r")
+contents = file.read
+rows = contents.each_line.map { |line| line.split.map(&:to_i) }
+
+for i in (rows.length-2).downto(0).to_a do
+  for j in (i).downto(0).to_a do
+    rows[i][j] += [rows[i+1][j].to_i,rows[i+1][j+1].to_i].max
+  end
+end
+
+p rows[0][0]
+```
+
+
+{% highlight console %}
+$ time ruby largeTriangleSum.rb
+real	0m0.481s
+user	0m0.457s
+sys	0m0.022s
+{% endhighlight %}
+
+
+
+</div>

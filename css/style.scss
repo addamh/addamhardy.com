@@ -1,0 +1,235 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+@charset "utf-8";
+
+
+
+// Our variables
+$base-font-family: Helvetica, Arial, sans-serif;
+$base-font-size:   16px;
+$small-font-size:  $base-font-size * 0.875;
+$base-line-height: 1.5;
+
+$spacing-unit:     30px;
+
+$text-color:       #111;
+$background-color: #fdfdfd;
+$brand-color:      #2a7ae2;
+
+$grey-color:       #828282;
+$grey-color-light: lighten($grey-color, 40%);
+$grey-color-dark:  darken($grey-color, 25%);
+
+// Width of the content area
+$content-width:    800px;
+
+$on-palm:          600px;
+$on-laptop:        800px;
+
+
+
+// Using media queries with like this:
+// @include media-query($on-palm) {
+//     .wrapper {
+//         padding-right: $spacing-unit / 2;
+//         padding-left: $spacing-unit / 2;
+//     }
+// }
+@mixin media-query($device) {
+    @media screen and (max-width: $device) {
+        @content;
+    }
+}
+
+
+
+// Import partials from `sass_dir` (defaults to `_sass`)
+@import
+        "base",
+        "layout",
+        "syntax-highlighting"
+;
+
+/* Override some defaults */
+html {
+  min-height: 100%;
+}
+body {
+  background: -webkit-linear-gradient(0deg, #F0C27B 10%, #4B1248 90%); /* Chrome 10+, Saf5.1+ */
+  background:    -moz-linear-gradient(0deg, #F0C27B 10%, #4B1248 90%); /* FF3.6+ */
+  background:     -ms-linear-gradient(0deg, #F0C27B 10%, #4B1248 90%); /* IE10 */
+  background:      -o-linear-gradient(0deg, #F0C27B 10%, #4B1248 90%); /* Opera 11.10+ */
+  background:         linear-gradient(0deg, #F0C27B 10%, #4B1248 90%); /* W3C */
+}
+.navbar {
+  margin-bottom: 0;
+}
+.container > footer {
+  margin-top: 20px;
+}
+.container > footer p {
+  text-align: center; /* center align it with the container */
+}
+
+/* The white background content wrapper */
+.content {
+  background-color: #fff;
+  padding: 20px;
+  margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
+  -webkit-border-radius: 0 0 6px 6px;
+     -moz-border-radius: 0 0 6px 6px;
+          border-radius: 0 0 6px 6px;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+     -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+          box-shadow: 0 1px 2px rgba(0,0,0,.15);
+}
+
+/* Page header tweaks */
+.page-header {
+  background-color: #f5f5f5;
+  padding: 20px 20px 10px;
+  margin: -20px -20px 20px;
+}
+
+.topbar .btn {
+  border: 0;
+}
+
+
+/* tag_box ======================================================== */
+
+.tag_box {
+	list-style:none;
+	margin:0;
+	padding:5px 0 ;
+	overflow:hidden;
+}
+.tag_box li {
+	line-height:28px;
+}
+.tag_box.inline li {
+	float:left;
+}
+.tag_box a {
+	padding: 3px 6px;
+	margin: 2px;
+	background: #eee;
+	color:#005F6B;
+	border-radius: 3px;
+	text-decoration:none;
+}
+.tag_box a span{
+	vertical-align:super;
+	font-size:0.8em;
+}
+.tag_box a.active {
+	background:#57A957;
+	border:1px solid #4C964D;
+	color:#FFF;
+}
+
+/* Personal Styles */
+
+.posts_short {
+	float: right;
+	width: 60%;
+}
+
+strong {
+	margin-bottom: 5px;
+}
+
+.currently_reading {
+	float: left;
+	width: 40%;
+}
+
+.image_header {
+	height: 250px;
+	width: 250px;
+	float: left;
+}
+
+.top_container {
+	margin-bottom: 15px;
+	height: 275px;
+}
+.name {
+	float: right;
+	margin-right: 25px;
+}
+.name h1 {
+	font-size: 75pt;
+	line-height: 70px;
+}
+.gr_grid_book_container {
+	padding-left: 10px !important;
+}
+.gr_grid_container {
+	padding-top: 5px;
+}
+.side_bar {
+	border-left: 5px solid #333;
+	color: black;
+	float: right;
+	padding-left: 5px;
+	margin-top: -100px;
+	width: 170px;
+}
+.pitch {
+	width: 460px;
+	float: left;
+	margin-left: 15px;
+	margin-top: 30px;
+	background-color: #EEE;
+	padding: 10px;
+}
+.availability {
+	float: right;
+	top: -31px;
+	position: relative;
+}
+.pitch_footer {
+	width: 455px;
+	float: left;
+	margin-left: 35px;
+	margin-top: 5px;
+}
+.social_icons {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+.alert-block {
+	margin-top: 5px;
+}
+.document_icons { height: 120px; }
+.document_icons div {
+	width: 250px;
+	text-align: center;
+	font-weight: bold;
+	padding-top: 10px;
+}
+.tex {
+	margin-right: 150px;
+	float: right;
+}
+.pdf {
+	float: left;
+	margin-left: 150px;
+}
+.bio {
+	width: 90%;
+	margin-top: 5px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: justify;
+}
+span.date {
+	font-size: 11px;
+	color: #aeaeae;
+}
+a.blog_link {
+	font-size: 16px;
+}

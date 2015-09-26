@@ -1,0 +1,12 @@
+---
+layout: page
+tagline: blog on random things that interested me for a brief period of time
+description: ""
+group: blog
+---
+
+<ul class="posts">
+  {% for post in site.posts %}
+    <li><a class="blog_link" href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a> <span class="date">[{{ post.date | date_to_string }}]</span></li>
+  {% endfor %}
+</ul>

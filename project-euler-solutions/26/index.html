@@ -1,0 +1,102 @@
+---
+layout: post
+mathjax: true
+comments: true
+date: 2012-12-25
+title: [Project Euler] #26 Solution
+excerpt: |
+    This page presents a Ruby solution to Project Euler Problem 26.
+tags:
+- project euler problem 26 solution
+- project euler problem 26 answer
+- project euler problem 26 ruby
+---
+
+<div class="euler">
+
+<h2>Overview</h2>
+<div class="divider">&nbsp;</div>
+
+<h3>Question</h3>
+<p>
+A unit fraction contains 1 in the numerator. The decimal 
+representation of the unit fractions with denominators 
+2 to 10 are given:
+</p>
+
+\[
+\begin{aligned}
+\frac{1}{2}&amp;=0.5 \\\\
+\frac{1}{3}&amp;=0.\overline{3} \\\\
+\frac{1}{4}&amp;=0.25 \\\\
+\frac{1}{5}&amp;=0.2 \\\\
+\frac{1}{6}&amp;=0.1\overline{6} \\\\
+\frac{1}{7}&amp;=0.\overline{142857} \\\\
+\frac{1}{8}&amp;=0.125 \\\\
+\frac{1}{9}&amp;=0.\overline{1} \\\\
+\frac{1}{10}&amp;=0.1
+\end{aligned}
+\]
+
+<p>
+Where \(0.1\overline{6}\) means \(0.1666\dots\), and has a 1-digit recurring 
+cycle. It can be seen that \(\frac{1}{7}\) has a 6-digit recurring cycle.
+</p>
+
+<p>
+Find the value of \(d &lt; 1000\) for which \(\frac{1}{d}\) contains the longest 
+recurring cycle in its decimal fraction part.
+</p>
+
+
+
+
+<style type="text/css">
+h3.answer_toggle:hover {
+    color: #01579F;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.answer {
+    display: none;
+}
+</style>
+<script type="text/javascript">
+    function toggleAnswer() {
+        $('.answer').css('display', 'block');
+        //$('.answer_toggle').removeClass('answer_toggle');
+        $('.answer_toggle').text("answer")
+    }
+</script>
+<h3 class="answer_toggle" onclick="toggleAnswer();">click for answer</h3>
+<pre class="answer">983</pre>
+
+
+
+
+
+<h2>Solutions</h2>
+<div class="divider">&nbsp;</div>
+
+<h3>Ruby </h3>
+``` ruby cycles.rb https://raw.github.com/addamh/euler/master/026/cycles.rb download
+require "prime"
+print for p in Prime.take_while{|p| p<1000}.reverse do
+  break p if for d in (1...p) do
+    break p if (10**d-1)%p==0 and d==p-1
+    break if (10**d-1)%p==0
+  end
+end
+```
+
+
+{% highlight console %}
+$ time ruby cycles.rb
+real	0m0.675s
+user	0m0.644s
+sys	0m0.027s
+{% endhighlight %}
+
+
+
+</div>

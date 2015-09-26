@@ -1,0 +1,98 @@
+---
+layout: post
+mathjax: true
+comments: true
+date: 2012-12-15
+title: [Project Euler] #21 Solution
+excerpt: |
+    This page presents a Ruby solution to Project Euler Problem 21.
+tags:
+- project euler problem 21 solution
+- project euler problem 21 answer
+- project euler problem 21 ruby
+---
+
+<div class="euler">
+
+<h2>Overview</h2>
+<div class="divider">&nbsp;</div>
+
+<h3>Question</h3>
+Let d(n) be defined as the sum of proper divisors of n (numbers less than n which divide evenly into n).
+If d(a) = b and d(b) = a, where a  b, then a and b are an amicable pair and each of a and b are called amicable numbers.
+
+For example, the proper divisors of 220 are 1, 2, 4, 5, 10, 11, 20, 22, 44, 55 and 110; therefore d(220) = 284. The proper divisors of 284 are 1, 2, 4, 71 and 142; so d(284) = 220.
+
+Evaluate the sum of all the amicable numbers under 10000.
+
+
+
+<style type="text/css">
+h3.answer_toggle:hover {
+    color: #01579F;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.answer {
+    display: none;
+}
+</style>
+<script type="text/javascript">
+    function toggleAnswer() {
+        $('.answer').css('display', 'block');
+        //$('.answer_toggle').removeClass('answer_toggle');
+        $('.answer_toggle').text("answer")
+    }
+</script>
+<h3 class="answer_toggle" onclick="toggleAnswer();">click for answer</h3>
+<pre class="answer">31626</pre>
+
+
+
+
+
+<h2>Solutions</h2>
+<div class="divider">&nbsp;</div>
+
+<h3>Ruby </h3>
+``` ruby amicableSums.rb https://raw.github.com/addamh/euler/master/021/amicableSums.rb download
+#!/usr/bin/env ruby
+
+final_sum=0
+    
+2.upto(9999) do |a|
+  sum1=0
+  1.upto(a/2) do |b|
+    if a%b == 0
+      sum1+=b
+    end
+  end
+  sum2=0
+  if sum1<a 
+    1.upto(sum1/2) do |c|
+      if sum1%c == 0
+        sum2+=c
+      end
+    end
+    if sum2==a
+      final_sum+=a
+      final_sum+=sum1
+    end
+  end
+end
+
+puts final_sum
+
+```
+
+
+{% highlight console %}
+$ time ruby amicableSums.rb
+real	0m6.545s
+user	0m6.520s
+sys	0m0.022s
+{% endhighlight %}
+
+
+
+</div>

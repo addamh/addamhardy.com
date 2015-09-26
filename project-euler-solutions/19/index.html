@@ -1,0 +1,93 @@
+---
+layout: post
+mathjax: true
+comments: true
+date: 2012-12-15
+title: [Project Euler] #19 Solution
+excerpt: |
+    This page presents a Ruby solution to Project Euler Problem 19.
+tags:
+- project euler problem 19 solution
+- project euler problem 19 answer
+- project euler problem 19 ruby
+---
+
+<div class="euler">
+
+<h2>Overview</h2>
+<div class="divider">&nbsp;</div>
+
+<h3>Question</h3>
+<p>You are given the following information,
+but you may prefer to do some research for yourself.</p>
+<pre><code>1 Jan 1900 was a Monday.
+Thirty days has September,
+April, June and November.
+All the rest have thirty-one,
+Saving February alone,
+Which has twenty-eight, rain or shine.
+And on leap years, twenty-nine.
+A leap year occurs on any year evenly divisible by 4, 
+but not on a century unless it is divisible by 400.
+</code></pre>
+<p>How many Sundays fell on the first of the month during 
+the twentieth century (1 Jan 1901 to 31 Dec 2000)?</p>
+
+
+
+<style type="text/css">
+h3.answer_toggle:hover {
+    color: #01579F;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.answer {
+    display: none;
+}
+</style>
+<script type="text/javascript">
+    function toggleAnswer() {
+        $('.answer').css('display', 'block');
+        //$('.answer_toggle').removeClass('answer_toggle');
+        $('.answer_toggle').text("answer")
+    }
+</script>
+<h3 class="answer_toggle" onclick="toggleAnswer();">click for answer</h3>
+<pre class="answer">171</pre>
+
+
+
+
+
+<h2>Solutions</h2>
+<div class="divider">&nbsp;</div>
+
+<h3>Ruby </h3>
+``` ruby centurySundays.rb https://raw.github.com/addamh/euler/master/019/centurySundays.rb download
+#!/usr/bin/env ruby
+
+require 'date'
+
+sunday_count = 0
+
+1.upto(100).with_index.each do |i|
+  1.upto(12).with_index.each do |j|
+    sunday_count += 1 if Date.new(1900+i,j,1).cwday == 7
+  end
+end
+
+p sunday_count
+
+```
+
+
+{% highlight console %}
+$ time ruby centurySundays.rb
+real	0m0.452s
+user	0m0.430s
+sys	0m0.020s
+{% endhighlight %}
+
+
+
+</div>

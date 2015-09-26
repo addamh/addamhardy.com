@@ -1,0 +1,88 @@
+---
+layout: post
+mathjax: true
+comments: true
+date: 2012-12-09
+title: [Project Euler] #4 Solution
+excerpt: |
+    This page presents a Ruby solution to Project Euler Problem 4.
+tags:
+- project euler problem 4 solution
+- project euler problem 4 answer
+- project euler problem 4 ruby
+---
+
+<div class="euler">
+
+<h2>Overview</h2>
+<div class="divider">&nbsp;</div>
+
+<h3>Question</h3>
+<p>
+A palindromic number reads the same both ways. The largest palindrome
+made from the product of two 2-digit numbers is \(9009 = 91 \times 99\).
+</p>
+
+<p>
+Find the largest palindrome made from the product of two 3-digit numbers.
+</p>
+
+
+
+
+<style type="text/css">
+h3.answer_toggle:hover {
+    color: #01579F;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.answer {
+    display: none;
+}
+</style>
+<script type="text/javascript">
+    function toggleAnswer() {
+        $('.answer').css('display', 'block');
+        //$('.answer_toggle').removeClass('answer_toggle');
+        $('.answer_toggle').text("answer")
+    }
+</script>
+<h3 class="answer_toggle" onclick="toggleAnswer();">click for answer</h3>
+<pre class="answer">906609
+</pre>
+
+
+
+
+
+<h2>Solutions</h2>
+<div class="divider">&nbsp;</div>
+
+<h3>Ruby </h3>
+``` ruby palindrome.rb https://raw.github.com/addamh/euler/master/004/palindrome.rb download
+#!/usr/bin/env ruby
+
+store = Array.new
+(100..999).each do |x|
+   (100..999).each do |y|
+      product = x*y
+      if product.to_s == product.to_s.reverse
+         store << product
+      end
+   end
+end
+store = store.sort
+puts store.last
+```
+
+
+{% highlight console %}
+$ time ruby palindrome.rb
+real	0m1.137s
+user	0m1.131s
+sys	0m0.004s
+{% endhighlight %}
+
+
+
+</div>

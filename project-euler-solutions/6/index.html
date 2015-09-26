@@ -1,0 +1,95 @@
+---
+layout: post
+mathjax: true
+comments: true
+date: 2012-12-09
+title: [Project Euler] #6 Solution
+excerpt: |
+    This page presents a Ruby solution to Project Euler Problem 6.
+tags:
+- project euler problem 6 solution
+- project euler problem 6 answer
+- project euler problem 6 ruby
+---
+
+<div class="euler">
+
+<h2>Overview</h2>
+<div class="divider">&nbsp;</div>
+
+<h3>Question</h3>
+<p>
+The sum of the squares of the first ten natural numbers is,
+</p>
+
+\[1^2 + 2^2 + ... + 10^2 = 385\]
+
+<p>
+The square of the sum of the first ten natural numbers is,
+</p>
+
+\[(1 + 2 + ... + 10)^2 = 55^2 = 3025\]
+
+<p>
+Hence the difference between the sum of the squares of the first ten natural 
+numbers and the square of the sum is \(3025 − 385 = 2640\).
+</p>
+
+<p>
+Find the difference between the sum of the squares of the first one hundred 
+natural numbers and the square of the sum.
+</p>
+
+
+
+
+<style type="text/css">
+h3.answer_toggle:hover {
+    color: #01579F;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.answer {
+    display: none;
+}
+</style>
+<script type="text/javascript">
+    function toggleAnswer() {
+        $('.answer').css('display', 'block');
+        //$('.answer_toggle').removeClass('answer_toggle');
+        $('.answer_toggle').text("answer")
+    }
+</script>
+<h3 class="answer_toggle" onclick="toggleAnswer();">click for answer</h3>
+<pre class="answer">25164150
+</pre>
+
+
+
+
+
+<h2>Solutions</h2>
+<div class="divider">&nbsp;</div>
+
+<h3>Ruby </h3>
+``` ruby square_sum.rb https://raw.github.com/addamh/euler/master/006/square_sum.rb download
+#!/usr/bin/env ruby
+
+range = 1..100
+sum_of_squares = range.inject(0) { |sum, i| sum + i ** 2 }
+square_of_sum  = range.inject(0) { |sum, i| sum + i } ** 2
+puts square_of_sum - sum_of_squares
+
+```
+
+
+{% highlight console %}
+$ time ruby square_sum.rb
+real	0m0.023s
+user	0m0.019s
+sys	0m0.003s
+{% endhighlight %}
+
+
+
+</div>

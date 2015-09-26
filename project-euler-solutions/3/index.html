@@ -1,0 +1,71 @@
+---
+layout: post
+mathjax: true
+comments: true
+date: 2012-12-09
+title: [Project Euler] #3 Solution
+excerpt: |
+    This page presents a Ruby solution to Project Euler Problem 3.
+tags:
+- project euler problem 3 solution
+- project euler problem 3 answer
+- project euler problem 3 ruby
+---
+
+<div class="euler">
+
+<h2>Overview</h2>
+<div class="divider">&nbsp;</div>
+
+<h3>Question</h3>
+<p>The prime factors of 13195 are 5, 7, 13 and 29.</p>
+<p>What is the largest prime factor of the number 600851475143 ?</p>
+
+
+
+<style type="text/css">
+h3.answer_toggle:hover {
+    color: #01579F;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.answer {
+    display: none;
+}
+</style>
+<script type="text/javascript">
+    function toggleAnswer() {
+        $('.answer').css('display', 'block');
+        //$('.answer_toggle').removeClass('answer_toggle');
+        $('.answer_toggle').text("answer")
+    }
+</script>
+<h3 class="answer_toggle" onclick="toggleAnswer();">click for answer</h3>
+<pre class="answer">6857
+</pre>
+
+
+
+
+
+<h2>Solutions</h2>
+<div class="divider">&nbsp;</div>
+
+<h3>Ruby </h3>
+``` ruby prime-factor.rb https://raw.github.com/addamh/euler/master/003/prime-factor.rb download
+#!/usr/bin/env ruby
+require 'mathn'
+p 600851475143.prime_division.last[0]
+```
+
+
+{% highlight console %}
+$ time ruby prime-factor.rb
+real	0m0.046s
+user	0m0.040s
+sys	0m0.005s
+{% endhighlight %}
+
+
+
+</div>

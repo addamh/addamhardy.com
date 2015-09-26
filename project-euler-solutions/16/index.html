@@ -1,0 +1,76 @@
+---
+layout: post
+mathjax: true
+comments: true
+date: 2012-12-15
+title: [Project Euler] #16 Solution
+excerpt: |
+    This page presents a Ruby solution to Project Euler Problem 16.
+tags:
+- project euler problem 16 solution
+- project euler problem 16 answer
+- project euler problem 16 ruby
+---
+
+<div class="euler">
+
+<h2>Overview</h2>
+<div class="divider">&nbsp;</div>
+
+<h3>Question</h3>
+<p>
+\(2^{15} = 32768\) and the sum of its digits is \(3 + 2 + 7 + 6 + 8 = 26\).
+</p>
+
+<p>
+What is the sum of the digits of the number \(2^{1000}\)?
+</p>
+
+
+
+
+<style type="text/css">
+h3.answer_toggle:hover {
+    color: #01579F;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.answer {
+    display: none;
+}
+</style>
+<script type="text/javascript">
+    function toggleAnswer() {
+        $('.answer').css('display', 'block');
+        //$('.answer_toggle').removeClass('answer_toggle');
+        $('.answer_toggle').text("answer")
+    }
+</script>
+<h3 class="answer_toggle" onclick="toggleAnswer();">click for answer</h3>
+<pre class="answer">1366</pre>
+
+
+
+
+
+<h2>Solutions</h2>
+<div class="divider">&nbsp;</div>
+
+<h3>Ruby </h3>
+``` ruby exponentSum.rb https://raw.github.com/addamh/euler/master/016/exponentSum.rb download
+#!/usr/bin/env ruby
+
+puts (2**1000).to_s.split("").map!{|k| k.to_i}.reduce(:+)
+```
+
+
+{% highlight console %}
+$ time ruby exponentSum.rb
+real	0m0.024s
+user	0m0.019s
+sys	0m0.003s
+{% endhighlight %}
+
+
+
+</div>

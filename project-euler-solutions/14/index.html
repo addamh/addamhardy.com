@@ -1,0 +1,177 @@
+---
+layout: post
+mathjax: true
+comments: true
+date: 2012-12-14
+title: [Project Euler] #14 Solution
+excerpt: |
+    This page presents solutions to Project Euler Problem 14 in Java and Ruby.
+tags:
+- project euler problem 14 solution
+- project euler problem 14 answer
+- project euler problem 14 java
+- project euler problem 14 ruby
+---
+
+<div class="euler">
+
+<h2>Overview</h2>
+<div class="divider">&nbsp;</div>
+
+<h3>Question</h3>
+<p>
+The following iterative sequence is defined for the set of positive integers:
+</p>
+
+$$
+n \rightarrow
+\begin{cases} 
+\tfrac{n}{2} &amp; \text{if } n \text{ is even} \\\\
+3n+1 &amp; \text{if } n \text{ is odd} \\\\
+\end{cases}
+$$
+
+<p>
+Using the rule above and starting with 13, we generate the following sequence:
+</p>
+
+\[13, 40, 20, 10, 5, 16, 8, 4, 2, 1\]
+
+<p>
+It can be seen that this sequence (starting at 13 and finishing at 1) contains 10 
+terms. Although it has not been proved yet (Collatz Problem), it is thought that all
+starting numbers finish at 1.
+</p>
+
+<p>
+Which starting number, under one million, produces the longest chain?
+</p>
+
+<p>
+NOTE: Once the chain starts the terms are allowed to go above one million.
+</p>
+
+
+
+<style type="text/css">
+h3.answer_toggle:hover {
+    color: #01579F;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.answer {
+    display: none;
+}
+</style>
+<script type="text/javascript">
+    function toggleAnswer() {
+        $('.answer').css('display', 'block');
+        //$('.answer_toggle').removeClass('answer_toggle');
+        $('.answer_toggle').text("answer")
+    }
+</script>
+<h3 class="answer_toggle" onclick="toggleAnswer();">click for answer</h3>
+<pre class="answer">837799</pre>
+
+
+
+
+
+<h2>Solutions</h2>
+<div class="divider">&nbsp;</div>
+
+<h3>Java </h3>
+``` java collatz.java https://raw.github.com/addamh/euler/master/014/collatz.java download
+
+
+public class collatz {
+  public static void main(String[] args) {
+    int p;
+    long a = 0;
+    long b = 0;
+    long c;
+       
+    for (int i =0;i<1000000;i++){
+      p=1;
+      c=i;
+           
+      while(c>1){
+        if(c%2==0){
+          c=c/2;
+          p++;  
+        } else {
+          c=3*c+1;
+          p++; 
+        }
+      }
+      if(p>a){
+        a=p;
+        b=i;
+      }
+    }
+    // Debug output
+    // System.out.println(a+" -> "+b);
+    System.out.println(b);
+  }
+}
+```
+
+
+{% highlight console %}
+$ time bash collatz.java
+real	0m1.167s
+user	0m1.698s
+sys	0m0.097s
+{% endhighlight %}
+
+
+
+<h3>Ruby </h3>
+``` ruby collatz.rb https://raw.github.com/addamh/euler/master/014/collatz.rb download
+#!/usr/bin/env ruby
+
+def collatz(stack, n)
+  stack.push(n)
+  if n > 1
+    if(n % 2 == 0)
+      collatz(stack, n/2)
+    else
+      collatz(stack, 3*n+1)
+    end
+  end
+  return stack
+end
+
+sequence = Enumerator.new do |yielder|
+  number = 0
+  loop do
+    number += 1
+    yielder.yield number
+  end
+end
+
+max = {:i => 1, :l => 0}
+sequence.each do |i|
+  a = collatz([], i)
+  l = a.length
+  if max[:l] < l
+    max[:i] = i
+    max[:l] = l
+  end
+  break if i > 1000000
+end
+
+p max[:i]
+```
+
+
+{% highlight console %}
+$ time ruby collatz.rb
+real	1m6.439s
+user	1m6.334s
+sys	0m0.070s
+{% endhighlight %}
+
+
+
+</div>

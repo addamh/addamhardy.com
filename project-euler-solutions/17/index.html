@@ -1,0 +1,134 @@
+---
+layout: post
+mathjax: true
+comments: true
+date: 2012-12-15
+title: [Project Euler] #17 Solution
+excerpt: |
+    This page presents a Ruby solution to Project Euler Problem 17.
+tags:
+- project euler problem 17 solution
+- project euler problem 17 answer
+- project euler problem 17 ruby
+---
+
+<div class="euler">
+
+<h2>Overview</h2>
+<div class="divider">&nbsp;</div>
+
+<h3>Question</h3>
+<p>
+If the numbers 1 to 5 are written out in words: 
+one, two, three, four, five, then there are 
+\(3 + 3 + 5 + 4 + 4 = 19\) letters used in total.
+</p>
+
+<p>
+If all the numbers from 1 to 1000 (one thousand)
+inclusive were written out in words, how many 
+letters would be used?
+</p>
+
+<p>
+NOTE: Do not count spaces or hyphens. For example,
+342 (three hundred and forty-two) contains 23 
+letters and 115 (one hundred and fifteen) contains
+20 letters. The use of "and" when writing out
+numbers is in compliance with British usage.
+</p>
+
+
+
+<style type="text/css">
+h3.answer_toggle:hover {
+    color: #01579F;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.answer {
+    display: none;
+}
+</style>
+<script type="text/javascript">
+    function toggleAnswer() {
+        $('.answer').css('display', 'block');
+        //$('.answer_toggle').removeClass('answer_toggle');
+        $('.answer_toggle').text("answer")
+    }
+</script>
+<h3 class="answer_toggle" onclick="toggleAnswer();">click for answer</h3>
+<pre class="answer">21124</pre>
+
+
+
+
+
+<h2>Solutions</h2>
+<div class="divider">&nbsp;</div>
+
+<h3>Ruby </h3>
+``` ruby sumOfWords.rb https://raw.github.com/addamh/euler/master/017/sumOfWords.rb download
+#!/usr/bin/env ruby
+
+class Integer
+   Ones = %w[ zero one two three four five six seven eight nine ]
+   Teen = %w[ ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen ]
+   Tens = %w[ zero ten twenty thirty forty fifty sixty seventy eighty ninety ]
+   Mega = %w[ none thousand million billion ]
+
+   def to_english
+     places = to_s.split(//).collect {|s| s.to_i}.reverse
+     name = []
+     ((places.length + 2) / 3).times do |p|
+       strings = Integer.trio(places[p * 3, 3])
+       name.push(Mega[p]) if strings.length > 0 and p > 0
+       name += strings
+     end
+     name.push(Ones[0]) unless name.length > 0
+     name.reverse.join(" ")
+   end
+
+   private
+
+   def Integer.trio(places)
+     strings = []
+     if places[1] == 1
+       strings.push(Teen[places[0]])
+     elsif places[1] and places[1] > 0
+       strings.push(places[0] == 0 ? Tens[places[1]] :
+                    "#{Tens[places[1]]}-#{Ones[places[0]]}")
+     elsif places[0] > 0
+       strings.push(Ones[places[0]])
+     end
+     if places[2] and places[2] > 0
+       if(places[0] == 0 && places[1] == 0)
+        strings.push("hundred", Ones[places[2]])
+       else
+        strings.push("hundred and", Ones[places[2]])
+       end
+     end
+     strings
+   end
+end
+
+char_count = 0
+1000.times do |i|
+  char_count += (i+1).to_english.gsub(/\s+|-/, '').length
+end
+
+p char_count
+
+```
+
+
+{% highlight console %}
+$ time ruby sumOfWords.rb
+real	0m0.047s
+user	0m0.042s
+sys	0m0.004s
+{% endhighlight %}
+
+
+
+</div>
