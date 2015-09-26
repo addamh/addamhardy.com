@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>About</title>
-  <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
-">
+  <title>How In The Hell Do I Test A Facebook App From localhost?</title>
+  <meta name="description" content="So no shit, there you are, building a web app that is using the Facebook SDK/API. You’ve followed all the integration tutorials. You’ve got all the code in p...">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://yourdomain.com/about/">
+  <link rel="canonical" href="http://yourdomain.com/2013/05/15/how-in-the-hell-do-i-test-a-facebook-app-from-localhost.html">
   <link rel="alternate" type="application/rss+xml" title="Your awesome title" href="http://yourdomain.com/feed.xml" />
 </head>
 
@@ -60,15 +59,57 @@
         <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">About</h1>
+    <h1 class="post-title">How In The Hell Do I Test A Facebook App From localhost?</h1>
+    <p class="post-meta">May 15, 2013</p>
   </header>
 
   <article class="post-content">
-    <p>This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at <a href="http://jekyllrb.com/">jekyllrb.com</a></p>
+    <p>So no shit, there you are, building a web app that is using the Facebook SDK/API. You’ve followed all the integration tutorials. You’ve got all the code in place. You’re ready to go. You fire up the Sidekiq and your Rails server with Foreman, and you finally click on your pretty little Facebook login button. And then…
+<!-- more --></p>
 
-<p>You can find the source code for the Jekyll new theme at: <a href="https://github.com/jglovier/jekyll-new">github.com/jglovier/jekyll-new</a></p>
+<p><img src="/assets/images/facebook-localhost/localhost-error-noauth.png" /></p>
 
-<p>You can find the source code for Jekyll at <a href="https://github.com/jekyll/jekyll">github.com/jekyll/jekyll</a></p>
+<hr />
+
+<h2 id="doh-right">DOH, right?</h2>
+
+<p>Then you want to punch yourself. Why didn’t I put localhost into the app domains? I better go ahead and do that. You log into Facebook and put localhost in there. And then…</p>
+
+<p><img src="/assets/images/facebook-localhost/localhost-error.png" /></p>
+
+<hr />
+
+<h2 id="ok-facebook-so-what-the-hell-do-i-do-then">Ok Facebook… So WHAT THE HELL DO I DO THEN?</h2>
+
+<p>Scratched my head for a few minutes. Started thinking about how soon until it was drinking time, and then had a thought. Why not just locally redirect the production URL to my machine? The app will then send requests with a production URL referrer and will be authorized by Facebook’s dumb ass security schemes. (Ok maybe not dumbass but certainly inconvenient. I’m trying to work here!)</p>
+
+<p>Solution:</p>
+
+<ul>
+  <li>Add the production URL to your /etc/hosts file and redirect back to localhost</li>
+</ul>
+
+<p><code>bash /etc/hosts
+##
+# Host Database
+#
+# localhost is used to configure the loopback interface
+# when the system is booting.  Do not change this entry.
+##
+127.0.0.1         localhost
+255.255.255.255   broadcasthost
+::1               localhost 
+fe80::1%lo0       localhost
+127.0.0.1 app.btiques.com
+</code></p>
+
+<p>After you change your hosts file on a Mac you always have to flush the cache and force OSX to re-query the DNS servers. Run this command and you should be good to go.</p>
+
+<p><code>bash Run this to clear your cache
+dscacheutil -flushcache 
+</code></p>
+
+<p>Now, have a beer and relax before you kill somebody. This shit can get stressful.</p>
 
   </article>
 

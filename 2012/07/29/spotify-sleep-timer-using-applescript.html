@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>About</title>
-  <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
-">
+  <title>Spotify Sleep Timer Using AppleScript</title>
+  <meta name="description" content="&nbsp;&nbsp;&nbsp;Like most of the technology addicted masses, I sleep with my Macbook Pro either on, near or around my bed. I can quickly check emails or IM...">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://yourdomain.com/about/">
+  <link rel="canonical" href="http://yourdomain.com/2012/07/29/spotify-sleep-timer-using-applescript.html">
   <link rel="alternate" type="application/rss+xml" title="Your awesome title" href="http://yourdomain.com/feed.xml" />
 </head>
 
@@ -60,15 +59,45 @@
         <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">About</h1>
+    <h1 class="post-title">Spotify Sleep Timer Using AppleScript</h1>
+    <p class="post-meta">Jul 29, 2012</p>
   </header>
 
   <article class="post-content">
-    <p>This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at <a href="http://jekyllrb.com/">jekyllrb.com</a></p>
-
-<p>You can find the source code for the Jekyll new theme at: <a href="https://github.com/jglovier/jekyll-new">github.com/jglovier/jekyll-new</a></p>
-
-<p>You can find the source code for Jekyll at <a href="https://github.com/jekyll/jekyll">github.com/jekyll/jekyll</a></p>
+    &nbsp;&nbsp;&nbsp;Like most of the technology addicted masses, I sleep with my Macbook Pro either on, near or around my bed. I can quickly check emails or IMs that come in or just generally waste my life away and prevent myself from going to sleep, but I can't help it. That's why it's called an addiction. It also allows me to take advantage of some apps while sleeping. <!-- more -->
+Like alarm clocks or listening to music while going to sleep. I have a great Rachmaninov playlist on Spotify that I often listen to while going to sleep, but Spotify plays on forever unless you stop it and going to sleep with music is fine but having music drone on for hours and hours in my sleep isn't what I want.
+<br /><br />
+&nbsp;&nbsp;&nbsp;So there I lay in bed wishing Spotify had a sleep timer. Alas it did not. But! I do have a tiny bit of ingenuity and know-how so I decided to take matters into my own hands. Apple provides a platform for developers to expose functionality of their app programmatically through AppleScript. This allows a very low entry point for anyone to write small scripts to accomplish tasks with the apps they use that those apps may not take care of themselves.
+<br/><br />
+I wanted a Spotify sleep timer. So I made a Spotify sleep timer.
+<br />
+<script src="https://gist.github.com/3180350.js?file=spotifySleep.scpt"></script>
+&nbsp;&nbsp;&nbsp;5 minutes later I had a perfectly functional sleep timer for Spotify on Mac. It's an incredibly simple script that just asks the user how many minutes would they like Spotify to play until the script tells Spotify to stop. You could modify this script to go by hours if you want. I'll leave that up to you to figure out. The script can be run through the Services menu in the Spotify toolbar.
+<br/><br/>
+The steps to install this script are pretty straight forward:
+<ul>
+  <li>Open Automator</li>
+  <li>Create a new "Service" project</li>
+  <li>(1) Add the "Run an AppleScript" action to the workflow by finding it in the search bar and then double clicking the result</li>
+  <li>(2) Select "no input" from the "Service receives" drop box.
+  <li>(3) Select "other" from the application drop box and select Spotify from your applications folder.
+  <li>(4) Copy and paste the code above in the box.</li>
+  <br/>
+  <img src="/assets/images/spotify_timer/automator-walkthrough.png">
+  <br/>
+  <li>Save as Spotify Sleep</li>
+  <br/>
+  <img src="/assets/images/spotify_timer/automator.png">
+  <br/>
+  <li>Restart Spotify</li>
+  <li>Click "Spotify" in the toolbar and go down to "Services" and select "sleepSpotify"
+  <br />
+  <img src="/assets/images/spotify_timer/spotify_services.png">
+  <li>Follow prompts</li>
+  <img src="/assets/images/spotify_timer/prompt.png">
+  <li>Go to sleep listening to music</li>
+<br/>
+Hope you enjoy this little script! If you use it, leave me a comment on this post and let me know. Thanks! And don't forget, if you want something done that someone else hasn't done yet, DO IT YOURSELF!
 
   </article>
 

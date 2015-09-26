@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Automate All The Things: Continuous Integration and Deployment at RevUnit</title>
+  <meta name="description" content="[cross post from my company blog]">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://yourdomain.com/2013/09/28/automate-all-the-things-continuous-integration-and-continuous-deployment-at-revunit.html">
+  <link rel="alternate" type="application/rss+xml" title="Your awesome title" href="http://yourdomain.com/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Your awesome title</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+        
+          
+          <a class="page-link" href="/index.html">Coder.</a>
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Automate All The Things: Continuous Integration and Deployment at RevUnit</h1>
+    <p class="post-meta">Sep 28, 2013</p>
+  </header>
+
+  <article class="post-content">
+    <p>[cross post from my company blog]</p>
+
+<p>We are strong believers in the agile method of software development. We break down key features into user stories, do sprint planning, track velocity, unit and integration testing; all that good stuff. But we’ve had a few key pillars of agile development missing for a while and we recently rectified that. RevUnit’s process now fully incorporates continuous integration and continuous deployment. This enables us to automate more of our process which frees us up to focus on the important things — like implementing and shipping features!</p>
+
+<h2 id="automate-all-the-things">Automate all the things!</h2>
+
+<p>Automating your workflow is vital for a streamlined development process. There are so many small tasks that a developer has to do in addition to their core duties that it can really drain not only the time the developer has but also their focus on the more important tasks at hand. With so much to do just to enable the ability to do the things we have to do, how do we get anything done at all?</p>
+
+<blockquote>
+  <p>“Progress isn’t made by early risers. It’s made by lazy men trying to find easier ways to do something.” - Robert A. Heinlein</p>
+</blockquote>
+
+<p>All development organizations should have the mindset of automating their workflow but it is especially important for smaller start ups. You’re not going to have a QA team or a deployment team. You have one team to do all the things. There are many ways to automate your workflow. We even have a chat bot in our company chatroom that can interface with our GitHub repositories, our project planning system, our production error reporting system, as well as many other integrated systems we use for our planning and development workflow end to end. It even has automated photos of kitties or animated gifs for when we are feeling down.</p>
+
+<p><img src="http://media.tumblr.com/8d186ad810c901ac2f826780a395a4a1/tumblr_inline_mtp64v3iQP1qze6ud.jpg" alt="Kitty" /></p>
+
+<p>Specifically for this post, I’ll talk about how we automated our integration testing and deployment using Continuous Integration and Continuous Deployment.</p>
+
+<h2 id="what-is-continuous-integration">What Is Continuous Integration?</h2>
+
+<p>Continuous Integration is a software development practice where members of a team integrate their work frequently. This integration is trigged by every push of new commits to GitHub. Each time a developer pushes new code to GitHub our CI system clone’s that branch and runs all of the entire unit and integration test suite.</p>
+
+<p>This is all done automatically on a post-receive hook on GitHub without any manual intervention from a developer. This enables the team to rapidly find integration errors or regression failures in the test suite. This tightens the feedback loop and not only enables more defect free code, but greatly speeds up our process.</p>
+
+<p>Developer A may have a completely green (passing) test suite on their local machine at the same time that Developer B also has a completely green test suite on their machine. Without this continuous integration process, the tests from those separate developers would not be run together (integration testing) until further down the line; and even then by some manual intervention by a developer.</p>
+
+<p>The instance where CI really shines is in rapidly exposing regression failures. Without a thorough test suite and CI, a feature that was complete in week 2 of development and was destroyed by a feature that was completed in week 12 of development will never be exposed until the very end in a formal QA process. Obviously that is less than ideal. We need to know about defects immediately or it could really derail the speed and fluidity of our process and our ability to quickly deliver results to a client. This is especially important for defects in features that we already completed and tested thoroughly.</p>
+
+<h2 id="what-is-continuous-deployment">What Is Continuous Deployment?</h2>
+
+<p>So we’ve automated our integration testing and building, what’s the final step? Deployment. This step of the process can take the longest time depending on the complexity of your application. I’ve even worked in a large corporate environment wherein if you wanted a deployment to the staging servers you had to contact a deployment team which could take up to a week to finally get deployed. That’s crazy!</p>
+
+<p>Traditionally you plan development which leads into testing and QA which ultimately leads into a planned deployment. You need this planned/tiered (WATERFALL!) approach to development and release when you don’t have CI or even further don’t have any unit or integration tests. You don’t want to deploy an app that you’re not positive is working 100% as it should. Someone call the QA team and tell them we’re ready! Ain’t nobody got time for that.</p>
+
+<p>At this point we’ve ensured the integrity of our application through ongoing continuous integration. So what is stopping us from automating the final step? Continuous Deployment (sometimes referred to as Continuous Delivery) fills in this gap.</p>
+
+<p>Continuous Deployment (CD) is a software development practice that triggers an automated deployment of the application after passing all tests and builds in the continuous integration process. This means that as soon as a build is successful on the staging branch, it is automatically deployed to the staging application. Enabling the client to see the most up-to-date feature complete code at any given time. This should happen several times a day. You can take it even further to automate your deployments to production! Once a feature has gone through local unit testing, code review in a pull request, and multiple integration builds through CI, you can push it directly to your production servers giving your users immediate benefit rather than waiting for weekly or biweekly planned and scheduled deployments. Your calendar shouldn’t have anything to do with shipping features to your users. Ship it early and ship it often.</p>
+
+<blockquote>
+  <p>Your calendar shouldn’t have anything to do with shipping features to your users.</p>
+</blockquote>
+
+<p>GitHub is fantastic at this and reported that their busiest day yet (as of a blog post in 2012 so I bet they’ve blown past this by now) was on 23 August 2012 with 563 builds and 175 deploys. [blog post by GitHub] That’s 175 deployments to production in a single day on an extremely active application with millions of concurrent users worldwide! No “Under Maintenance” pages. No scheduled outages or deployments. Just ship, ship, ship.</p>
+
+<h2 id="why-is-all-of-this-important">Why Is All Of This Important?</h2>
+
+<p>As small teams that seem to always be increasing the requirements and expectations, we have to find ways to increase our speed while not decreasing our quality. A tough task. Just not decreasing the quality and maintaining the status quo almost isn’t even an option either. We need to be increasing speed and increasing quality.</p>
+
+<p>How is that even possible? Delegate work to the machines.</p>
+
+<p>Using a rigid and well thought out process for your development can help reduce unknowns which will decrease defects, improve overall quality of your codebase, and enable you to rapidly iterate and deliver to your users. Automating that workflow will speed it up even further. It will also turn your development process from a passive process to an active process. Let the process tell you if things are working or breaking. This allows issues or roadblocks to bubble up to the top sooner and takes the responsibility off a single person to remember to accomplish many separate small tasks.</p>
+
+<blockquote>
+  <p>We have the technology.</p>
+</blockquote>
+
+<p><img src="http://media.tumblr.com/f5a498a1efcb2d367f23932456b5b1e0/tumblr_inline_mtp63c5ua31qze6ud.jpg" alt="6 million dollar man" /></p>
+
+<p>Make life easier for yourself and your team at the same time as delivering better products to your users! It is possible.</p>
+
+<h2 id="our-workflow">Our Workflow</h2>
+
+<p>We use GitHub for our source control and Travis CI as our hosted continuous integration system. HipChat keeps us connected and aware of action happening within our system and workflow. We also use a modified form of git flow for our branching strategy.</p>
+
+<p>Here is a quick and dirty overview:</p>
+
+<ul>
+  <li>
+    <p>Master branch is the latest production release.</p>
+  </li>
+  <li>
+    <p>Staging branch is the latest feature complete code that has been deployed to the staging application servers and not deployed to production yet.</p>
+  </li>
+  <li>
+    <p>A feature branch is branched off of the staging branch and worked on until it is feature complete with accompanying unit and integration tests that verify functionality.</p>
+  </li>
+</ul>
+
+<p>After a developer has finished the feature in their private feature branch, they initiate a Pull Request on GitHub to merge their feature branch back into the staging branch.</p>
+
+<p>Travis CI captures the pushes to GitHub and the initiation of a Pull Request and runs the tests on the branch. With Travis CI’s great GitHub integration, we can see right there on the Pull Request view whether or not the tests are passing or failing.</p>
+
+<p>If tests are passing, we do a team wide code review on GitHub by commenting inline on all of the code that will be committed to the staging branch. We cycle through these comments and revisions until everything is good to go and we’re ready to merge into the staging branch.</p>
+
+<p>Throughout this entire process, pushes to GitHub, comments on code for the code review, passing or failing builds on Travis CI, and every other action related to our code/application/process is pushed to the chatroom in HipChat related to that specific project. Everyone is always up-to-date on what is happening with the project and there are no surprises.</p>
+
+<p>Once the feature branch has passed a code review, has passing tests in CI and has been acceptance tested and accepted by the product owner, we merge it back into staging which then fires off another cycle of integration testing with our CI system.</p>
+
+<p>Once this final build and test cycle completes with a passing status, Travis CI initiates and automatic deploy of the application to our staging environments.</p>
+
+<p>If it is a Rails application, it kicks it off to our staging servers hosted on Heroku and notifies the applicable project room in HipChat of a successful build and Heroku deploy. Enabling the clients to see the latest feature complete build of their application on the web immediately after the feature has been completed.</p>
+
+<p>If it is an iOS or Android application, it will build a binary and automatically deploy to TestFlight and send emails to all of the users on the beta-testing distribution list for that application. Enabling them to download the latest successful build immediately.</p>
+
+<p>It’s really a fantastic process!</p>
+
+<p>As you can see, there are many checks for quality and functionality from the very beginning of the process all the way to the end. As well as backward/redundant checks to be sure everything that once was still is. And while it seems like a lot of steps, it is all automated! A great process should get out of your way and let you do your work.</p>
+
+<h2 id="its-been-a-long-journey">It’s Been A Long Journey</h2>
+
+<p>We are really excited about this process and it really enables us to stand by our commitment to delivering quality code to our clients and their users. This process executed well almost completely removes the need for a QA period prior to production release which cuts time and cost for our clients.</p>
+
+<p>Our development process is really what sets us apart from our competitors in the region and we’re always trying to improve it. If you have a similar process or have any questions or comments, leave us some comments below and we’d love to talk to you about it.</p>
+
+<p>Ways I see to improve it in the future:</p>
+
+<ul>
+  <li>
+    <p>I am going to develop some dashboards that will always be displayed on a large tv in the office. So we can always see at a glance if a project’s builds are failing. Or alternately, look up and see green across the board and know we are kicking ass at our job. :)</p>
+  </li>
+  <li>
+    <p>We use Hubot by GitHub as our chat bot and we’ll be building more Hubot scripts to further automate our workflow.</p>
+  </li>
+</ul>
+
+<h2 id="notes">Notes:</h2>
+
+<ul>
+  <li>
+    <p>Of course I didn’t invent the term “Automate all the things!” so credit to whoever that person is.</p>
+  </li>
+  <li>
+    <p>Martin Fowler’s original essay on Continuous Integration: http://www.martinfowler.com/articles/continuousIntegration.html</p>
+  </li>
+  <li>
+    <p>‘Automate All The Things’ may become a running column on our blog about various ways to speed up and improve your workflow.</p>
+  </li>
+</ul>
+
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Your awesome title</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>Your awesome title</li>
+          <li><a href="mailto:your-email@domain.com">your-email@domain.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/jekyll">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">jekyll</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/jekyllrb">
+              <span class="icon  icon--twitter">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+                </svg>
+              </span>
+
+              <span class="username">jekyllrb</span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
