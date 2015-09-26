@@ -1,23 +1,49 @@
 ---
-layout: default
+layout: main
+title: Coder.
+tagline: engineer. analyst.
 ---
 
-<div class="home">
+<div class="top_container">
+	<div class="image_header"><img src="/assets/images/face.jpeg"></div>
+	<div class="name"><h1>Addam Hardy</h1></div>
+	<div class="pitch"><p>iOS, Ruby on Rails, Javascript, and anything-at-all hacker. Passionate about user experience, rapid prototyping through agile methods and data driven analytics and system design. </p></div>
+	<div class="pitch_footer">
+		<p class="justify" style="word-spacing: 0px; letter-spacing: 6.461538px; text-align: center;">Fayetteville, AR &#8226; (202)713-5141
+	</p></div>
+	<div class="side_bar">
+					<h3>Company:</h3>
+					<h4><a href="http://datarank.com">Datarank</a></h4>
+					<h3>Github:</h3>
+					<h4><a href="http://www.github.com/addamh">addamh</a></h4>
+					<h3>Linkedin:</h3>
+					<h4><a href="http://www.linkedin.com/in/addamh/">addamh</a></h4>
+					<h3>Email:</h3>
+					<h4><a href="mailto:addam.hardy@gmail.com">addam.hardy@gmail.com</a></h4>
+	</div>
+</div>
+<div class="posts_short">
+	<strong>Latest Posts: </strong>
+	<ul class="posts">
+	 {% for post in site.posts %}
+	   <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
+	 {% endfor %}
+	</ul>
+</div>
 
-  <h1 class="page-heading">Posts</h1>
-
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
-
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
-
+<div class="currently_reading">
+	<strong>Currently Reading: </strong>
+      <style type="text/css" media="screen">
+        .gr_grid_container { /* customize grid container div here. eg: width: 500px; */ }
+        .gr_grid_book_container { /* customize book cover container div here */
+          float: left;
+          width: 98px;
+          height: 160px;
+          padding: 0px 0px;
+          overflow: hidden;
+        }
+      </style>
+      <div id="gr_grid_widget_1333937930">
+      </div>
+      <script src="http://www.goodreads.com/review/grid_widget/3621267.Currently%20Reading:?cover_size=medium&amp;hide_link=true&amp;hide_title=true&amp;num_books=3&amp;order=a&amp;shelf=currently-reading&amp;sort=date_added&amp;widget_id=1333937930" type="text/javascript" charset="utf-8"></script>
 </div>

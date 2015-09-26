@@ -1,0 +1,35 @@
+---
+layout: post
+title: "iOS Lessons Learned // Strong References To Self In Blocks are a No-No"
+description: ""
+category:
+tags: [iOS Lessons Learned, objective-c, iOS, ARC]
+comments: true
+---
+{% include JB/setup %}
+
+I've just started the leg of my professional career involving iOS. I've been a registered iOS developer since the iPhone developer program was created and I've been tinkering with things since then, but now I am employed as an iOS developer. I can officially say that my profession is 'iOS Developer'. <!-- more -->
+Today I've been diving into the code of my new employer -- <a href="http://mobilefwd.com">MobileFWD</a> check that shit out! -- and I've hit my first professional iOS developer 'Lesson Learned'.
+<br /><br />
+What is that lesson learned you say?
+<br /><br />
+<code>Do not use a strong reference to self inside a block.</code> Doing so will result in a retain-cycle loop. The block is being retained by the object. And the object is retaining the block. Thus both will probably never be released because both have a reference pointing to them. 
+<br /><br />
+I first attempted to do this:
+<br /><br />
+<script src="https://gist.github.com/2622460.js?file=gistfile1.m"></script>
+That resulted in a warning from Xcode notifying me that 'Capturing self strongly in this block is likely to lead to a retain cycle.' There is a simple work around for strong referencing self inside a block -- create a weak reference to self and use that!
+<br /><br />
+The solution is to access self indirectly from a reference that will definitely not be retained instead of accessing self directly. Using a weak reference to self inside the block will no longer retain the object. The object can then be released later explicitly or through the magic of ARC.
+<br /><br />
+Changing my code to this enabled me to circumvent this retain cycle while still accomplishing what I originally set out to:
+<br /><br />
+<script src="https://gist.github.com/2625236.js?file=gistfile1.m"></script>
+This method of creating a weak reference that will not retain the result of the call is not the only way of approaching this. Here are a few more examples:
+<br /><br />
+<script src="https://gist.github.com/2625275.js?file=gistfile1.m"></script>
+All three of these will return a reference that will not be retained, but they do behave a little differently. <code>__weak</code> will zero the reference when the object is released. <code>__unsafe_unretained</code> will leave an invalid pointer. <code>__block</code> will allow you to change the value of the reference from within the block. 
+<br /><br />
+<code>__block</code> should not be used in iOS5. In iOS with ARC, <code>__block</code> still still be retained. <code>__weak</code> is preferred however you can use <code>__unsafe_unretained</code> for backwards compatibility. 
+<br /><br />
+But if you are absolutely positive that the retain cycle will be broken despite using a strong reference to self inside the the block, you can always at a #pragma mark to ignore the warnings. ( <code>#pragma clang diagnostic ignored "-Warc-retain-cycles"</code> ) Of course silencing warnings is a bad idea 99% of the time however. :)
