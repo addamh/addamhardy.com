@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Addam Hardy [Project Euler]</title>
+    
+    <meta name="author" content="">
+
+    <link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all">
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  </head>
+
+  <body>
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="">addamhardy.com</a>
+          <ul class="nav">
+						<li class="dropdown" id="blog">
+							<a href="/blog">Blog</a>
+						</li>
+						
+            
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="content">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Project Euler</h1>
+    <p class="post-meta">Dec 10, 2012</p>
+  </header>
+
+  <article class="post-content">
+    <div class="euler">
+
+<h2>Overview</h2>
+<div class="divider">&nbsp;</div>
+
+<h3>Question</h3>
+<p>Find the greatest product of five consecutive digits in the 1000-digit number.</p>
+<p>73167176531330624919225119674426574742355349194934
+96983520312774506326239578318016984801869478851843
+85861560789112949495459501737958331952853208805511
+12540698747158523863050715693290963295227443043557
+66896648950445244523161731856403098711121722383113
+62229893423380308135336276614282806444486645238749
+30358907296290491560440772390713810515859307960866
+70172427121883998797908792274921901699720888093776
+65727333001053367881220235421809751254540594752243
+52584907711670556013604839586446706324415722155397
+53697817977846174064955149290862569321978468622482
+83972241375657056057490261407972968652414535100474
+82166370484403199890008895243450658541227588666881
+16427171479924442928230863465674813919123162824586
+17866458359124566529476545682848912883142607690042
+24219022671055626321111109370544217506941658960408
+07198403850962455444362981230987879927244284909188
+84580156166097919133875499200524063689912560717606
+05886116467109405077541002256983155200055935729725
+71636269561882670428252483600823257530420752963450</p>
+
+
+
+<style type="text/css">
+h3.answer_toggle:hover {
+    color: #01579F;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.answer {
+    display: none;
+}
+</style>
+<script type="text/javascript">
+    function toggleAnswer() {
+        $('.answer').css('display', 'block');
+        //$('.answer_toggle').removeClass('answer_toggle');
+        $('.answer_toggle').text("answer")
+    }
+</script>
+<h3 class="answer_toggle" onclick="toggleAnswer();">click for answer</h3>
+<pre class="answer">40824
+</pre>
+
+
+
+
+
+<h2>Solutions</h2>
+<div class="divider">&nbsp;</div>
+
+<h3>Ruby </h3>
+``` ruby find_product.rb https://raw.github.com/addamh/euler/master/008/find_product.rb download
+#!/usr/bin/env ruby
+
+n = <<NUM
+73167176531330624919225119674426574742355349194934 
+96983520312774506326239578318016984801869478851843 
+85861560789112949495459501737958331952853208805511 
+12540698747158523863050715693290963295227443043557 
+66896648950445244523161731856403098711121722383113 
+62229893423380308135336276614282806444486645238749 
+30358907296290491560440772390713810515859307960866 
+70172427121883998797908792274921901699720888093776 
+65727333001053367881220235421809751254540594752243 
+52584907711670556013604839586446706324415722155397 
+53697817977846174064955149290862569321978468622482 
+83972241375657056057490261407972968652414535100474 
+82166370484403199890008895243450658541227588666881 
+16427171479924442928230863465674813919123162824586 
+17866458359124566529476545682848912883142607690042 
+24219022671055626321111109370544217506941658960408 
+07198403850962455444362981230987879927244284909188 
+84580156166097919133875499200524063689912560717606 
+05886116467109405077541002256983155200055935729725 
+71636269561882670428252483600823257530420752963450
+NUM
+
+n = n.split('')
+p = 0
+ 
+while n.size > 0
+  np = n[0].to_i * n[1].to_i * n[2].to_i * n[3].to_i * n[4].to_i
+  p = np > p ? np : p
+  n.shift
+end
+ 
+p p
+```
+
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span> <span class="nb">time </span>ruby find_product.rb
+<span class="go">real	0m0.027s</span>
+<span class="go">user	0m0.022s</span>
+<span class="go">sys	0m0.004s</span></code></pre></div>
+
+
+
+</div>
+  </article>
+
+</div>
+
+      </div>
+
+      <footer>
+        <p>&copy;  2014
+        </p>
+      </footer>
+
+    </div> <!-- /container -->
+
+
+  </body>
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-30687512-1']);
+	  _gaq.push(['_setDomainName', 'addamhardy.com']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+</html>

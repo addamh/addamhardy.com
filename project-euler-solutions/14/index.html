@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Addam Hardy [Project Euler]</title>
+    
+    <meta name="author" content="">
+
+    <link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all">
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  </head>
+
+  <body>
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="">addamhardy.com</a>
+          <ul class="nav">
+						<li class="dropdown" id="blog">
+							<a href="/blog">Blog</a>
+						</li>
+						
+            
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="content">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Project Euler</h1>
+    <p class="post-meta">Dec 14, 2012</p>
+  </header>
+
+  <article class="post-content">
+    <div class="euler">
+
+<h2>Overview</h2>
+<div class="divider">&nbsp;</div>
+
+<h3>Question</h3>
+<p>
+The following iterative sequence is defined for the set of positive integers:
+</p>
+
+$$
+n \rightarrow
+\begin{cases} 
+\tfrac{n}{2} &amp; \text{if } n \text{ is even} \\\\
+3n+1 &amp; \text{if } n \text{ is odd} \\\\
+\end{cases}
+$$
+
+<p>
+Using the rule above and starting with 13, we generate the following sequence:
+</p>
+
+\[13, 40, 20, 10, 5, 16, 8, 4, 2, 1\]
+
+<p>
+It can be seen that this sequence (starting at 13 and finishing at 1) contains 10 
+terms. Although it has not been proved yet (Collatz Problem), it is thought that all
+starting numbers finish at 1.
+</p>
+
+<p>
+Which starting number, under one million, produces the longest chain?
+</p>
+
+<p>
+NOTE: Once the chain starts the terms are allowed to go above one million.
+</p>
+
+
+
+<style type="text/css">
+h3.answer_toggle:hover {
+    color: #01579F;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.answer {
+    display: none;
+}
+</style>
+<script type="text/javascript">
+    function toggleAnswer() {
+        $('.answer').css('display', 'block');
+        //$('.answer_toggle').removeClass('answer_toggle');
+        $('.answer_toggle').text("answer")
+    }
+</script>
+<h3 class="answer_toggle" onclick="toggleAnswer();">click for answer</h3>
+<pre class="answer">837799</pre>
+
+
+
+
+
+<h2>Solutions</h2>
+<div class="divider">&nbsp;</div>
+
+<h3>Java </h3>
+``` java collatz.java https://raw.github.com/addamh/euler/master/014/collatz.java download
+
+
+public class collatz {
+  public static void main(String[] args) {
+    int p;
+    long a = 0;
+    long b = 0;
+    long c;
+       
+    for (int i =0;i<1000000;i++){
+      p=1;
+      c=i;
+           
+      while(c>1){
+        if(c%2==0){
+          c=c/2;
+          p++;  
+        } else {
+          c=3*c+1;
+          p++; 
+        }
+      }
+      if(p>a){
+        a=p;
+        b=i;
+      }
+    }
+    // Debug output
+    // System.out.println(a+" -> "+b);
+    System.out.println(b);
+  }
+}
+```
+
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span> <span class="nb">time </span>bash collatz.java
+<span class="go">real	0m1.167s</span>
+<span class="go">user	0m1.698s</span>
+<span class="go">sys	0m0.097s</span></code></pre></div>
+
+
+
+<h3>Ruby </h3>
+``` ruby collatz.rb https://raw.github.com/addamh/euler/master/014/collatz.rb download
+#!/usr/bin/env ruby
+
+def collatz(stack, n)
+  stack.push(n)
+  if n > 1
+    if(n % 2 == 0)
+      collatz(stack, n/2)
+    else
+      collatz(stack, 3*n+1)
+    end
+  end
+  return stack
+end
+
+sequence = Enumerator.new do |yielder|
+  number = 0
+  loop do
+    number += 1
+    yielder.yield number
+  end
+end
+
+max = {:i => 1, :l => 0}
+sequence.each do |i|
+  a = collatz([], i)
+  l = a.length
+  if max[:l] < l
+    max[:i] = i
+    max[:l] = l
+  end
+  break if i > 1000000
+end
+
+p max[:i]
+```
+
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span> <span class="nb">time </span>ruby collatz.rb
+<span class="go">real	1m6.439s</span>
+<span class="go">user	1m6.334s</span>
+<span class="go">sys	0m0.070s</span></code></pre></div>
+
+
+
+</div>
+  </article>
+
+</div>
+
+      </div>
+
+      <footer>
+        <p>&copy;  2014
+        </p>
+      </footer>
+
+    </div> <!-- /container -->
+
+
+  </body>
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-30687512-1']);
+	  _gaq.push(['_setDomainName', 'addamhardy.com']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+</html>

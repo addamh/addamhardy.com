@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Addam Hardy [Project Euler]</title>
+    
+    <meta name="author" content="">
+
+    <link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all">
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  </head>
+
+  <body>
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="">addamhardy.com</a>
+          <ul class="nav">
+						<li class="dropdown" id="blog">
+							<a href="/blog">Blog</a>
+						</li>
+						
+            
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="content">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Project Euler</h1>
+    <p class="post-meta">Dec 13, 2012</p>
+  </header>
+
+  <article class="post-content">
+    <div class="euler">
+
+<h2>Overview</h2>
+<div class="divider">&nbsp;</div>
+
+<h3>Question</h3>
+<p>
+In the 20x20 grid below, four numbers along a diagonal line 
+have been marked in red.
+</p>
+
+<pre><code>08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08
+49 49 99 40 17 81 18 57 60 87 17 40 98 43 69 48 04 56 62 00
+81 49 31 73 55 79 14 29 93 71 40 67 53 88 30 03 49 13 36 65
+52 70 95 23 04 60 11 42 69 24 68 56 01 32 56 71 37 02 36 91
+22 31 16 71 51 67 63 89 41 92 36 54 22 40 40 28 66 33 13 80
+24 47 32 60 99 03 45 02 44 75 33 53 78 36 84 20 35 17 12 50
+32 98 81 28 64 23 67 10 <span style="color:#ff0000;">26</span> 38 40 67 59 54 70 66 18 38 64 70
+67 26 20 68 02 62 12 20 95 <span style="color:#ff0000;">63</span> 94 39 63 08 40 91 66 49 94 21
+24 55 58 05 66 73 99 26 97 17 <span style="color:#ff0000;">78</span> 78 96 83 14 88 34 89 63 72
+21 36 23 09 75 00 76 44 20 45 35 <span style="color:#ff0000;">14</span> 00 61 33 97 34 31 33 95
+78 17 53 28 22 75 31 67 15 94 03 80 04 62 16 14 09 53 56 92
+16 39 05 42 96 35 31 47 55 58 88 24 00 17 54 24 36 29 85 57
+86 56 00 48 35 71 89 07 05 44 44 37 44 60 21 58 51 54 17 58
+19 80 81 68 05 94 47 69 28 73 92 13 86 52 17 77 04 89 55 40
+04 52 08 83 97 35 99 16 07 97 57 32 16 26 26 79 33 27 98 66
+88 36 68 87 57 62 20 72 03 46 33 67 46 55 12 32 63 93 53 69
+04 42 16 73 38 25 39 11 24 94 72 18 08 46 29 32 40 62 76 36
+20 69 36 41 72 30 23 88 34 62 99 69 82 67 59 85 74 04 36 16
+20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54
+01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48
+</code></pre>
+
+<p>
+The product of these numbers is \(26 \times 63 \times 78 \times 14 = 1788696\).
+</p>
+
+<p>
+What is the greatest product of four adjacent numbers in any
+direction (up, down, left, right, or diagonally) in the 20x20 grid?
+</p>
+
+
+
+<style type="text/css">
+h3.answer_toggle:hover {
+    color: #01579F;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.answer {
+    display: none;
+}
+</style>
+<script type="text/javascript">
+    function toggleAnswer() {
+        $('.answer').css('display', 'block');
+        //$('.answer_toggle').removeClass('answer_toggle');
+        $('.answer_toggle').text("answer")
+    }
+</script>
+<h3 class="answer_toggle" onclick="toggleAnswer();">click for answer</h3>
+<pre class="answer">70600674</pre>
+
+
+
+
+
+<h2>Solutions</h2>
+<div class="divider">&nbsp;</div>
+
+<h3>Ruby </h3>
+``` ruby gridProduct.rb https://raw.github.com/addamh/euler/master/011/gridProduct.rb download
+#!/usr/bin/env ruby
+
+string = <<GRID
+08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08
+49 49 99 40 17 81 18 57 60 87 17 40 98 43 69 48 04 56 62 00
+81 49 31 73 55 79 14 29 93 71 40 67 53 88 30 03 49 13 36 65
+52 70 95 23 04 60 11 42 69 24 68 56 01 32 56 71 37 02 36 91
+22 31 16 71 51 67 63 89 41 92 36 54 22 40 40 28 66 33 13 80
+24 47 32 60 99 03 45 02 44 75 33 53 78 36 84 20 35 17 12 50
+32 98 81 28 64 23 67 10 26 38 40 67 59 54 70 66 18 38 64 70
+67 26 20 68 02 62 12 20 95 63 94 39 63 08 40 91 66 49 94 21
+24 55 58 05 66 73 99 26 97 17 78 78 96 83 14 88 34 89 63 72
+21 36 23 09 75 00 76 44 20 45 35 14 00 61 33 97 34 31 33 95
+78 17 53 28 22 75 31 67 15 94 03 80 04 62 16 14 09 53 56 92
+16 39 05 42 96 35 31 47 55 58 88 24 00 17 54 24 36 29 85 57
+86 56 00 48 35 71 89 07 05 44 44 37 44 60 21 58 51 54 17 58
+19 80 81 68 05 94 47 69 28 73 92 13 86 52 17 77 04 89 55 40
+04 52 08 83 97 35 99 16 07 97 57 32 16 26 26 79 33 27 98 66
+88 36 68 87 57 62 20 72 03 46 33 67 46 55 12 32 63 93 53 69
+04 42 16 73 38 25 39 11 24 94 72 18 08 46 29 32 40 62 76 36
+20 69 36 41 72 30 23 88 34 62 99 69 82 67 59 85 74 04 36 16
+20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54
+01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48
+GRID
+
+processed_grid = []
+# Split heredoc string into a multidimensional array (20x20 grid)
+string.each_line do |line|
+  processed_grid.push line.split.map! {|k| k.to_i }
+end
+
+directions = [ # Movement coordinates on an [x,y] plane on the grid
+              [-1,-1],  # Left-Down
+              [-1,0],   # Left
+              [-1,1],   # Left-Up
+              [0,-1],   # Down
+              [0,1],    # Up
+              [1,-1],   # Right-Down
+              [1,0],    # Right
+              [1,1]     # Right-Up
+            ]
+
+max = 0
+
+processed_grid.each_with_index do |row, y|
+  row.each_with_index  do |cell, x|
+    directions.each do |x_movement, y_movement|
+      product = 1
+      4.times do |i|
+        x_pos = x + i * x_movement
+        y_pos = y + i * y_movement
+        unless (x_pos < 0 || x_pos >= row.length) || (y_pos < 0 || y_pos >= processed_grid.length)
+          product *= processed_grid[y_pos][x_pos]
+        end
+      end
+      max = product unless product < max
+    end
+  end
+end
+
+p max
+```
+
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span> <span class="nb">time </span>ruby gridProduct.rb
+<span class="go">real	0m0.041s</span>
+<span class="go">user	0m0.034s</span>
+<span class="go">sys	0m0.005s</span></code></pre></div>
+
+
+
+</div>
+  </article>
+
+</div>
+
+      </div>
+
+      <footer>
+        <p>&copy;  2014
+        </p>
+      </footer>
+
+    </div> <!-- /container -->
+
+
+  </body>
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-30687512-1']);
+	  _gaq.push(['_setDomainName', 'addamhardy.com']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+</html>

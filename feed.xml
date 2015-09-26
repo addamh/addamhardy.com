@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Your awesome title</title>
-    <description>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
-</description>
-    <link>http://yourdomain.com/</link>
-    <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 26 Sep 2015 00:22:50 -0500</pubDate>
-    <lastBuildDate>Sat, 26 Sep 2015 00:22:50 -0500</lastBuildDate>
+    <title>addamhardy.com</title>
+    <description></description>
+    <link>http:/addamhardy.com/</link>
+    <atom:link href="http:/addamhardy.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sat, 26 Sep 2015 00:58:25 -0500</pubDate>
+    <lastBuildDate>Sat, 26 Sep 2015 00:58:25 -0500</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -66,8 +65,8 @@
 &lt;p&gt;[source: &lt;a href=&quot;http://www.kitchensoap.com/2012/10/25/on-being-a-senior-engineer/&quot;&gt;Kitchen Soap: On Being A Senior Engineer&lt;/a&gt;]&lt;/p&gt;
 </description>
         <pubDate>Sat, 28 Sep 2013 16:24:00 -0500</pubDate>
-        <link>http://yourdomain.com/2013/09/28/the-ten-commandments-of-egoless-programming.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/2013/09/28/the-ten-commandments-of-egoless-programming.html</guid>
+        <link>http:/addamhardy.com/2013/09/28/the-ten-commandments-of-egoless-programming.html</link>
+        <guid isPermaLink="true">http:/addamhardy.com/2013/09/28/the-ten-commandments-of-egoless-programming.html</guid>
         
         
       </item>
@@ -205,8 +204,8 @@
 
 </description>
         <pubDate>Sat, 28 Sep 2013 16:17:00 -0500</pubDate>
-        <link>http://yourdomain.com/2013/09/28/automate-all-the-things-continuous-integration-and-continuous-deployment-at-revunit.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/2013/09/28/automate-all-the-things-continuous-integration-and-continuous-deployment-at-revunit.html</guid>
+        <link>http:/addamhardy.com/2013/09/28/automate-all-the-things-continuous-integration-and-continuous-deployment-at-revunit.html</link>
+        <guid isPermaLink="true">http:/addamhardy.com/2013/09/28/automate-all-the-things-continuous-integration-and-continuous-deployment-at-revunit.html</guid>
         
         <category>ci</category>
         
@@ -430,8 +429,8 @@ index 0000000..e69de29
 &lt;p&gt;Do you follow any guidelines on commit message format?&lt;/p&gt;
 </description>
         <pubDate>Wed, 05 Jun 2013 20:39:00 -0500</pubDate>
-        <link>http://yourdomain.com/2013/06/05/good-commit-messages-and-enforcing-them-with-git-hooks.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/2013/06/05/good-commit-messages-and-enforcing-them-with-git-hooks.html</guid>
+        <link>http:/addamhardy.com/2013/06/05/good-commit-messages-and-enforcing-them-with-git-hooks.html</link>
+        <guid isPermaLink="true">http:/addamhardy.com/2013/06/05/good-commit-messages-and-enforcing-them-with-git-hooks.html</guid>
         
         <category>git</category>
         
@@ -482,8 +481,8 @@ end if
 
 </description>
         <pubDate>Sat, 25 May 2013 00:51:00 -0500</pubDate>
-        <link>http://yourdomain.com/2013/05/25/hiding-your-desktop-icons-for-a-presentation-on-os-x.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/2013/05/25/hiding-your-desktop-icons-for-a-presentation-on-os-x.html</guid>
+        <link>http:/addamhardy.com/2013/05/25/hiding-your-desktop-icons-for-a-presentation-on-os-x.html</link>
+        <guid isPermaLink="true">http:/addamhardy.com/2013/05/25/hiding-your-desktop-icons-for-a-presentation-on-os-x.html</guid>
         
         <category>osx</category>
         
@@ -544,8 +543,8 @@ dscacheutil -flushcache
 &lt;p&gt;Now, have a beer and relax before you kill somebody. This shit can get stressful.&lt;/p&gt;
 </description>
         <pubDate>Wed, 15 May 2013 19:57:00 -0500</pubDate>
-        <link>http://yourdomain.com/2013/05/15/how-in-the-hell-do-i-test-a-facebook-app-from-localhost.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/2013/05/15/how-in-the-hell-do-i-test-a-facebook-app-from-localhost.html</guid>
+        <link>http:/addamhardy.com/2013/05/15/how-in-the-hell-do-i-test-a-facebook-app-from-localhost.html</link>
+        <guid isPermaLink="true">http:/addamhardy.com/2013/05/15/how-in-the-hell-do-i-test-a-facebook-app-from-localhost.html</guid>
         
         <category>facebook</category>
         
@@ -636,8 +635,8 @@ For those who haven’t used custom URL schemas with iOS projects, you are able 
 
 </description>
         <pubDate>Tue, 14 May 2013 19:39:00 -0500</pubDate>
-        <link>http://yourdomain.com/2013/05/14/redirecting-to-your-app-from-mobile-safari-and-failing-gracefully.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/2013/05/14/redirecting-to-your-app-from-mobile-safari-and-failing-gracefully.html</guid>
+        <link>http:/addamhardy.com/2013/05/14/redirecting-to-your-app-from-mobile-safari-and-failing-gracefully.html</link>
+        <guid isPermaLink="true">http:/addamhardy.com/2013/05/14/redirecting-to-your-app-from-mobile-safari-and-failing-gracefully.html</guid>
         
         
       </item>
@@ -664,8 +663,8 @@ you’re alone at 3am after nearly 2 bottles of wine can make you question your 
 &lt;p&gt;I guess wanting to be more is better than never caring, but at least they never know what they could have been. While we unfortunate damned in the middle never became great, but knew, with absolute clarity, that we could have been great and never were. We never were.&lt;/p&gt;
 </description>
         <pubDate>Mon, 24 Dec 2012 02:55:00 -0600</pubDate>
-        <link>http://yourdomain.com/2012/12/24/mediocrity-hell.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/2012/12/24/mediocrity-hell.html</guid>
+        <link>http:/addamhardy.com/2012/12/24/mediocrity-hell.html</link>
+        <guid isPermaLink="true">http:/addamhardy.com/2012/12/24/mediocrity-hell.html</guid>
         
         <category>personal</category>
         
@@ -694,8 +693,8 @@ Here are the slides I made for the session. Hope you enjoy!
 &lt;script async class=&quot;speakerdeck-embed&quot; data-id=&quot;50379b821d81480002000884&quot; data-ratio=&quot;1.3333333333333333&quot; src=&quot;//speakerdeck.com/assets/embed.js&quot;&gt;&lt;/script&gt;
 </description>
         <pubDate>Tue, 28 Aug 2012 00:00:00 -0500</pubDate>
-        <link>http://yourdomain.com/2012/08/28/talk-objective-c-for-web-developers.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/2012/08/28/talk-objective-c-for-web-developers.html</guid>
+        <link>http:/addamhardy.com/2012/08/28/talk-objective-c-for-web-developers.html</link>
+        <guid isPermaLink="true">http:/addamhardy.com/2012/08/28/talk-objective-c-for-web-developers.html</guid>
         
         <category>talk</category>
         
@@ -725,8 +724,8 @@ The compiled result:
 &lt;/div&gt;
 </description>
         <pubDate>Tue, 28 Aug 2012 00:00:00 -0500</pubDate>
-        <link>http://yourdomain.com/2012/08/28/i-finally-rewrote-my-resume-in-latex.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/2012/08/28/i-finally-rewrote-my-resume-in-latex.html</guid>
+        <link>http:/addamhardy.com/2012/08/28/i-finally-rewrote-my-resume-in-latex.html</link>
+        <guid isPermaLink="true">http:/addamhardy.com/2012/08/28/i-finally-rewrote-my-resume-in-latex.html</guid>
         
         <category>latex</category>
         
@@ -761,8 +760,8 @@ The compiled result:
 &lt;p&gt;I’ll probably be pretty nervous. And &lt;del&gt;more than likely&lt;/del&gt; possibly intoxicated.&lt;/p&gt;
 </description>
         <pubDate>Thu, 09 Aug 2012 00:00:00 -0500</pubDate>
-        <link>http://yourdomain.com/2012/08/09/well-i-submitted-my-first-abstract-for-a-conference-talk.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/2012/08/09/well-i-submitted-my-first-abstract-for-a-conference-talk.html</guid>
+        <link>http:/addamhardy.com/2012/08/09/well-i-submitted-my-first-abstract-for-a-conference-talk.html</link>
+        <guid isPermaLink="true">http:/addamhardy.com/2012/08/09/well-i-submitted-my-first-abstract-for-a-conference-talk.html</guid>
         
         
       </item>

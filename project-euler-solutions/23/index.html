@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Addam Hardy [Project Euler]</title>
+    
+    <meta name="author" content="">
+
+    <link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all">
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  </head>
+
+  <body>
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="">addamhardy.com</a>
+          <ul class="nav">
+						<li class="dropdown" id="blog">
+							<a href="/blog">Blog</a>
+						</li>
+						
+            
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="content">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Project Euler</h1>
+    <p class="post-meta">Dec 25, 2012</p>
+  </header>
+
+  <article class="post-content">
+    <div class="euler">
+
+<h2>Overview</h2>
+<div class="divider">&nbsp;</div>
+
+<h3>Question</h3>
+A perfect number is a number for which the sum of its proper divisors is
+exactly equal to the number. For example, the sum of the proper divisors
+of 28 would be 1 + 2 + 4 + 7 + 14 = 28, which means that 28 is a perfect
+number.
+
+A number n is called deficient if the sum of its proper divisors is less
+than n and it is called abundant if this sum exceeds n.
+
+As 12 is the smallest abundant number, 1 + 2 + 3 + 4 + 6 = 16, the
+smallest number that can be written as the sum of two abundant numbers
+is 24. By mathematical analysis, it can be shown that all integers
+greater than 28123 can be written as the sum of two abundant numbers.
+However, this upper limit cannot be reduced any further by analysis even
+though it is known that the greatest number that cannot be expressed as
+the sum of two abundant numbers is less than this limit.
+
+Find the sum of all the positive integers which cannot be written as the
+sum of two abundant numbers.
+
+
+
+
+<style type="text/css">
+h3.answer_toggle:hover {
+    color: #01579F;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.answer {
+    display: none;
+}
+</style>
+<script type="text/javascript">
+    function toggleAnswer() {
+        $('.answer').css('display', 'block');
+        //$('.answer_toggle').removeClass('answer_toggle');
+        $('.answer_toggle').text("answer")
+    }
+</script>
+<h3 class="answer_toggle" onclick="toggleAnswer();">click for answer</h3>
+<pre class="answer">4179871</pre>
+
+
+
+
+
+<h2>Solutions</h2>
+<div class="divider">&nbsp;</div>
+
+<h3>Ruby </h3>
+``` ruby p23.rb https://raw.github.com/addamh/euler/master/023/p23.rb download
+#!/usr/bin/env ruby
+require 'mathn'
+
+class Integer
+  def factors
+    return [1] if self == 1
+    primes, powers = self.prime_division.transpose
+    exponents = powers.map{|i| (0..i).to_a}
+    divisors = exponents.shift.product(*exponents).map do |powers|
+      primes.zip(powers).map{|prime, power| prime ** power}.inject(:*)
+    end
+    divisors.slice(0, divisors.length-1)
+  end
+  
+  def abundant?
+    factors.reduce(:+) > self
+  end
+end
+
+range = (1..20161)
+abundants = range.select { |n| n.abundant? }
+sums = []
+abundants.each do |x|
+    abundants.sort!.each do |y|
+        a = x + y
+        sums.push a unless a > 20161
+    end
+end
+
+p (range.to_a - sums.uniq!.sort).reduce(:+)
+
+
+```
+
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span> <span class="nb">time </span>ruby p23.rb
+<span class="go">real	0m15.572s</span>
+<span class="go">user	0m15.397s</span>
+<span class="go">sys	0m0.114s</span></code></pre></div>
+
+
+
+</div>
+  </article>
+
+</div>
+
+      </div>
+
+      <footer>
+        <p>&copy;  2014
+        </p>
+      </footer>
+
+    </div> <!-- /container -->
+
+
+  </body>
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-30687512-1']);
+	  _gaq.push(['_setDomainName', 'addamhardy.com']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+</html>

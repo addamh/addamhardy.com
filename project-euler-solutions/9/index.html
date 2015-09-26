@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Addam Hardy [Project Euler]</title>
+    
+    <meta name="author" content="">
+
+    <link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all">
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  </head>
+
+  <body>
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="">addamhardy.com</a>
+          <ul class="nav">
+						<li class="dropdown" id="blog">
+							<a href="/blog">Blog</a>
+						</li>
+						
+            
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="content">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Project Euler</h1>
+    <p class="post-meta">Dec 10, 2012</p>
+  </header>
+
+  <article class="post-content">
+    <div class="euler">
+
+<h2>Overview</h2>
+<div class="divider">&nbsp;</div>
+
+<h3>Question</h3>
+<p>A Pythagorean triplet is a set of three natural numbers, a  b  c, for which,</p>
+<p>a2 + b2 = c2
+For example, 32 + 42 = 9 + 16 = 25 = 52.</p>
+<p>There exists exactly one Pythagorean triplet for which a + b + c = 1000.
+Find the product abc.</p>
+
+
+
+<style type="text/css">
+h3.answer_toggle:hover {
+    color: #01579F;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.answer {
+    display: none;
+}
+</style>
+<script type="text/javascript">
+    function toggleAnswer() {
+        $('.answer').css('display', 'block');
+        //$('.answer_toggle').removeClass('answer_toggle');
+        $('.answer_toggle').text("answer")
+    }
+</script>
+<h3 class="answer_toggle" onclick="toggleAnswer();">click for answer</h3>
+<pre class="answer">31875000</pre>
+
+
+
+
+
+<h2>Solutions</h2>
+<div class="divider">&nbsp;</div>
+
+<h3>Ruby </h3>
+``` ruby pythagorean.rb https://raw.github.com/addamh/euler/master/009/pythagorean.rb download
+#!/usr/bin/env ruby
+
+for a in (1..300)
+  for b in (1..400)
+    for c in (1..500)
+      if a*a + b*b == c*c
+        if a+b+c == 1000
+          puts a*b*c
+          exit
+        end
+      end
+    end
+  end
+end
+```
+
+
+<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span> <span class="nb">time </span>ruby pythagorean.rb
+<span class="go">real	0m16.831s</span>
+<span class="go">user	0m16.791s</span>
+<span class="go">sys	0m0.030s</span></code></pre></div>
+
+
+
+</div>
+  </article>
+
+</div>
+
+      </div>
+
+      <footer>
+        <p>&copy;  2014
+        </p>
+      </footer>
+
+    </div> <!-- /container -->
+
+
+  </body>
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-30687512-1']);
+	  _gaq.push(['_setDomainName', 'addamhardy.com']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+</html>
