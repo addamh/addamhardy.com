@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <title>Addam Hardy [Project Euler]</title>
     
-    <meta name="author" content="">
+    <meta name="author" content="Addam Hardy">
 
-    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all">
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
@@ -18,14 +18,23 @@
     <div class="navbar">
       <div class="navbar-inner">
         <div class="container">
-          <a class="brand" href="">addamhardy.com</a>
+          <a class="brand" href="/">addamhardy.com</a>
           <ul class="nav">
-						<li class="dropdown" id="blog">
+						<li id="blog">
 							<a href="/blog">Blog</a>
 						</li>
-						
-            
-
+            <li id="pgp">
+              <a href="/pgp">PGP</a>
+            </li>
+            <li id="euler">
+              <a href="/project-euler-solutions">Project Euler</a>
+            </li>
+            <li id="projects">
+              <a href="/projects">Projects</a>
+            </li>
+            <li id="about">
+              <a href="/about">About Me</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -93,22 +102,20 @@ h3.answer_toggle:hover {
 <div class="divider">&nbsp;</div>
 
 <h3>Ruby </h3>
-``` ruby centurySundays.rb https://raw.github.com/addamh/euler/master/019/centurySundays.rb download
-#!/usr/bin/env ruby
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">centurySundays</span><span class="o">.</span><span class="n">rb</span> <span class="ss">https</span><span class="p">:</span><span class="sr">//</span><span class="n">raw</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">addamh</span><span class="o">/</span><span class="n">euler</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="mo">01</span><span class="mi">9</span><span class="o">/</span><span class="n">centurySundays</span><span class="o">.</span><span class="n">rb</span> <span class="n">download</span>
+<span class="c1">#!/usr/bin/env ruby</span>
 
-require 'date'
+<span class="nb">require</span> <span class="s1">&#39;date&#39;</span>
 
-sunday_count = 0
+<span class="n">sunday_count</span> <span class="o">=</span> <span class="mi">0</span>
 
-1.upto(100).with_index.each do |i|
-  1.upto(12).with_index.each do |j|
-    sunday_count += 1 if Date.new(1900+i,j,1).cwday == 7
-  end
-end
+<span class="mi">1</span><span class="o">.</span><span class="n">upto</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">with_index</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
+  <span class="mi">1</span><span class="o">.</span><span class="n">upto</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">with_index</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">j</span><span class="o">|</span>
+    <span class="n">sunday_count</span> <span class="o">+=</span> <span class="mi">1</span> <span class="k">if</span> <span class="no">Date</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">1900</span><span class="o">+</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">cwday</span> <span class="o">==</span> <span class="mi">7</span>
+  <span class="k">end</span>
+<span class="k">end</span>
 
-p sunday_count
-
-```
+<span class="nb">p</span> <span class="n">sunday_count</span></code></pre></div>
 
 
 <div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span> <span class="nb">time </span>ruby centurySundays.rb
@@ -126,7 +133,7 @@ p sunday_count
       </div>
 
       <footer>
-        <p>&copy;  2014
+        <p>&copy; Addam Hardy 2012-2015
         </p>
       </footer>
 

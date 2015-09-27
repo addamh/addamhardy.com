@@ -5,15 +5,15 @@
     <description></description>
     <link>http:/addamhardy.com/</link>
     <atom:link href="http:/addamhardy.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 26 Sep 2015 01:05:09 -0500</pubDate>
-    <lastBuildDate>Sat, 26 Sep 2015 01:05:09 -0500</lastBuildDate>
+    <pubDate>Sat, 26 Sep 2015 22:21:09 -0500</pubDate>
+    <lastBuildDate>Sat, 26 Sep 2015 22:21:09 -0500</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
         <title>The Ten Commandments of Egoless Programming</title>
-        <description>&lt;p&gt;Yesterday I found this &lt;a href=&quot;http://www.kitchensoap.com/2012/10/25/on-being-a-senior-engineer/&quot;&gt;great post&lt;/a&gt; on being a Senior Engineer and one of the best portions, of what was an outstanding albeit very long post that you should also read, was this list of Ten Commandments of Egoless Programming. The writer was making the case that there’s a lot more to being a Senior Engineer than just knowing all of the APIs by memory. He introduces the term “Mature Engineer” rather than Senior Engineer; meaning there are a lot of interpersonal, communication, and intangible skills that you gather only through a long stream of real world experience managing projects and people rather than expertise on a language or codebase.&lt;/p&gt;
-
-&lt;p&gt;This list is so spot-on that it should be required reading for all developing engineers and should probably even be posted on the wall in the office. They are great milestones to follow on the road to mastery as an engineer.&lt;/p&gt;
+        <description>&lt;p&gt;Yesterday I found this &lt;a href=&quot;http://www.kitchensoap.com/2012/10/25/on-being-a-senior-engineer/&quot;&gt;great post&lt;/a&gt; on being a Senior Engineer and one of the best portions, of what was an outstanding albeit very long post that you should also read, was this list of Ten Commandments of Egoless Programming. The writer was making the case that there’s a lot more to being a Senior Engineer than just knowing all of the APIs by memory. He introduces the term “Mature Engineer” rather than Senior Engineer; meaning there are a lot of interpersonal, communication, and intangible skills that you gather only through a long stream of real world experience managing projects and people rather than expertise on a language or codebase.
+&lt;!--more--&gt;
+This list is so spot-on that it should be required reading for all developing engineers and should probably even be posted on the wall in the office. They are great milestones to follow on the road to mastery as an engineer.&lt;/p&gt;
 
 &lt;h2 id=&quot;the-ten-commandments-of-egoless-programming&quot;&gt;The Ten Commandments of Egoless Programming&lt;/h2&gt;
 
@@ -73,9 +73,7 @@
     
       <item>
         <title>Automate All The Things: Continuous Integration and Deployment at RevUnit</title>
-        <description>&lt;p&gt;[cross post from my company blog]&lt;/p&gt;
-
-&lt;p&gt;We are strong believers in the agile method of software development. We break down key features into user stories, do sprint planning, track velocity, unit and integration testing; all that good stuff. But we’ve had a few key pillars of agile development missing for a while and we recently rectified that. RevUnit’s process now fully incorporates continuous integration and continuous deployment. This enables us to automate more of our process which frees us up to focus on the important things — like implementing and shipping features!&lt;/p&gt;
+        <description>&lt;p&gt;We are strong believers in the agile method of software development. We break down key features into user stories, do sprint planning, track velocity, unit and integration testing; all that good stuff. But we’ve had a few key pillars of agile development missing for a while and we recently rectified that. &lt;!--more--&gt;RevUnit’s process now fully incorporates continuous integration and continuous deployment. This enables us to automate more of our process which frees us up to focus on the important things — like implementing and shipping features!&lt;/p&gt;
 
 &lt;h2 id=&quot;automate-all-the-things&quot;&gt;Automate all the things!&lt;/h2&gt;
 
@@ -202,6 +200,7 @@
   &lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;p&gt;[cross post from my company blog]&lt;/p&gt;
 </description>
         <pubDate>Sat, 28 Sep 2013 16:17:00 -0500</pubDate>
         <link>http:/addamhardy.com/2013/09/28/automate-all-the-things-continuous-integration-and-continuous-deployment-at-revunit.html</link>
@@ -220,9 +219,9 @@
     
       <item>
         <title>Good Commit Messages And Enforcing Them With Git Hooks</title>
-        <description>&lt;p&gt;Git provides a very valuable feature that many developers seem to either overlook or blatantly not care about; it enables you to add distinct sections to a commit message. Specifically, it allows you to add a short summary for the commit and a long and detailed body.&lt;/p&gt;
-
-&lt;p&gt;A great commit message:&lt;/p&gt;
+        <description>&lt;p&gt;Git provides a very valuable feature that many developers seem to either overlook or blatantly not care about; it enables you to add distinct sections to a commit message. Specifically, it allows you to add a short summary for the commit and a long and detailed body.
+&lt;!--more--&gt;
+A great commit message:&lt;/p&gt;
 
 &lt;p&gt;```
 Capitalized, short (50 chars or less) summary&lt;/p&gt;
@@ -281,20 +280,17 @@ single space, with blank lines in between, but conventions vary here&lt;/p&gt;
 
 &lt;p&gt;Git provides several hooks into git events for you to do some pre-defined action prior to or immediately after a commit.&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;bash
-[master][~/dev] ls .git/hooks
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;master&lt;span class=&quot;o&quot;&gt;][&lt;/span&gt;~/dev&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; ls .git/hooks
 applypatch-msg.sample     post-update.sample        pre-commit.sample         prepare-commit-msg.sample
-commit-msg.sample         pre-applypatch.sample     pre-rebase.sample         update.sample
-&lt;/code&gt;&lt;/p&gt;
+commit-msg.sample         pre-applypatch.sample     pre-rebase.sample         update.sample&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;I want to validate the commit message after the user creates the message but prior to it being committed to the repository. The specific hook I need for this is the &lt;code&gt;commit-msg&lt;/code&gt; hook. If you remove the &lt;code&gt;.sample&lt;/code&gt; from these files git will run them at their appropriate times. They are shell scripts and I could have written my message checker in a shell script like bash but I’m really not good at awk and sed and all that crazy shell scripting voodoo. So I just use the commit-msg shell script to call my own python script.&lt;/p&gt;
 
-&lt;p&gt;``` bash commit-msg
-#!/bin/sh&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;commit-msg
+&lt;span class=&quot;c&quot;&gt;#!/bin/sh&lt;/span&gt;
 
-&lt;p&gt;exec &amp;lt; /dev/tty
-.git/hooks/validate-commit.py $1
-```&lt;/p&gt;
+&lt;span class=&quot;nb&quot;&gt;exec&lt;/span&gt; &amp;lt; /dev/tty
+.git/hooks/validate-commit.py &lt;span class=&quot;nv&quot;&gt;$1&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;What I want this script to do:&lt;/p&gt;
 
@@ -308,123 +304,120 @@ commit-msg.sample         pre-applypatch.sample     pre-rebase.sample         up
 
 &lt;p&gt;After a few beers and some tinkering I ended up with this messy bit of python code:&lt;/p&gt;
 
-&lt;p&gt;```python validate-commit.py 
-#!/usr/bin/python&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/usr/bin/python&lt;/span&gt;
 
-&lt;p&gt;import sys, os
-from subprocess import call&lt;/p&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;subprocess&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;call&lt;/span&gt;
 
-&lt;p&gt;print os.environ.get(‘EDITOR’)&lt;/p&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;environ&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;EDITOR&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;p&gt;if os.environ.get(‘EDITOR’) != ‘none’:
-  editor = os.environ[‘EDITOR’]
-else:
-  editor = “vim”&lt;/p&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;environ&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;EDITOR&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;none&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;editor&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;environ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;EDITOR&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;editor&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;vim&amp;quot;&lt;/span&gt;
 
-&lt;p&gt;message_file = sys.argv[1]&lt;/p&gt;
+&lt;span class=&quot;n&quot;&gt;message_file&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
 
-&lt;p&gt;def check_format_rules(lineno, line):
-    real_lineno = lineno + 1
-    if lineno == 0:
-        if len(line) &amp;gt; 50:
-            return “Error %d: First line should be less than 50 characters “ \
-                    “in length.” % (real_lineno,)
-    if lineno == 1:
-        if line:
-            return “Error %d: Second line should be empty.” % (real_lineno,)
-    if not line.startswith(‘#’):
-        if len(line) &amp;gt; 72:
-            return “Error %d: No line should be over 72 characters long.” % (
-                    real_lineno,)
-    return False&lt;/p&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;check_format_rules&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lineno&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;real_lineno&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lineno&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lineno&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Error &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%d&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;: First line should be less than 50 characters &amp;quot;&lt;/span&gt; \
+                    &lt;span class=&quot;s&quot;&gt;&amp;quot;in length.&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;real_lineno&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lineno&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Error &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%d&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;: Second line should be empty.&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;real_lineno&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;startswith&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;#&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;72&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Error &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%d&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;: No line should be over 72 characters long.&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;real_lineno&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
 
-&lt;p&gt;while True:
-    commit_msg = list()
-    errors = list()
-    with open(message_file) as commit_fd:
-        for lineno, line in enumerate(commit_fd):
-            stripped_line = line.strip()
-            commit_msg.append(line)
-            e = check_format_rules(lineno, stripped_line)
-            if e:
-                errors.append(e)
-    if errors:
-        with open(message_file, ‘w’) as commit_fd:
-            commit_fd.write(‘%s\n’ % ‘# GIT COMMIT MESSAGE FORMAT ERRORS:’)
-            for error in errors:
-                commit_fd.write(‘#    %s\n’ % (error,))
-            for line in commit_msg:
-                commit_fd.write(line)
-        re_edit = raw_input(‘Invalid git commit message format.  Press y to edit and n to cancel the commit. [y/n]’)
-        if re_edit.lower() in (‘n’,’no’):
-            sys.exit(1)
-        call(‘%s %s’ % (editor, message_file), shell=True)
-        continue
-    break
-```&lt;/p&gt;
+
+&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;commit_msg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;errors&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;message_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;commit_fd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lineno&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;enumerate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;commit_fd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;stripped_line&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;commit_msg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;check_format_rules&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lineno&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stripped_line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;errors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;errors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;message_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;w&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;commit_fd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;commit_fd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%s&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;# GIT COMMIT MESSAGE FORMAT ERRORS:&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;error&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;errors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;commit_fd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;#    &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%s&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,))&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;commit_msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;commit_fd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;re_edit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;raw_input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;Invalid git commit message format.  Press y to edit and n to cancel the commit. [y/n]&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;re_edit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lower&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;n&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;no&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;call&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%s&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%s&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;editor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;message_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shell&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Now if I try to commit a badly formed commit message like this:&lt;/p&gt;
 
-&lt;p&gt;```bash COMMIT_EDITMSG
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;COMMIT_EDITMSG
 Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis
 ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id
 elit. Cras mattis consectetur purus sit amet fermentum. Maecenas
 faucibus mollis interdum. Etiam porta sem malesuada magna mollis
-euismod. Nulla vitae elit libero, a pharetra augue.&lt;/p&gt;
+euismod. Nulla vitae elit libero, a pharetra augue.
 
-&lt;p&gt;Donec ullamcorper nulla non metus auctor fringilla. Praesent commodo
+Donec ullamcorper nulla non metus auctor fringilla. Praesent commodo
 cursus magna, vel scelerisque nisl consectetur et. Sed posuere consectetur est at lobortis. Maecenas sed diam eget risus varius blandit
-sit amet non magna.&lt;/p&gt;
+sit amet non magna.
 
-&lt;h1 id=&quot;please-enter-the-commit-message-for-your-changes-lines-starting&quot;&gt;Please enter the commit message for your changes. Lines starting&lt;/h1&gt;
-&lt;p&gt;# with ‘#’ will be ignored, and an empty message aborts the commit.
-# On branch master
-# Changes to be committed:
-#   (use “git reset HEAD &lt;file&gt;...&quot; to unstage)
-#
-#&amp;gt;      new file:   31234
-#
+&lt;span class=&quot;c&quot;&gt;# Please enter the commit message for your changes. Lines starting&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# with &amp;#39;#&amp;#39; will be ignored, and an empty message aborts the commit.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# On branch master&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Changes to be committed:&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#   (use &amp;quot;git reset HEAD &amp;lt;file&amp;gt;...&amp;quot; to unstage)&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#&amp;gt;      new file:   31234&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
 diff --git a/31234 b/31234
 new file mode 100644
-index 0000000..e69de29
-```&lt;/file&gt;&lt;/p&gt;
+index 0000000..e69de29&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;It will kick me back to the shell prompt me with this message: &lt;code&gt;Invalid git commit message format.  Press y to edit and n to cancel the commit. [y/n]&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;Once you press &lt;code&gt;y&lt;/code&gt; to edit your commit it will kick you back to your commit and allow you to fix the bad formatting &lt;strong&gt;and&lt;/strong&gt; even tell you which lines were incorrect and why!&lt;/p&gt;
 
-&lt;p&gt;```bash COMMIT_EDITMSG
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;COMMIT_EDITMSG
 Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis
 ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id
 elit. Cras mattis consectetur purus sit amet fermentum. Maecenas
 faucibus mollis interdum. Etiam porta sem malesuada magna mollis
-euismod. Nulla vitae elit libero, a pharetra augue.&lt;/p&gt;
+euismod. Nulla vitae elit libero, a pharetra augue.
 
-&lt;p&gt;Donec ullamcorper nulla non metus auctor fringilla. Praesent commodo
+Donec ullamcorper nulla non metus auctor fringilla. Praesent commodo
 cursus magna, vel scelerisque nisl consectetur et. Sed posuere consectetur est at lobortis. Maecenas sed diam eget risus varius blandit
-sit amet non magna.&lt;/p&gt;
+sit amet non magna.
 
-&lt;h1 id=&quot;git-commit-message-format-errors&quot;&gt;GIT COMMIT MESSAGE FORMAT ERRORS:&lt;/h1&gt;
-&lt;p&gt;#    Error 1: First line should be less than 50 characters in length.
-#    Error 2: Second line should be empty.
-#    Error 7: No line should be over 72 characters long.&lt;/p&gt;
+&lt;span class=&quot;c&quot;&gt;# GIT COMMIT MESSAGE FORMAT ERRORS:&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#    Error 1: First line should be less than 50 characters in length.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#    Error 2: Second line should be empty.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#    Error 7: No line should be over 72 characters long.&lt;/span&gt;
 
-&lt;h1 id=&quot;please-enter-the-commit-message-for-your-changes-lines-starting-1&quot;&gt;Please enter the commit message for your changes. Lines starting&lt;/h1&gt;
-&lt;p&gt;# with ‘#’ will be ignored, and an empty message aborts the commit.
-# On branch master
-# Changes to be committed:
-#   (use “git reset HEAD &lt;file&gt;...&quot; to unstage)
-#
-#&amp;gt;      new file:   1234098
-#
+&lt;span class=&quot;c&quot;&gt;# Please enter the commit message for your changes. Lines starting&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# with &amp;#39;#&amp;#39; will be ignored, and an empty message aborts the commit.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# On branch master&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Changes to be committed:&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#   (use &amp;quot;git reset HEAD &amp;lt;file&amp;gt;...&amp;quot; to unstage)&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#&amp;gt;      new file:   1234098&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
 diff --git a/1234098 b/1234098
 new file mode 100644
-index 0000000..e69de29
-```&lt;/file&gt;&lt;/p&gt;
+index 0000000..e69de29&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;This tells us that we have errors on line 1, 2 and 7 of our commit. I’ve accomplished everything I set out to and now I’ll be forced to follow good practices on my commit messages.&lt;/p&gt;
 
-&lt;p&gt;I actually wrote this intially in Ruby, if you know me you know I am definitely not a python programmer, but had some problems I couldn’t figure out with forking subprocesses for the editor after a second commit rejection. I needed it to stay in the error loop and check the message again but if you rejected your commit and then tried to use the exact same message with the errors again, it would succeed and commit to the repository. Someday soon I’ll dig into that more but for now this python script will certainly do!&lt;/p&gt;
+&lt;p&gt;I actually wrote this initially in Ruby, if you know me you know I am definitely not a python programmer, but had some problems I couldn’t figure out with forking subprocesses for the editor after a second commit rejection. I needed it to stay in the error loop and check the message again but if you rejected your commit and then tried to use the exact same message with the errors again, it would succeed and commit to the repository. Someday soon I’ll dig into that more but for now this python script will certainly do!&lt;/p&gt;
 
 &lt;p&gt;Do you follow any guidelines on commit message format?&lt;/p&gt;
 </description>
@@ -441,7 +434,7 @@ index 0000000..e69de29
     
       <item>
         <title>Hiding Your Desktop Icons For A Presentation On OS X</title>
-        <description>&lt;p&gt;You know when your house is really dirty and you avoid having people come over until you get it clean? I often feel the same way when I’m using my machine and I need to show someone something. A lot of the time my desktop is a complete disaster. I go through cycles really. It gets dirtier and dirtier for a few weeks and then once a month or so I do a deep clean and clear it all out. And then restart the process. &lt;!-- more --&gt;(Much like my house unfortunately..) But I have to show people stuff on my machine all the time! Just showing a coworker something in the office is usually passable but this week I had to give a presentation and a live demo on my machine and my desktop was a disaster. I didn’t really feel like going through and deleting everything on my desktop just yet. What else could I do? I knew there had to be a way with AppleScript.&lt;/p&gt;
+        <description>&lt;p&gt;You know when your house is really dirty and you avoid having people come over until you get it clean? I often feel the same way when I’m using my machine and I need to show someone something. A lot of the time my desktop is a complete disaster. I go through cycles really. It gets dirtier and dirtier for a few weeks and then once a month or so I do a deep clean and clear it all out. And then restart the process. &lt;!--more--&gt;(Much like my house unfortunately..) But I have to show people stuff on my machine all the time! Just showing a coworker something in the office is usually passable but this week I had to give a presentation and a live demo on my machine and my desktop was a disaster. I didn’t really feel like going through and deleting everything on my desktop just yet. What else could I do? I knew there had to be a way with AppleScript.&lt;/p&gt;
 
 &lt;h2 id=&quot;how-do-i-quickly-get-from-this&quot;&gt;How do I quickly get from this:&lt;/h2&gt;
 &lt;p&gt;&lt;br /&gt;
@@ -463,22 +456,20 @@ index 0000000..e69de29
 
 &lt;h2 id=&quot;the-applescript&quot;&gt;The Applescript:&lt;/h2&gt;
 
-&lt;p&gt;&lt;code&gt;applescript hide_desktop.applescripts
-display dialog &quot;Desktop icons visible or hidden?&quot; buttons {&quot;Visible&quot;, &quot;Hidden&quot;} with icon 2 with title &quot;Switch to presentation mode&quot; default button 1
-set switch to button returned of result
-if switch is &quot;Hidden&quot; then
-  do shell script &quot;defaults write com.apple.finder CreateDesktop -bool FALSE;killall Finder&quot;
-else
-  do shell script &quot;defaults delete com.apple.finder CreateDesktop;killall Finder&quot;
-end if
-&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-applescript&quot; data-lang=&quot;applescript&quot;&gt;&lt;span class=&quot;nv&quot;&gt;hide_desktop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;applescripts&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;display dialog&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Desktop icons visible or hidden?&amp;quot;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;buttons&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Visible&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Hidden&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;icon&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;title&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Switch to presentation mode&amp;quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;button&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;button returned&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;result&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Hidden&amp;quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;do shell script&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;defaults write com.apple.finder CreateDesktop -bool FALSE;killall Finder&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;do shell script&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;defaults delete com.apple.finder CreateDesktop;killall Finder&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;After you hit run you’ll be presented with a dialog, hit “Hidden” and it’ll hide everything on your Desktop! Run the script again and hit “Visible” to return everything to normal. It’ll look just like this&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/hidingicons/runninghidescript.png&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Fire this off right before your presentation and you’ll be good to go. Save the script somewhere – maybe not on your desktop ;) – and just double click and run whenever you need it. Hope this helped you out as much as it helped me!&lt;/p&gt;
-
 </description>
         <pubDate>Sat, 25 May 2013 00:51:00 -0500</pubDate>
         <link>http:/addamhardy.com/2013/05/25/hiding-your-desktop-icons-for-a-presentation-on-os-x.html</link>
@@ -495,8 +486,7 @@ end if
     
       <item>
         <title>How In The Hell Do I Test A Facebook App From localhost?</title>
-        <description>&lt;p&gt;So no shit, there you are, building a web app that is using the Facebook SDK/API. You’ve followed all the integration tutorials. You’ve got all the code in place. You’re ready to go. You fire up the Sidekiq and your Rails server with Foreman, and you finally click on your pretty little Facebook login button. And then…
-&lt;!-- more --&gt;&lt;/p&gt;
+        <description>&lt;p&gt;So no shit, there you are, building a web app that is using the Facebook SDK/API. You’ve followed all the integration tutorials. You’ve got all the code in place. You’re ready to go. You fire up the Sidekiq and your Rails server with Foreman, and you finally click on your pretty little Facebook login button. And then…&lt;!--more--&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/facebook-localhost/localhost-error-noauth.png&quot; /&gt;&lt;/p&gt;
 
@@ -520,25 +510,23 @@ end if
   &lt;li&gt;Add the production URL to your /etc/hosts file and redirect back to localhost&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;code&gt;bash /etc/hosts
-##
-# Host Database
-#
-# localhost is used to configure the loopback interface
-# when the system is booting.  Do not change this entry.
-##
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;/etc/hosts
+&lt;span class=&quot;c&quot;&gt;##&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Host Database&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# localhost is used to configure the loopback interface&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# when the system is booting.  Do not change this entry.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;##&lt;/span&gt;
 127.0.0.1         localhost
 255.255.255.255   broadcasthost
-::1               localhost 
+::1               localhost
 fe80::1%lo0       localhost
-127.0.0.1 app.btiques.com
-&lt;/code&gt;&lt;/p&gt;
+127.0.0.1 app.btiques.com&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;After you change your hosts file on a Mac you always have to flush the cache and force OSX to re-query the DNS servers. Run this command and you should be good to go.&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;bash Run this to clear your cache
-dscacheutil -flushcache 
-&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;Run this to clear your cache
+dscacheutil -flushcache&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Now, have a beer and relax before you kill somebody. This shit can get stressful.&lt;/p&gt;
 </description>
@@ -561,8 +549,8 @@ dscacheutil -flushcache
     
       <item>
         <title>Redirecting to your app from Mobile Safari. And failing gracefully.</title>
-        <description>&lt;p&gt;It’s been too many months since the last blog. And I really mean to start it up regularly again. Today I finally had a topic that popped up that I could easily write a quick post about and I’m hoping that getting a post out will get the ball rolling and I can get back into the groove of blogging again. Today I needed to have a mobile website have a link to the native app on the iPhone. IF they have it installed. This proved to be a bigger pain in the ass than you’d think. 
-&lt;!-- more --&gt;
+        <description>&lt;p&gt;It’s been too many months since the last blog. And I really mean to start it up regularly again. Today I finally had a topic that popped up that I could easily write a quick post about and I’m hoping that getting a post out will get the ball rolling and I can get back into the groove of blogging again. Today I needed to have a mobile website have a link to the native app on the iPhone. IF they have it installed. This proved to be a bigger pain in the ass than you’d think.
+&lt;!--more--&gt;
 For those who haven’t used custom URL schemas with iOS projects, you are able to register a custom URL with the operating system on iOS and have that URL, wherever it is called, open your app. I am currently finishing up development on a client project, http://btiques.com, and I need this functionality. But they don’t make it easy on you.&lt;/p&gt;
 
 &lt;h2 id=&quot;my-desired-result&quot;&gt;My desired result:&lt;/h2&gt;
@@ -581,28 +569,27 @@ For those who haven’t used custom URL schemas with iOS projects, you are able 
 
 &lt;p&gt;First off, here is the code:&lt;/p&gt;
 
-&lt;p&gt;```javascript (app.exist?) ? open_app() : open_appStore()
-    $(“.open_app”).click(function(e){
-        var id = $(e.target).data(“product-id”);&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;span class=&quot;n&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;exist&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;?)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;open_app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;open_appStore&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;.open_app&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;click&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;product-id&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
 
-&lt;pre&gt;&lt;code&gt;    var n = [],
-    i = !1;
-    
-    $(window).on(&quot;pagehide&quot;, function () {
-        n.map(window.clearTimeout)
-    });
+        &lt;span class=&quot;n&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[],&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
 
-    window.location = &quot;btiques://?salesid=&quot; + id;
+        &lt;span class=&quot;n&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;pagehide&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;clearTimeout&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;});&lt;/span&gt;
 
-    n.push(window.setTimeout(function () {
-        n.splice(0), i = !1, window.location = &quot;http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=641292705&amp;amp;mt=8&quot;
-    }, 250));
+        &lt;span class=&quot;n&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;location&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;btiques://?salesid=&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
 
-    n.push(window.setTimeout(function () {
-        i &amp;amp;&amp;amp; window.location.reload()
-    }, 500))
-}); ```
-&lt;/code&gt;&lt;/pre&gt;
+        &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;splice&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;location&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=641292705&amp;amp;mt=8&amp;quot;&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;250&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;reload&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;500&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;So you don’t have to do it exactly how I did it, but the key factors of the script are changing the window location to the desired custom URL scheme for your app, and then setting a function to fire off on a timeout in 100-300ms that will redirect them to the iTunes page for your app. If you send them to the itunes page for your app while on the phone, it will send them to your app in the AppStore app.&lt;/p&gt;
 
@@ -632,7 +619,6 @@ For those who haven’t used custom URL schemas with iOS projects, you are able 
 &lt;p&gt;It shows that ugly alert screen for a few milliseconds and then, virtually immediatly, redirects the user to the AppStore. While this isn’t perfect-world-ideal, it is very smooth given our constraints with the OS.&lt;/p&gt;
 
 &lt;p&gt;Have you had to solve this problem before? It was pretty aggravating in the beginning while realizing this was “impossible” to do, but pretty rewarding to find that loop hole solution to circumvent the “impossible.” :)&lt;/p&gt;
-
 </description>
         <pubDate>Tue, 14 May 2013 19:39:00 -0500</pubDate>
         <link>http:/addamhardy.com/2013/05/14/redirecting-to-your-app-from-mobile-safari-and-failing-gracefully.html</link>
@@ -646,7 +632,7 @@ For those who haven’t used custom URL schemas with iOS projects, you are able 
         <description>&lt;p&gt;Warning: This is a pretty personal post. Staying up too late with too much wine
 and too much self doubt led to this existential crisis. Writing blog posts when
 you’re alone at 3am after nearly 2 bottles of wine can make you question your life.
-&lt;!-- more --&gt;&lt;/p&gt;
+&lt;!--more--&gt;&lt;/p&gt;
 
 &lt;p&gt;I’m in a never ending battle with the demons of mediocrity. I can’t think of another thing more depressing than knowing that I have one life, one very short life, and that my life will probably be meaningless. Not a horrible life as if I didn’t try. Not a life where I truly made a difference and reached my peak. Just a life of mediocrity. A life firmly in the middle. An invisible life. Why even live this life if you’ll end it with no greater impact than before it existed?&lt;/p&gt;
 
@@ -684,7 +670,7 @@ you’re alone at 3am after nearly 2 bottles of wine can make you question your 
       <item>
         <title>[Talk] Objective-C For Web Developers</title>
         <description>Last week I was able to be a speaker at a local tech conference in Fayetteville, AR, called &lt;a href=&quot;http://techfests.com/NWA/2012/default.aspx&quot;&gt;TechFest NWA&lt;/a&gt;. For the past few years I&#39;ve had a goal I really wanted to accomplish of being a speaker at a conference and I was finally able to realize that goal. And on iOS to boot! Overall, it was pretty awesome!
-&lt;!-- more --&gt;
+&lt;!--more--&gt;
 &lt;br /&gt;&lt;br /&gt;
 I&#39;ve given tons of &quot;talks&quot; and classroom type trainings for large groups but this was my first conference and it felt somehow different. I was pretty nervous for some reason. I guess maybe because I was speaking to professional peers? With teaching students you know they don&#39;t have any idea what you&#39;re talking about but at a tech conference I felt like I might be more harshly judged. But once I started talking it all went smoothly and turned out great! I think I could have put some more time into my talk and it could have been better -- of course I am a master procrastinator. :( But it turned out alright. I&#39;m excited for my next opportunity to be a speaker at another conference. Maybe I&#39;ll be less nervous next time. However... probably not!
 &lt;br /&gt;&lt;br /&gt;
@@ -709,7 +695,7 @@ Here are the slides I made for the session. Hope you enjoy!
     
       <item>
         <title>I finally rewrote my resume. In LaTeX.</title>
-        <description>I had been needing to rewrite my resume for a while. I&#39;ve always had it in a doc file of course but I wanted to be super nerd-o and update it in LaTeX. And here it is! &lt;!-- more --&gt;
+        <description>I had been needing to rewrite my resume for a while. I&#39;ve always had it in a doc file of course but I wanted to be super nerd-o and update it in LaTeX. And here it is! &lt;!--more--&gt;
 &lt;br /&gt;&lt;br /&gt;
 It was quite a bitch to work through all this and figure everything out but I found a nice example to work off of and it was fun to finally learn LaTeX. (Which is apparently pronounced /ˈlɑːtɛk/ or if you don&#39;t read dictionary, lay-tek). I&#39;ve published it on Github (&lt;a href=&quot;https://github.com/addamh/resume&quot;&gt;link&lt;/a&gt;) if you&#39;d like to fork it and write your own resume in LaTeX. The code and resulting compiled PDF are below. Let me know what you think!
 
@@ -738,9 +724,9 @@ The compiled result:
         <title>Well, I Just Submitted My First Abstract To Speak At A Conference</title>
         <description>&lt;p&gt;Putting the game face on. And just doing it.&lt;/p&gt;
 
-&lt;p&gt;I’ve been on the fence for weeks now…. but I quickly filled out the forms to speak at &lt;a href=&quot;http://techfests.com/NWA/2012/&quot;&gt;NWA Techfest&lt;/a&gt; before I could change my mind!&lt;/p&gt;
+&lt;p&gt;I’ve been on the fence for weeks now…. but I quickly filled out the forms to speak at &lt;a href=&quot;http://techfests.com/NWA/2012/&quot;&gt;NWA Techfest&lt;/a&gt; before I could change my mind!
+&lt;!--more--&gt;&lt;/p&gt;
 
-&lt;!-- more --&gt;
 &lt;p&gt;I’m a bit nervous. It’ll be my first speaking engagement at a conference, but I’ve been wanting to do this for a while. I’ve given training and talks in front of several large groups of people, probably larger than I’ll have in my session here if I get accepted, but I’ve never actually been a speaker at a conference.&lt;/p&gt;
 
 &lt;p&gt;I originally had the idea to give a talk for Ruby developers to get started with Objective-C (iOS and Mac programming language in case you’re a tourist here). I was going to call it ‘Objective-C For Rubyists’ but last minute I just decided to make it ‘Objective-C For Web Developers.’ I’ll cover Ruby and PHP Developers introducing themselves to Objective-C. I really loathe PHP and never work in it anymore but I wanted to touch more of the web developers in the area and I think there’s more PHP developers than Ruby developers in the area. ( and on top of that, more .Net developers than Ruby and PHP, but who cares about them, right? )&lt;/p&gt;

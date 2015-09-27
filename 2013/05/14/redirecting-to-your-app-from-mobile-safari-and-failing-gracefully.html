@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <title>Addam Hardy [Redirecting to your app from Mobile Safari. And failing gracefully.]</title>
     
-    <meta name="author" content="">
+    <meta name="author" content="Addam Hardy">
 
-    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all">
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
@@ -18,14 +18,23 @@
     <div class="navbar">
       <div class="navbar-inner">
         <div class="container">
-          <a class="brand" href="">addamhardy.com</a>
+          <a class="brand" href="/">addamhardy.com</a>
           <ul class="nav">
-						<li class="dropdown" id="blog">
+						<li id="blog">
 							<a href="/blog">Blog</a>
 						</li>
-						
-            
-
+            <li id="pgp">
+              <a href="/pgp">PGP</a>
+            </li>
+            <li id="euler">
+              <a href="/project-euler-solutions">Project Euler</a>
+            </li>
+            <li id="projects">
+              <a href="/projects">Projects</a>
+            </li>
+            <li id="about">
+              <a href="/about">About Me</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -42,8 +51,8 @@
   </header>
 
   <article class="post-content">
-    <p>It’s been too many months since the last blog. And I really mean to start it up regularly again. Today I finally had a topic that popped up that I could easily write a quick post about and I’m hoping that getting a post out will get the ball rolling and I can get back into the groove of blogging again. Today I needed to have a mobile website have a link to the native app on the iPhone. IF they have it installed. This proved to be a bigger pain in the ass than you’d think. 
-<!-- more -->
+    <p>It’s been too many months since the last blog. And I really mean to start it up regularly again. Today I finally had a topic that popped up that I could easily write a quick post about and I’m hoping that getting a post out will get the ball rolling and I can get back into the groove of blogging again. Today I needed to have a mobile website have a link to the native app on the iPhone. IF they have it installed. This proved to be a bigger pain in the ass than you’d think.
+<!--more-->
 For those who haven’t used custom URL schemas with iOS projects, you are able to register a custom URL with the operating system on iOS and have that URL, wherever it is called, open your app. I am currently finishing up development on a client project, http://btiques.com, and I need this functionality. But they don’t make it easy on you.</p>
 
 <h2 id="my-desired-result">My desired result:</h2>
@@ -62,28 +71,27 @@ For those who haven’t used custom URL schemas with iOS projects, you are able 
 
 <p>First off, here is the code:</p>
 
-<p>```javascript (app.exist?) ? open_app() : open_appStore()
-    $(“.open_app”).click(function(e){
-        var id = $(e.target).data(“product-id”);</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">script</span> <span class="o">(</span><span class="n">app</span><span class="o">.</span><span class="na">exist</span><span class="o">?)</span> <span class="o">?</span> <span class="n">open_app</span><span class="o">()</span> <span class="o">:</span> <span class="n">open_appStore</span><span class="o">()</span>
+    <span class="n">$</span><span class="o">(</span><span class="s">&quot;.open_app&quot;</span><span class="o">).</span><span class="na">click</span><span class="o">(</span><span class="n">function</span><span class="o">(</span><span class="n">e</span><span class="o">){</span>
+        <span class="n">var</span> <span class="n">id</span> <span class="o">=</span> <span class="n">$</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">target</span><span class="o">).</span><span class="na">data</span><span class="o">(</span><span class="s">&quot;product-id&quot;</span><span class="o">);</span>
 
-<pre><code>    var n = [],
-    i = !1;
-    
-    $(window).on("pagehide", function () {
-        n.map(window.clearTimeout)
-    });
+        <span class="n">var</span> <span class="n">n</span> <span class="o">=</span> <span class="o">[],</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="o">!</span><span class="mi">1</span><span class="o">;</span>
 
-    window.location = "btiques://?salesid=" + id;
+        <span class="n">$</span><span class="o">(</span><span class="n">window</span><span class="o">).</span><span class="na">on</span><span class="o">(</span><span class="s">&quot;pagehide&quot;</span><span class="o">,</span> <span class="n">function</span> <span class="o">()</span> <span class="o">{</span>
+            <span class="n">n</span><span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="n">window</span><span class="o">.</span><span class="na">clearTimeout</span><span class="o">)</span>
+        <span class="o">});</span>
 
-    n.push(window.setTimeout(function () {
-        n.splice(0), i = !1, window.location = "http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=641292705&amp;mt=8"
-    }, 250));
+        <span class="n">window</span><span class="o">.</span><span class="na">location</span> <span class="o">=</span> <span class="s">&quot;btiques://?salesid=&quot;</span> <span class="o">+</span> <span class="n">id</span><span class="o">;</span>
 
-    n.push(window.setTimeout(function () {
-        i &amp;&amp; window.location.reload()
-    }, 500))
-}); ```
-</code></pre>
+        <span class="n">n</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">window</span><span class="o">.</span><span class="na">setTimeout</span><span class="o">(</span><span class="n">function</span> <span class="o">()</span> <span class="o">{</span>
+            <span class="n">n</span><span class="o">.</span><span class="na">splice</span><span class="o">(</span><span class="mi">0</span><span class="o">),</span> <span class="n">i</span> <span class="o">=</span> <span class="o">!</span><span class="mi">1</span><span class="o">,</span> <span class="n">window</span><span class="o">.</span><span class="na">location</span> <span class="o">=</span> <span class="s">&quot;http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=641292705&amp;mt=8&quot;</span>
+        <span class="o">},</span> <span class="mi">250</span><span class="o">));</span>
+
+        <span class="n">n</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">window</span><span class="o">.</span><span class="na">setTimeout</span><span class="o">(</span><span class="n">function</span> <span class="o">()</span> <span class="o">{</span>
+            <span class="n">i</span> <span class="o">&amp;&amp;</span> <span class="n">window</span><span class="o">.</span><span class="na">location</span><span class="o">.</span><span class="na">reload</span><span class="o">()</span>
+        <span class="o">},</span> <span class="mi">500</span><span class="o">))</span>
+    <span class="o">});</span></code></pre></div>
 
 <p>So you don’t have to do it exactly how I did it, but the key factors of the script are changing the window location to the desired custom URL scheme for your app, and then setting a function to fire off on a timeout in 100-300ms that will redirect them to the iTunes page for your app. If you send them to the itunes page for your app while on the phone, it will send them to your app in the AppStore app.</p>
 
@@ -114,7 +122,6 @@ For those who haven’t used custom URL schemas with iOS projects, you are able 
 
 <p>Have you had to solve this problem before? It was pretty aggravating in the beginning while realizing this was “impossible” to do, but pretty rewarding to find that loop hole solution to circumvent the “impossible.” :)</p>
 
-
   </article>
 
 </div>
@@ -122,7 +129,7 @@ For those who haven’t used custom URL schemas with iOS projects, you are able 
       </div>
 
       <footer>
-        <p>&copy;  2014
+        <p>&copy; Addam Hardy 2012-2015
         </p>
       </footer>
 

@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <title>Addam Hardy [iOS Lessons Learned // Strong References To Self In Blocks are a No-No]</title>
     <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="author" content="Addam Hardy">
 
-    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all">
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
@@ -18,14 +18,23 @@
     <div class="navbar">
       <div class="navbar-inner">
         <div class="container">
-          <a class="brand" href="">addamhardy.com</a>
+          <a class="brand" href="/">addamhardy.com</a>
           <ul class="nav">
-						<li class="dropdown" id="blog">
+						<li id="blog">
 							<a href="/blog">Blog</a>
 						</li>
-						
-            
-
+            <li id="pgp">
+              <a href="/pgp">PGP</a>
+            </li>
+            <li id="euler">
+              <a href="/project-euler-solutions">Project Euler</a>
+            </li>
+            <li id="projects">
+              <a href="/projects">Projects</a>
+            </li>
+            <li id="about">
+              <a href="/about">About Me</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -42,7 +51,7 @@
   </header>
 
   <article class="post-content">
-    I've just started the leg of my professional career involving iOS. I've been a registered iOS developer since the iPhone developer program was created and I've been tinkering with things since then, but now I am employed as an iOS developer. I can officially say that my profession is 'iOS Developer'. <!-- more -->
+    I've just started the leg of my professional career involving iOS. I've been a registered iOS developer since the iPhone developer program was created and I've been tinkering with things since then, but now I am employed as an iOS developer. I can officially say that my profession is 'iOS Developer'.<!--more-->
 Today I've been diving into the code of my new employer -- <a href="http://mobilefwd.com">MobileFWD</a> check that shit out! -- and I've hit my first professional iOS developer 'Lesson Learned'.
 <br /><br />
 What is that lesson learned you say?
@@ -75,7 +84,7 @@ But if you are absolutely positive that the retain cycle will be broken despite 
       </div>
 
       <footer>
-        <p>&copy;  2014
+        <p>&copy; Addam Hardy 2012-2015
         </p>
       </footer>
 

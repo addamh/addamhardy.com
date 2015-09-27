@@ -306,9 +306,9 @@ class Solution(object):
         self.content = re.sub(r'\/\/&.*', r'', self.content)
         #output = '{%% codeblock %s %s download %%}\n' % (self.basename, self.raw_link)
         #output = '{%% highlight %s %%}\n' % self.interpreter
-        output = '``` %s %s %s download\n' % (self.lexer, self.basename, self.raw_link)
+        output = '{% endhighlight %} %s %s %s download\n' % (self.lexer, self.basename, self.raw_link)
         output += self.content 
-        output += '\n```\n'
+        output += '\n{% endhighlight %}\n'
         #output += '{% endhighlight %}'
         #output += '{% endcodeblock %}'
         return output 

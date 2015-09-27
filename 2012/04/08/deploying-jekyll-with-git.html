@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <title>Addam Hardy [Deploying Jekyll With Git]</title>
     <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="author" content="Addam Hardy">
 
-    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all">
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
@@ -18,14 +18,23 @@
     <div class="navbar">
       <div class="navbar-inner">
         <div class="container">
-          <a class="brand" href="">addamhardy.com</a>
+          <a class="brand" href="/">addamhardy.com</a>
           <ul class="nav">
-						<li class="dropdown" id="blog">
+						<li id="blog">
 							<a href="/blog">Blog</a>
 						</li>
-						
-            
-
+            <li id="pgp">
+              <a href="/pgp">PGP</a>
+            </li>
+            <li id="euler">
+              <a href="/project-euler-solutions">Project Euler</a>
+            </li>
+            <li id="projects">
+              <a href="/projects">Projects</a>
+            </li>
+            <li id="about">
+              <a href="/about">About Me</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -42,7 +51,7 @@
   </header>
 
   <article class="post-content">
-    <p>My very first tech blog on my own personal site! We’ll see what comes of this. I have a bit of a problem on focusing on things and sticking to it, but I’m going to do my best to keep a semi-sort-of-regular-kind-of-occasional routine of tech blogs going. <!-- more --></p>
+    <p>My very first tech blog on my own personal site! We’ll see what comes of this. I have a bit of a problem on focusing on things and sticking to it, but I’m going to do my best to keep a semi-sort-of-regular-kind-of-occasional routine of tech blogs going.<!--more--></p>
 
 <hr />
 
@@ -53,90 +62,94 @@
 <p><strong>Gitolite Installation</strong></p>
 
 <ul>
-  <li>Create a user named ‘git’ and login with this user
-<code>bash
-      $ adduser git
-      $ su - git
-</code></li>
-  <li>Copy your ssh pubkey from the workstation you wish to deploy from and put it in the home directory for the git user. Rename the key to your_name.pub. (Of course using your name… not “your_name”)
-<code>bash
-      $ gl-setup /home/git/your_name.pub
-</code></li>
-  <li>Run these commands
-<code>bash
-      $ git clone git://github.com/sitaramc/gitolite
-      $ gitolite/src/gl-system-install
-      $ gl-setup -q ~/your_name.pub
-</code>
-That will complete the install. If you have problems with it though, there is a <a href="http://sitaramc.github.com/gitolite/install.html#insttrouble">more extensive installation</a> guide to solve problems.</li>
+  <li>Create a user named ‘git’ and login with this user</li>
 </ul>
 
-<p>You do <em>not</em> install repositories directly on the server. You clone the gitolite-admin repository on the workstation that you will deploy from in order to administer the gitolite installation. You can manage users, groups and repository access from this repository.
-<code>bash
-	$ git clone git@my-server:gitolite-admin
-</code></p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>adduser git
+<span class="nv">$ </span>su - git</code></pre></div>
 
-<p>After you have cloned the admin respository, edit gitolite-admin/conf/gitolite.conf to add in your new repository and user permissions.
-<code>bash
-	repo blog
-	     RW+ = username
-</code>
-In this example, <em>blog</em> is the name of the repository you want to create and <em>username</em> is the name you put on the public key you uploaded. So if you uploaded a key named addam.pub you will need to put <em>addam</em> here.</p>
+<ul>
+  <li>Copy your ssh pubkey from the workstation you wish to deploy from and put it in the home directory for the git user. Rename the key to your_name.pub. (Of course using your name… not “your_name”)</li>
+</ul>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>gl-setup /home/git/your_name.pub</code></pre></div>
+
+<ul>
+  <li>Run these commands</li>
+</ul>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git clone git://github.com/sitaramc/gitolite
+<span class="nv">$ </span>gitolite/src/gl-system-install
+<span class="nv">$ </span>gl-setup -q ~/your_name.pub</code></pre></div>
+
+<p>That will complete the install. If you have problems with it though, there is a <a href="http://sitaramc.github.com/gitolite/install.html#insttrouble">more extensive installation</a> guide to solve problems.</p>
+
+<p>You do <em>not</em> install repositories directly on the server. You clone the gitolite-admin repository on the workstation that you will deploy from in order to administer the gitolite installation. You can manage users, groups and repository access from this repository.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git clone git@my-server:gitolite-admin</code></pre></div>
+
+<p>After you have cloned the admin respository, edit gitolite-admin/conf/gitolite.conf to add in your new repository and user permissions.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">repo blog
+RW+ <span class="o">=</span> username</code></pre></div>
+
+<p>In this example, <em>blog</em> is the name of the repository you want to create and <em>username</em> is the name you put on the public key you uploaded. So if you uploaded a key named addam.pub you will need to put <em>addam</em> here.</p>
 
 <p>Add the new files to the git repository <em>(git add .)</em> and commit. Push it back to the remote repository (the server you are deploying to) with <em>git push origin master</em>.</p>
 
 <p><strong>Managing a Jekyll-Bootstrap Blog</strong></p>
 
-<p>I really liked how Jekyll-Bootstrap has a lot of things good to go instead of me building it all by myself so I decided to go with Jekyll-Bootstrap. After you clone Jekyll-Bootstrap and modify a few config files, you will have a no-database Jekyll blog running straight-away.
-<code>bash
-	$ git clone https://github.com/plusjade/jekyll-bootstrap.git name_of_blog
-	$ cd name_of_blog
-	$ git remote set-url origin git@my-server:blog
-</code>
-In this example: <em>my-server</em> is the hostname of the server you set up Gitolite on and <em>blog</em> is whatever you named your repository in the Gitolite config file.</p>
+<p>I really liked how Jekyll-Bootstrap has a lot of things good to go instead of me building it all by myself so I decided to go with Jekyll-Bootstrap. After you clone Jekyll-Bootstrap and modify a few config files, you will have a no-database Jekyll blog running straight-away.</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git clone https://github.com/plusjade/jekyll-bootstrap.git name_of_blog
+<span class="nv">$ </span><span class="nb">cd </span>name_of_blog
+<span class="nv">$ </span>git remote <span class="nb">set</span>-url origin git@my-server:blog</code></pre></div>
+
+<p>In this example: <em>my-server</em> is the hostname of the server you set up Gitolite on and <em>blog</em> is whatever you named your repository in the Gitolite config file.</p>
 
 <p>You can modify files and test them in real time by running <em>jekyll –server</em> inside the blog directory. This will run a WEBrick instance so that you’ll be able to access your blog from http://localhost:4000. You can leave this running while you edit your files and it will regenerate the files as you edit them.</p>
 
 <p>I personally use Nginx to host my Jekyll site on my server but you can use any web server. Just point it to the directory you want it to be served from and then you can create an auto-update script that will run upon each push. So when you push your new blog that you have tested locally to your server, the post-receive hook will fire and update your blog. Completely automated deployment courtesy of Git, Gitolite and Jekyll.</p>
 
-<p>On the your deployment server navigate to <em>/home/git/repositories/blog.git/hooks</em> and edit the <em>post-receive</em> file. Paste this inside the file:
-```bash
-	GIT_REPO=$HOME/repositories/blog.git
-	TMP_GIT_CLONE=$HOME/tmp/blog
-	PUBLIC_WWW=/var/www/blog</p>
+<p>On the your deployment server navigate to <em>/home/git/repositories/blog.git/hooks</em> and edit the <em>post-receive</em> file. Paste this inside the file:</p>
 
-<pre><code>git clone $GIT_REPO $TMP_GIT_CLONE
-cd $TMP_GIT_CLONE &amp;&amp; jekyll --no-auto $TMP_GIT_CLONE $PUBLIC_WWW
-cd ~ &amp;&amp; rm -rf $TMP_GIT_CLONE
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">GIT_REPO</span><span class="o">=</span><span class="nv">$HOME</span>/repositories/blog.git
+<span class="nv">TMP_GIT_CLONE</span><span class="o">=</span><span class="nv">$HOME</span>/tmp/blog
+<span class="nv">PUBLIC_WWW</span><span class="o">=</span>/var/www/blog
 
-find $PUBLIC_WWW -type f -print0 | xargs -0 chmod 666
-find $PUBLIC_WWW -type d -print0 | xargs -0 chmod 777
+git clone <span class="nv">$GIT_REPO</span> <span class="nv">$TMP_GIT_CLONE</span>
+<span class="nb">cd</span> <span class="nv">$TMP_GIT_CLONE</span> <span class="o">&amp;&amp;</span> jekyll --no-auto <span class="nv">$TMP_GIT_CLONE</span> <span class="nv">$PUBLIC_WWW</span>
+<span class="nb">cd</span> ~ <span class="o">&amp;&amp;</span> rm -rf <span class="nv">$TMP_GIT_CLONE</span>
 
-exit ``` *Ensure that you set PUBLIC_WWW to wherever you have your web server pointing*
-</code></pre>
+find <span class="nv">$PUBLIC_WWW</span> -type f -print0 <span class="p">|</span> xargs -0 chmod 666
+find <span class="nv">$PUBLIC_WWW</span> -type d -print0 <span class="p">|</span> xargs -0 chmod 777
 
-<p>After you save this file, commit a small change to test it. Upon pushing, the server should fire the post-receive hook and regenerate your site. This is an example of what a successful push should look like:
-<code>bash
-	addam@Hera:~/blog  (master): $&gt; git push origin
-	Counting objects: 17, done.
-	Delta compression using up to 2 threads.
-	Compressing objects: 100% (8/8), done.
-	Writing objects: 100% (9/9), 3.02 KiB, done.
-	Total 9 (delta 3), reused 0 (delta 0)
-	remote: Cloning into /home/git/tmp/blog...
-	remote: done.
-	remote: Configuration from /home/git/tmp/blog/_config.yml
-	remote: Building site: /home/git/tmp/blog -&gt; /srv/www/addamhardy.com
-	remote: Successfully generated site: /home/git/tmp/blog -&gt; /srv/www/addamhardy.com
-	To git@addamhardy.com:blog
-	   be9793b..9d6b73f  master -&gt; master
-	addam@Hera:~/blog  (master): $&gt;
-</code>
-And there you go. git auto-deloy awesomeness. In order to create a blog post you just do:
-<code>bash
-	rake post title="Hello World"
-</code>
-and then edit the file in markdown or html. Jekyll is a create platform for creating a static website. Execute the command <em>rake -T</em> to see all the possible rake tasks.</p>
+<span class="nb">exit</span></code></pre></div>
+
+<p><em>Ensure that you set PUBLIC_WWW to wherever you have your web server pointing</em></p>
+
+<p>After you save this file, commit a small change to test it. Upon pushing, the server should fire the post-receive hook and regenerate your site. This is an example of what a successful push should look like:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">addam@Hera:~/blog  <span class="o">(</span>master<span class="o">)</span>: <span class="nv">$&gt;</span> git push origin
+Counting objects: 17, <span class="k">done</span>.
+Delta compression using up to <span class="m">2</span> threads.
+Compressing objects: 100% <span class="o">(</span>8/8<span class="o">)</span>, <span class="k">done</span>.
+Writing objects: 100% <span class="o">(</span>9/9<span class="o">)</span>, 3.02 KiB, <span class="k">done</span>.
+Total <span class="m">9</span> <span class="o">(</span>delta 3<span class="o">)</span>, reused <span class="m">0</span> <span class="o">(</span>delta 0<span class="o">)</span>
+remote: Cloning into /home/git/tmp/blog...
+remote: <span class="k">done</span>.
+remote: Configuration from /home/git/tmp/blog/_config.yml
+remote: Building site: /home/git/tmp/blog -&gt; /srv/www/addamhardy.com
+remote: Successfully generated site: /home/git/tmp/blog -&gt; /srv/www/addamhardy.com
+To git@addamhardy.com:blog
+   be9793b..9d6b73f  master -&gt; master
+addam@Hera:~/blog  <span class="o">(</span>master<span class="o">)</span>: <span class="nv">$&gt;</span></code></pre></div>
+
+<p>And there you go. git auto-deloy awesomeness. In order to create a blog post you just do:</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">rake post <span class="nv">title</span><span class="o">=</span><span class="s2">&quot;Hello World&quot;</span></code></pre></div>
+
+<p>and then edit the file in markdown or html. Jekyll is a create platform for creating a static website. Execute the command <em>rake -T</em> to see all the possible rake tasks.</p>
 
 <p>The benefit of using <a href="http://jekyllbootstrap.com/usage/jekyll-quick-start.html">Jekyll-Bootstrap</a> is having a lot of things baked in and ready to go like themes. This simple setup is much easier than me setting up and maintaining a wordpress blog and database, and it enables you to create a basic, simple and clean static website and/or blog.</p>
 
@@ -153,7 +166,7 @@ and then edit the file in markdown or html. Jekyll is a create platform for crea
       </div>
 
       <footer>
-        <p>&copy;  2014
+        <p>&copy; Addam Hardy 2012-2015
         </p>
       </footer>
 

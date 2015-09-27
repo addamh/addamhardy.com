@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <title>Addam Hardy [Project Euler]</title>
     
-    <meta name="author" content="">
+    <meta name="author" content="Addam Hardy">
 
-    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all">
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
@@ -18,14 +18,23 @@
     <div class="navbar">
       <div class="navbar-inner">
         <div class="container">
-          <a class="brand" href="">addamhardy.com</a>
+          <a class="brand" href="/">addamhardy.com</a>
           <ul class="nav">
-						<li class="dropdown" id="blog">
+						<li id="blog">
 							<a href="/blog">Blog</a>
 						</li>
-						
-            
-
+            <li id="pgp">
+              <a href="/pgp">PGP</a>
+            </li>
+            <li id="euler">
+              <a href="/project-euler-solutions">Project Euler</a>
+            </li>
+            <li id="projects">
+              <a href="/projects">Projects</a>
+            </li>
+            <li id="about">
+              <a href="/about">About Me</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -84,29 +93,25 @@ h3.answer_toggle:hover {
 <div class="divider">&nbsp;</div>
 
 <h3>Ruby </h3>
-``` ruby nameSums.rb https://raw.github.com/addamh/euler/master/022/nameSums.rb download
-#!/usr/bin/env ruby
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">nameSums</span><span class="o">.</span><span class="n">rb</span> <span class="ss">https</span><span class="p">:</span><span class="sr">//</span><span class="n">raw</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">addamh</span><span class="o">/</span><span class="n">euler</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="mo">022</span><span class="o">/</span><span class="n">nameSums</span><span class="o">.</span><span class="n">rb</span> <span class="n">download</span>
+<span class="c1">#!/usr/bin/env ruby</span>
 
-letter_array = ("A".."Z").map{|l| l }
-letter_hash = Hash[letter_array.map.with_index{|*ki| ki}]
+<span class="n">letter_array</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="o">.</span><span class="n">.</span><span class="s2">&quot;Z&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">l</span><span class="o">|</span> <span class="n">l</span> <span class="p">}</span>
+<span class="n">letter_hash</span> <span class="o">=</span> <span class="no">Hash</span><span class="o">[</span><span class="n">letter_array</span><span class="o">.</span><span class="n">map</span><span class="o">.</span><span class="n">with_index</span><span class="p">{</span><span class="o">|*</span><span class="n">ki</span><span class="o">|</span> <span class="n">ki</span><span class="p">}</span><span class="o">]</span>
 
-file = File.open("/Users/addam/dev/euler/022/names.txt", "r")
-contents = file.read.split(",").map!{|k| k.gsub!(/^\"|\"?$/, '') }
+<span class="n">file</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;/Users/addam/dev/euler/022/names.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="n">contents</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">map!</span><span class="p">{</span><span class="o">|</span><span class="n">k</span><span class="o">|</span> <span class="n">k</span><span class="o">.</span><span class="n">gsub!</span><span class="p">(</span><span class="sr">/^\&quot;|\&quot;?$/</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">}</span>
 
-total_score = 0
-puts letter_hash["z"]
-contents.sort.each_with_index do |v,i|
-  name_score = 0
-  v.each_char do |c|
-    name_score += letter_hash["#{c}"]+1
-  end
-  total_score += name_score * (i+1)
-end
-puts total_score
-
-
-
-```
+<span class="n">total_score</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="nb">puts</span> <span class="n">letter_hash</span><span class="o">[</span><span class="s2">&quot;z&quot;</span><span class="o">]</span>
+<span class="n">contents</span><span class="o">.</span><span class="n">sort</span><span class="o">.</span><span class="n">each_with_index</span> <span class="k">do</span> <span class="o">|</span><span class="n">v</span><span class="p">,</span><span class="n">i</span><span class="o">|</span>
+  <span class="n">name_score</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">v</span><span class="o">.</span><span class="n">each_char</span> <span class="k">do</span> <span class="o">|</span><span class="n">c</span><span class="o">|</span>
+    <span class="n">name_score</span> <span class="o">+=</span> <span class="n">letter_hash</span><span class="o">[</span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">c</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">]+</span><span class="mi">1</span>
+  <span class="k">end</span>
+  <span class="n">total_score</span> <span class="o">+=</span> <span class="n">name_score</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">end</span>
+<span class="nb">puts</span> <span class="n">total_score</span></code></pre></div>
 
 
 <div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span> <span class="nb">time </span>ruby nameSums.rb
@@ -124,7 +129,7 @@ puts total_score
       </div>
 
       <footer>
-        <p>&copy;  2014
+        <p>&copy; Addam Hardy 2012-2015
         </p>
       </footer>
 

@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <title>Addam Hardy [Project Euler]</title>
     
-    <meta name="author" content="">
+    <meta name="author" content="Addam Hardy">
 
-    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all">
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
@@ -18,14 +18,23 @@
     <div class="navbar">
       <div class="navbar-inner">
         <div class="container">
-          <a class="brand" href="">addamhardy.com</a>
+          <a class="brand" href="/">addamhardy.com</a>
           <ul class="nav">
-						<li class="dropdown" id="blog">
+						<li id="blog">
 							<a href="/blog">Blog</a>
 						</li>
-						
-            
-
+            <li id="pgp">
+              <a href="/pgp">PGP</a>
+            </li>
+            <li id="euler">
+              <a href="/project-euler-solutions">Project Euler</a>
+            </li>
+            <li id="projects">
+              <a href="/projects">Projects</a>
+            </li>
+            <li id="about">
+              <a href="/about">About Me</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -122,37 +131,36 @@ h3.answer_toggle:hover {
 <div class="divider">&nbsp;</div>
 
 <h3>Ruby </h3>
-``` ruby smallTriangle.rb https://raw.github.com/addamh/euler/master/018/smallTriangle.rb download
-#!/usr/bin/env ruby
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">smallTriangle</span><span class="o">.</span><span class="n">rb</span> <span class="ss">https</span><span class="p">:</span><span class="sr">//</span><span class="n">raw</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">addamh</span><span class="o">/</span><span class="n">euler</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="mo">01</span><span class="mi">8</span><span class="o">/</span><span class="n">smallTriangle</span><span class="o">.</span><span class="n">rb</span> <span class="n">download</span>
+<span class="c1">#!/usr/bin/env ruby</span>
 
-tri = <<TRI
-75
-95 64
-17 47 82
-18 35 87 10
-20 04 82 47 65
-19 01 23 75 03 34
-88 02 77 73 07 63 67
-99 65 04 28 06 16 70 92
-41 41 26 56 83 40 80 70 33
-41 48 72 33 47 32 37 16 94 29
-53 71 44 65 25 43 91 52 97 51 14
-70 11 33 28 77 73 17 78 39 68 17 57
-91 71 52 38 17 14 91 43 58 50 27 29 48
-63 66 04 68 89 53 67 30 73 16 69 87 40 31
-04 62 98 27 23 09 70 98 73 93 38 53 60 04 23
-TRI
+<span class="n">tri</span> <span class="o">=</span> <span class="o">&lt;&lt;</span><span class="no">TRI</span>
+<span class="sh">75</span>
+<span class="sh">95 64</span>
+<span class="sh">17 47 82</span>
+<span class="sh">18 35 87 10</span>
+<span class="sh">20 04 82 47 65</span>
+<span class="sh">19 01 23 75 03 34</span>
+<span class="sh">88 02 77 73 07 63 67</span>
+<span class="sh">99 65 04 28 06 16 70 92</span>
+<span class="sh">41 41 26 56 83 40 80 70 33</span>
+<span class="sh">41 48 72 33 47 32 37 16 94 29</span>
+<span class="sh">53 71 44 65 25 43 91 52 97 51 14</span>
+<span class="sh">70 11 33 28 77 73 17 78 39 68 17 57</span>
+<span class="sh">91 71 52 38 17 14 91 43 58 50 27 29 48</span>
+<span class="sh">63 66 04 68 89 53 67 30 73 16 69 87 40 31</span>
+<span class="sh">04 62 98 27 23 09 70 98 73 93 38 53 60 04 23</span>
+<span class="no">TRI</span>
 
-rows = tri.each_line.map { |line| line.split.map(&:to_i) }
+<span class="n">rows</span> <span class="o">=</span> <span class="n">tri</span><span class="o">.</span><span class="n">each_line</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">line</span><span class="o">|</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:to_i</span><span class="p">)</span> <span class="p">}</span>
 
-for i in (rows.length-2).downto(0).to_a do
-  for j in (i).downto(0).to_a do
-    rows[i][j] += [rows[i+1][j].to_i,rows[i+1][j+1].to_i].max
-  end
-end
+<span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="p">(</span><span class="n">rows</span><span class="o">.</span><span class="n">length</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">downto</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span> <span class="k">do</span>
+  <span class="k">for</span> <span class="n">j</span> <span class="k">in</span> <span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">downto</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span> <span class="k">do</span>
+    <span class="n">rows</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">+=</span> <span class="o">[</span><span class="n">rows</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">][</span><span class="n">j</span><span class="o">].</span><span class="n">to_i</span><span class="p">,</span><span class="n">rows</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">][</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">].</span><span class="n">to_i</span><span class="o">].</span><span class="n">max</span>
+  <span class="k">end</span>
+<span class="k">end</span>
 
-p rows[0][0]
-```
+<span class="nb">p</span> <span class="n">rows</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span></code></pre></div>
 
 
 <div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span> <span class="nb">time </span>ruby smallTriangle.rb
@@ -170,7 +178,7 @@ p rows[0][0]
       </div>
 
       <footer>
-        <p>&copy;  2014
+        <p>&copy; Addam Hardy 2012-2015
         </p>
       </footer>
 

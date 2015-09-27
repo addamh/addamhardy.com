@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <title>Addam Hardy [Project Euler]</title>
     
-    <meta name="author" content="">
+    <meta name="author" content="Addam Hardy">
 
-    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all">
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
@@ -18,14 +18,23 @@
     <div class="navbar">
       <div class="navbar-inner">
         <div class="container">
-          <a class="brand" href="">addamhardy.com</a>
+          <a class="brand" href="/">addamhardy.com</a>
           <ul class="nav">
-						<li class="dropdown" id="blog">
+						<li id="blog">
 							<a href="/blog">Blog</a>
 						</li>
-						
-            
-
+            <li id="pgp">
+              <a href="/pgp">PGP</a>
+            </li>
+            <li id="euler">
+              <a href="/project-euler-solutions">Project Euler</a>
+            </li>
+            <li id="projects">
+              <a href="/projects">Projects</a>
+            </li>
+            <li id="about">
+              <a href="/about">About Me</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -101,43 +110,42 @@ h3.answer_toggle:hover {
 <div class="divider">&nbsp;</div>
 
 <h3>Ruby </h3>
-``` ruby find_product.rb https://raw.github.com/addamh/euler/master/008/find_product.rb download
-#!/usr/bin/env ruby
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">find_product</span><span class="o">.</span><span class="n">rb</span> <span class="ss">https</span><span class="p">:</span><span class="sr">//</span><span class="n">raw</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">addamh</span><span class="o">/</span><span class="n">euler</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="mo">00</span><span class="mi">8</span><span class="o">/</span><span class="n">find_product</span><span class="o">.</span><span class="n">rb</span> <span class="n">download</span>
+<span class="c1">#!/usr/bin/env ruby</span>
 
-n = <<NUM
-73167176531330624919225119674426574742355349194934 
-96983520312774506326239578318016984801869478851843 
-85861560789112949495459501737958331952853208805511 
-12540698747158523863050715693290963295227443043557 
-66896648950445244523161731856403098711121722383113 
-62229893423380308135336276614282806444486645238749 
-30358907296290491560440772390713810515859307960866 
-70172427121883998797908792274921901699720888093776 
-65727333001053367881220235421809751254540594752243 
-52584907711670556013604839586446706324415722155397 
-53697817977846174064955149290862569321978468622482 
-83972241375657056057490261407972968652414535100474 
-82166370484403199890008895243450658541227588666881 
-16427171479924442928230863465674813919123162824586 
-17866458359124566529476545682848912883142607690042 
-24219022671055626321111109370544217506941658960408 
-07198403850962455444362981230987879927244284909188 
-84580156166097919133875499200524063689912560717606 
-05886116467109405077541002256983155200055935729725 
-71636269561882670428252483600823257530420752963450
-NUM
+<span class="n">n</span> <span class="o">=</span> <span class="o">&lt;&lt;</span><span class="no">NUM</span>
+<span class="sh">73167176531330624919225119674426574742355349194934 </span>
+<span class="sh">96983520312774506326239578318016984801869478851843 </span>
+<span class="sh">85861560789112949495459501737958331952853208805511 </span>
+<span class="sh">12540698747158523863050715693290963295227443043557 </span>
+<span class="sh">66896648950445244523161731856403098711121722383113 </span>
+<span class="sh">62229893423380308135336276614282806444486645238749 </span>
+<span class="sh">30358907296290491560440772390713810515859307960866 </span>
+<span class="sh">70172427121883998797908792274921901699720888093776 </span>
+<span class="sh">65727333001053367881220235421809751254540594752243 </span>
+<span class="sh">52584907711670556013604839586446706324415722155397 </span>
+<span class="sh">53697817977846174064955149290862569321978468622482 </span>
+<span class="sh">83972241375657056057490261407972968652414535100474 </span>
+<span class="sh">82166370484403199890008895243450658541227588666881 </span>
+<span class="sh">16427171479924442928230863465674813919123162824586 </span>
+<span class="sh">17866458359124566529476545682848912883142607690042 </span>
+<span class="sh">24219022671055626321111109370544217506941658960408 </span>
+<span class="sh">07198403850962455444362981230987879927244284909188 </span>
+<span class="sh">84580156166097919133875499200524063689912560717606 </span>
+<span class="sh">05886116467109405077541002256983155200055935729725 </span>
+<span class="sh">71636269561882670428252483600823257530420752963450</span>
+<span class="no">NUM</span>
 
-n = n.split('')
-p = 0
+<span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">p</span> <span class="o">=</span> <span class="mi">0</span>
  
-while n.size > 0
-  np = n[0].to_i * n[1].to_i * n[2].to_i * n[3].to_i * n[4].to_i
-  p = np > p ? np : p
-  n.shift
-end
+<span class="k">while</span> <span class="n">n</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span>
+  <span class="n">np</span> <span class="o">=</span> <span class="n">n</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">to_i</span> <span class="o">*</span> <span class="n">n</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="n">to_i</span> <span class="o">*</span> <span class="n">n</span><span class="o">[</span><span class="mi">2</span><span class="o">].</span><span class="n">to_i</span> <span class="o">*</span> <span class="n">n</span><span class="o">[</span><span class="mi">3</span><span class="o">].</span><span class="n">to_i</span> <span class="o">*</span> <span class="n">n</span><span class="o">[</span><span class="mi">4</span><span class="o">].</span><span class="n">to_i</span>
+  <span class="nb">p</span> <span class="o">=</span> <span class="n">np</span> <span class="o">&gt;</span> <span class="nb">p</span> <span class="p">?</span> <span class="n">np</span> <span class="p">:</span> <span class="nb">p</span>
+  <span class="n">n</span><span class="o">.</span><span class="n">shift</span>
+<span class="k">end</span>
  
-p p
-```
+<span class="nb">p</span> <span class="nb">p</span></code></pre></div>
 
 
 <div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span> <span class="nb">time </span>ruby find_product.rb
@@ -155,7 +163,7 @@ p p
       </div>
 
       <footer>
-        <p>&copy;  2014
+        <p>&copy; Addam Hardy 2012-2015
         </p>
       </footer>
 
