@@ -6,33 +6,46 @@
     
     <meta name="author" content="Addam Hardy">
 
-    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all">
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   </head>
 
   <body>
-
     <div class="navbar">
       <div class="navbar-inner">
         <div class="container">
           <a class="brand" href="/">addamhardy.com</a>
           <ul class="nav">
-						<li id="blog">
-							<a href="blog">Blog</a>
-						</li>
-            <li id="pgp">
+            
+              <li id="blog">
+            
+              <a href="/blog">Blog</a>
+            </li>
+
+            
+              <li id="pgp">
+            
               <a href="/pgp">PGP</a>
             </li>
-            <li id="euler">
+
+            
+              <li id="euler">
+            
               <a href="/project-euler-solutions">Project Euler</a>
             </li>
-            <li id="projects">
+
+            <!-- 
+              <li id="projects">
+            
               <a href="/projects">Projects</a>
-            </li>
-            <li id="about">
+            </li> -->
+
+            
+              <li id="about">
+            
               <a href="/about">About Me</a>
             </li>
           </ul>
@@ -61,7 +74,7 @@ For those who haven’t used custom URL schemas with iOS projects, you are able 
 
 <h2 id="the-problem">The problem:</h2>
 
-<p>&lt;img src=”/assets/images/detect_app/unknownurl.png”/ style=”width:200px; float: right; margin-left: 15px;”&gt;</p>
+<p><img src="/assets/images/detect_app/unknownurl.png" style="width:200px; float: right; margin-left: 15px;" /></p>
 
 <p>When a user without the app clicks a link with this custom URL scheme and they don’t have the app installed, and therefore don’t have the custom URL scheme registered with the operating system on the device, they get this really ugly alert message. Ideally we’d say something like “Oops looks like you don’t have the app installed” or something, but since iOS has no idea what that URL even is until you tell it what it is, it just says this: “Safari cannot open the page because the address is invalid.”</p>
 
@@ -71,27 +84,27 @@ For those who haven’t used custom URL schemas with iOS projects, you are able 
 
 <p>First off, here is the code:</p>
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">script</span> <span class="o">(</span><span class="n">app</span><span class="o">.</span><span class="na">exist</span><span class="o">?)</span> <span class="o">?</span> <span class="n">open_app</span><span class="o">()</span> <span class="o">:</span> <span class="n">open_appStore</span><span class="o">()</span>
-    <span class="n">$</span><span class="o">(</span><span class="s">&quot;.open_app&quot;</span><span class="o">).</span><span class="na">click</span><span class="o">(</span><span class="n">function</span><span class="o">(</span><span class="n">e</span><span class="o">){</span>
-        <span class="n">var</span> <span class="n">id</span> <span class="o">=</span> <span class="n">$</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">target</span><span class="o">).</span><span class="na">data</span><span class="o">(</span><span class="s">&quot;product-id&quot;</span><span class="o">);</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">(</span><span class="nx">app</span><span class="p">.</span><span class="nx">exist</span><span class="o">?</span><span class="p">)</span> <span class="o">?</span> <span class="nx">open_app</span><span class="p">()</span> <span class="o">:</span> <span class="nx">open_appStore</span><span class="p">()</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.open_app&quot;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+        <span class="kd">var</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">).</span><span class="nx">data</span><span class="p">(</span><span class="s2">&quot;product-id&quot;</span><span class="p">);</span>
 
-        <span class="n">var</span> <span class="n">n</span> <span class="o">=</span> <span class="o">[],</span>
-        <span class="n">i</span> <span class="o">=</span> <span class="o">!</span><span class="mi">1</span><span class="o">;</span>
+        <span class="kd">var</span> <span class="nx">n</span> <span class="o">=</span> <span class="p">[],</span>
+        <span class="nx">i</span> <span class="o">=</span> <span class="o">!</span><span class="mi">1</span><span class="p">;</span>
 
-        <span class="n">$</span><span class="o">(</span><span class="n">window</span><span class="o">).</span><span class="na">on</span><span class="o">(</span><span class="s">&quot;pagehide&quot;</span><span class="o">,</span> <span class="n">function</span> <span class="o">()</span> <span class="o">{</span>
-            <span class="n">n</span><span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="n">window</span><span class="o">.</span><span class="na">clearTimeout</span><span class="o">)</span>
-        <span class="o">});</span>
+        <span class="nx">$</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;pagehide&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="nx">n</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">clearTimeout</span><span class="p">)</span>
+        <span class="p">});</span>
 
-        <span class="n">window</span><span class="o">.</span><span class="na">location</span> <span class="o">=</span> <span class="s">&quot;btiques://?salesid=&quot;</span> <span class="o">+</span> <span class="n">id</span><span class="o">;</span>
+        <span class="nb">window</span><span class="p">.</span><span class="nx">location</span> <span class="o">=</span> <span class="s2">&quot;btiques://?salesid=&quot;</span> <span class="o">+</span> <span class="nx">id</span><span class="p">;</span>
 
-        <span class="n">n</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">window</span><span class="o">.</span><span class="na">setTimeout</span><span class="o">(</span><span class="n">function</span> <span class="o">()</span> <span class="o">{</span>
-            <span class="n">n</span><span class="o">.</span><span class="na">splice</span><span class="o">(</span><span class="mi">0</span><span class="o">),</span> <span class="n">i</span> <span class="o">=</span> <span class="o">!</span><span class="mi">1</span><span class="o">,</span> <span class="n">window</span><span class="o">.</span><span class="na">location</span> <span class="o">=</span> <span class="s">&quot;http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=641292705&amp;mt=8&quot;</span>
-        <span class="o">},</span> <span class="mi">250</span><span class="o">));</span>
+        <span class="nx">n</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="nx">n</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="nx">i</span> <span class="o">=</span> <span class="o">!</span><span class="mi">1</span><span class="p">,</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span> <span class="o">=</span> <span class="s2">&quot;http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=641292705&amp;mt=8&quot;</span>
+        <span class="p">},</span> <span class="mi">250</span><span class="p">));</span>
 
-        <span class="n">n</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">window</span><span class="o">.</span><span class="na">setTimeout</span><span class="o">(</span><span class="n">function</span> <span class="o">()</span> <span class="o">{</span>
-            <span class="n">i</span> <span class="o">&amp;&amp;</span> <span class="n">window</span><span class="o">.</span><span class="na">location</span><span class="o">.</span><span class="na">reload</span><span class="o">()</span>
-        <span class="o">},</span> <span class="mi">500</span><span class="o">))</span>
-    <span class="o">});</span></code></pre></div>
+        <span class="nx">n</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="nx">i</span> <span class="o">&amp;&amp;</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">reload</span><span class="p">()</span>
+        <span class="p">},</span> <span class="mi">500</span><span class="p">))</span>
+    <span class="p">});</span></code></pre></div>
 
 <p>So you don’t have to do it exactly how I did it, but the key factors of the script are changing the window location to the desired custom URL scheme for your app, and then setting a function to fire off on a timeout in 100-300ms that will redirect them to the iTunes page for your app. If you send them to the itunes page for your app while on the phone, it will send them to your app in the AppStore app.</p>
 
@@ -123,6 +136,33 @@ For those who haven’t used custom URL schemas with iOS projects, you are able 
 <p>Have you had to solve this problem before? It was pretty aggravating in the beginning while realizing this was “impossible” to do, but pretty rewarding to find that loop hole solution to circumvent the “impossible.” :)</p>
 
   </article>
+
+  
+    <section>
+      <h1>Comments</h1>
+      <div id="disqus_thread" aria-live="polite"></div>
+    </section>
+  
+
+  
+  
+  <script type="text/javascript">
+        var disqus_shortname = 'addamhardy';
+        
+          
+          // var disqus_developer = 1;
+          var disqus_identifier = 'http:/addamhardy.com/2013/05/14/redirecting-to-your-app-from-mobile-safari-and-failing-gracefully.html';
+          var disqus_url = 'http:/addamhardy.com/2013/05/14/redirecting-to-your-app-from-mobile-safari-and-failing-gracefully.html';
+          var disqus_script = 'embed.js';
+        
+      (function () {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }());
+  </script>
+  
+
 
 </div>
 

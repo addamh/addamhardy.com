@@ -6,33 +6,46 @@
     
     <meta name="author" content="Addam Hardy">
 
-    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all">
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   </head>
 
   <body>
-
     <div class="navbar">
       <div class="navbar-inner">
         <div class="container">
           <a class="brand" href="/">addamhardy.com</a>
           <ul class="nav">
-						<li id="blog">
-							<a href="blog">Blog</a>
-						</li>
-            <li id="pgp">
+            
+              <li id="blog">
+            
+              <a href="/blog">Blog</a>
+            </li>
+
+            
+              <li id="pgp">
+            
               <a href="/pgp">PGP</a>
             </li>
-            <li id="euler">
+
+            
+              <li id="euler">
+            
               <a href="/project-euler-solutions">Project Euler</a>
             </li>
-            <li id="projects">
+
+            <!-- 
+              <li id="projects">
+            
               <a href="/projects">Projects</a>
-            </li>
-            <li id="about">
+            </li> -->
+
+            
+              <li id="about">
+            
               <a href="/about">About Me</a>
             </li>
           </ul>
@@ -135,6 +148,33 @@ h3.answer_toggle:hover {
 
 </div>
   </article>
+
+  
+    <section>
+      <h1>Comments</h1>
+      <div id="disqus_thread" aria-live="polite"></div>
+    </section>
+  
+
+  
+  
+  <script type="text/javascript">
+        var disqus_shortname = 'addamhardy';
+        
+          
+          // var disqus_developer = 1;
+          var disqus_identifier = 'http:/addamhardy.com/project-euler-solutions/67/index.html';
+          var disqus_url = 'http:/addamhardy.com/project-euler-solutions/67/index.html';
+          var disqus_script = 'embed.js';
+        
+      (function () {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }());
+  </script>
+  
+
 
 </div>
 

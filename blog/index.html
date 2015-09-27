@@ -6,33 +6,46 @@
     <meta name="description" content="">
     <meta name="author" content="Addam Hardy">
 
-    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all">
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   </head>
 
   <body>
-
     <div class="navbar">
       <div class="navbar-inner">
         <div class="container">
           <a class="brand" href="/">addamhardy.com</a>
           <ul class="nav">
-						<li id="blog">
-							<a href="blog">Blog</a>
-						</li>
-            <li id="pgp">
+            
+              <li class='active' id="blog">
+            
+              <a href="/blog">Blog</a>
+            </li>
+
+            
+              <li id="pgp">
+            
               <a href="/pgp">PGP</a>
             </li>
-            <li id="euler">
+
+            
+              <li id="euler">
+            
               <a href="/project-euler-solutions">Project Euler</a>
             </li>
-            <li id="projects">
+
+            <!-- 
+              <li id="projects">
+            
               <a href="/projects">Projects</a>
-            </li>
-            <li id="about">
+            </li> -->
+
+            
+              <li id="about">
+            
               <a href="/about">About Me</a>
             </li>
           </ul>
@@ -151,37 +164,34 @@ I’ve been on the fence for weeks now…. but I quickly filled out the forms to
 </p>
      </li>
   
-    <li>
-       <h2><a href="/2012/07/29/spotify-sleep-timer-using-applescript.html">Spotify Sleep Timer Using AppleScript</a></h2>
-       <span class="meta">
-         29 Jul 2012
-       </span>
-       <p>Like most of the technology addicted masses, I sleep with my Macbook Pro either on, near or around my bed. I can quickly check emails or IMs that come in or just generally waste my life away and prevent myself from going to sleep, but I can't help it. That's why it's called an addiction. It also allows me to take advantage of some apps while sleeping.
-
-</p>
-     </li>
-  
-    <li>
-       <h2><a href="/2012/05/05/ios-lessons-learned-strong-self-references-in-blocks--nono.html">iOS Lessons Learned // Strong References To Self In Blocks are a No-No</a></h2>
-       <span class="meta">
-         05 May 2012
-       </span>
-       <p>I've just started the leg of my professional career involving iOS. I've been a registered iOS developer since the iPhone developer program was created and I've been tinkering with things since then, but now I am employed as an iOS developer. I can officially say that my profession is 'iOS Developer'.
-
-</p>
-     </li>
-  
-    <li>
-       <h2><a href="/2012/04/08/deploying-jekyll-with-git.html">Deploying Jekyll With Git</a></h2>
-       <span class="meta">
-         08 Apr 2012
-       </span>
-       <p>My very first tech blog on my own personal site! We’ll see what comes of this. I have a bit of a problem on focusing on things and sticking to it, but I’m going to do my best to keep a semi-sort-of-regular-kind-of-occasional routine of tech blogs going.
-
-</p>
-     </li>
-  
 </ul>
+
+  
+
+  <nav>
+  <ul class="pagination">
+    <li>
+      <a href="" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    
+        
+          <li class='active'><a class='active' href="#">1</a></li>
+        
+    
+        
+          <li><a href="/blog/page/2">2</a></li>
+        
+    
+    <li>
+      <a href="/blog/page/2" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+  
 
 </div>
 
