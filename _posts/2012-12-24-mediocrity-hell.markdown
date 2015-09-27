@@ -11,7 +11,7 @@ comments: true
 Warning: This is a pretty personal post. Staying up too late with too much wine
 and too much self doubt led to this existential crisis. Writing blog posts when
 you're alone at 3am after nearly 2 bottles of wine can make you question your life.
-<!-- more -->
+<!--more-->
 
 I'm in a never ending battle with the demons of mediocrity. I can't think of another thing more depressing than knowing that I have one life, one very short life, and that my life will probably be meaningless. Not a horrible life as if I didn't try. Not a life where I truly made a difference and reached my peak. Just a life of mediocrity. A life firmly in the middle. An invisible life. Why even live this life if you'll end it with no greater impact than before it existed?
 

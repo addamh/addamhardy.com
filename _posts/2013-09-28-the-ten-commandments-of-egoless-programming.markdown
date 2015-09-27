@@ -7,7 +7,7 @@ categories:
 ---
 
 Yesterday I found this [great post](http://www.kitchensoap.com/2012/10/25/on-being-a-senior-engineer/) on being a Senior Engineer and one of the best portions, of what was an outstanding albeit very long post that you should also read, was this list of Ten Commandments of Egoless Programming. The writer was making the case that there’s a lot more to being a Senior Engineer than just knowing all of the APIs by memory. He introduces the term “Mature Engineer” rather than Senior Engineer; meaning there are a lot of interpersonal, communication, and intangible skills that you gather only through a long stream of real world experience managing projects and people rather than expertise on a language or codebase.
-
+<!--more-->
 This list is so spot-on that it should be required reading for all developing engineers and should probably even be posted on the wall in the office. They are great milestones to follow on the road to mastery as an engineer.
 
 ##The Ten Commandments of Egoless Programming

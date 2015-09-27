@@ -79,7 +79,7 @@ h3.answer_toggle:hover {
 <div class="divider">&nbsp;</div>
 
 <h3>Ruby </h3>
-``` ruby cycles.rb https://raw.github.com/addamh/euler/master/026/cycles.rb download
+{% highlight ruby %} cycles.rb https://raw.github.com/addamh/euler/master/026/cycles.rb download
 require "prime"
 print for p in Prime.take_while{|p| p<1000}.reverse do
   break p if for d in (1...p) do
@@ -87,7 +87,7 @@ print for p in Prime.take_while{|p| p<1000}.reverse do
     break if (10**d-1)%p==0
   end
 end
-```
+{% endhighlight %}
 
 
 {% highlight console %}

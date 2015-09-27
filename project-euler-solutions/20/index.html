@@ -62,11 +62,11 @@ h3.answer_toggle:hover {
 <div class="divider">&nbsp;</div>
 
 <h3>Ruby </h3>
-``` ruby factorialSum.rb https://raw.github.com/addamh/euler/master/020/factorialSum.rb download
+{% highlight ruby %} factorialSum.rb https://raw.github.com/addamh/euler/master/020/factorialSum.rb download
 #!/usr/bin/env ruby
 
 puts 100.downto(1).to_a.reduce(&:*).to_s.each_char.to_a.map!{|k| k.to_i}.reduce(:+)
-```
+{% endhighlight %}
 
 
 {% highlight console %}

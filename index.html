@@ -9,7 +9,7 @@ tagline: engineer. analyst.
 	<div class="name"><h1>Addam Hardy</h1></div>
 	<div class="pitch"><p>iOS, Ruby on Rails, Javascript, and anything-at-all hacker. Passionate about user experience, rapid prototyping through agile methods and data driven analytics and system design. </p></div>
 	<div class="pitch_footer">
-		<p class="justify" style="word-spacing: 0px; letter-spacing: 6.461538px; text-align: center;">Fayetteville, AR &#8226; (202)713-5141
+		<p class="justify" style="word-spacing: 0px; letter-spacing: 6.461538px; text-align: center;">Fayetteville, AR
 	</p></div>
 	<div class="side_bar">
 					<h3>Company:</h3>
@@ -19,13 +19,13 @@ tagline: engineer. analyst.
 					<h3>Linkedin:</h3>
 					<h4><a href="http://www.linkedin.com/in/addamh/">addamh</a></h4>
 					<h3>Email:</h3>
-					<h4><a href="mailto:addam.hardy@gmail.com">addam.hardy@gmail.com</a></h4>
+					<h4><a href="mailto:addam.hardy@gmail.com">addam.hardy(at)gmail.com</a></h4>
 	</div>
 </div>
 <div class="posts_short">
 	<strong>Latest Posts: </strong>
 	<ul class="posts">
-	 {% for post in site.posts %}
+	 {% for post in site.posts limit: 5 %}
 	   <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
 	 {% endfor %}
 	</ul>

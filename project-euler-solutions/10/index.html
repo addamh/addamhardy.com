@@ -51,13 +51,13 @@ h3.answer_toggle:hover {
 <div class="divider">&nbsp;</div>
 
 <h3>Ruby </h3>
-``` ruby primesUnder2mm.rb https://raw.github.com/addamh/euler/master/010/primesUnder2mm.rb download
+{% highlight ruby %} primesUnder2mm.rb https://raw.github.com/addamh/euler/master/010/primesUnder2mm.rb download
 #!/usr/bin/env ruby
 
 require 'mathn'
 puts Prime.take_while{ |n| n < 2000000 }.inject(0){|sum,item| sum + item}
 
-```
+{% endhighlight %}
 
 
 {% highlight console %}

@@ -72,7 +72,7 @@ h3.answer_toggle:hover {
 <div class="divider">&nbsp;</div>
 
 <h3>Ruby </h3>
-``` ruby square_sum.rb https://raw.github.com/addamh/euler/master/006/square_sum.rb download
+{% highlight ruby %} square_sum.rb https://raw.github.com/addamh/euler/master/006/square_sum.rb download
 #!/usr/bin/env ruby
 
 range = 1..100
@@ -80,7 +80,7 @@ sum_of_squares = range.inject(0) { |sum, i| sum + i ** 2 }
 square_of_sum  = range.inject(0) { |sum, i| sum + i } ** 2
 puts square_of_sum - sum_of_squares
 
-```
+{% endhighlight %}
 
 
 {% highlight console %}

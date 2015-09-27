@@ -6,8 +6,8 @@ comments: true
 tags: [git, script]
 ---
 
-Git provides a very valuable feature that many developers seem to either overlook or blatantly not care about; it enables you to add distinct sections to a commit message. Specifically, it allows you to add a short summary for the commit and a long and detailed body. 
-
+Git provides a very valuable feature that many developers seem to either overlook or blatantly not care about; it enables you to add distinct sections to a commit message. Specifically, it allows you to add a short summary for the commit and a long and detailed body.
+<!--more-->
 A great commit message:
 
 ```
@@ -34,7 +34,7 @@ Further paragraphs come after blank lines.
 - Use a hanging indent
 ```
 
-Key points of a well formed commit message: 
+Key points of a well formed commit message:
 
   * Must have a summary line
   * Summary line must be 50 characters or less
@@ -43,34 +43,35 @@ Key points of a well formed commit message:
 
 Format breakdown:
 
-  * First line is summary 
+  * First line is summary
   * Second line is empty
   * Third line starts the in-depth description
 
 Be sure to write your summary in the present tense imperative. For example, instead of `Adds new copy to homepage` use `Add new copy to homepage` or instead of `Fixes bug #234234` use `Fix bug #234234`. This folows the convention that git itself uses. Have you ever noticed when you merge a branch the commit message is `Merge [branch]` and not `Merges [branch]` or `Merged [branch]`?
 
-## Why? 
+## Why?
 
-A lot of this info comes from a [great blog post](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html) by Tim Pope in 2008. I didn't make the rules I just follow them™. Various git commands pull the summary automatically and will just truncate your commit message if it is too long. This makes scanning the commit history very cumbersome and annoying. Commit summaries allow you to quickly convey the full intent of the commit in a single and succinct line. Think of it like the subject line of an email. 
+A lot of this info comes from a [great blog post](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html) by Tim Pope in 2008. I didn't make the rules I just follow them™. Various git commands pull the summary automatically and will just truncate your commit message if it is too long. This makes scanning the commit history very cumbersome and annoying. Commit summaries allow you to quickly convey the full intent of the commit in a single and succinct line. Think of it like the subject line of an email.
 
 Yesterday I was needing a break from normal work and decided to work on some git hooks that would make me follow these rules.  
 
 Git provides several hooks into git events for you to do some pre-defined action prior to or immediately after a commit.
 
-```bash
+{% highlight bash %}
 [master][~/dev] ls .git/hooks
 applypatch-msg.sample     post-update.sample        pre-commit.sample         prepare-commit-msg.sample
 commit-msg.sample         pre-applypatch.sample     pre-rebase.sample         update.sample
-```
+{% endhighlight %}
 
-I want to validate the commit message after the user creates the message but prior to it being committed to the repository. The specific hook I need for this is the `commit-msg` hook. If you remove the `.sample` from these files git will run them at their appropriate times. They are shell scripts and I could have written my message checker in a shell script like bash but I'm really not good at awk and sed and all that crazy shell scripting voodoo. So I just use the commit-msg shell script to call my own python script. 
+I want to validate the commit message after the user creates the message but prior to it being committed to the repository. The specific hook I need for this is the `commit-msg` hook. If you remove the `.sample` from these files git will run them at their appropriate times. They are shell scripts and I could have written my message checker in a shell script like bash but I'm really not good at awk and sed and all that crazy shell scripting voodoo. So I just use the commit-msg shell script to call my own python script.
 
-``` bash commit-msg
+{% highlight bash %}
+commit-msg
 #!/bin/sh
 
 exec < /dev/tty
 .git/hooks/validate-commit.py $1
-```
+{% endhighlight %}
 
 What I want this script to do:
 
@@ -82,7 +83,7 @@ What I want this script to do:
 
 After a few beers and some tinkering I ended up with this messy bit of python code:
 
-```python validate-commit.py 
+{% highlight python %}
 #!/usr/bin/python
 
 import sys, os
@@ -136,11 +137,11 @@ while True:
         call('%s %s' % (editor, message_file), shell=True)
         continue
     break
-```
+{% endhighlight %}
 
-Now if I try to commit a badly formed commit message like this: 
+Now if I try to commit a badly formed commit message like this:
 
-```bash COMMIT_EDITMSG
+{% highlight bash %} COMMIT_EDITMSG
 Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis
 ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id
 elit. Cras mattis consectetur purus sit amet fermentum. Maecenas
@@ -162,13 +163,13 @@ sit amet non magna.
 diff --git a/31234 b/31234
 new file mode 100644
 index 0000000..e69de29
-```
+{% endhighlight %}
 
 It will kick me back to the shell prompt me with this message: `Invalid git commit message format.  Press y to edit and n to cancel the commit. [y/n]`
 
 Once you press `y` to edit your commit it will kick you back to your commit and allow you to fix the bad formatting **and** even tell you which lines were incorrect and why!
 
-```bash COMMIT_EDITMSG
+{% highlight bash %} COMMIT_EDITMSG
 Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis
 ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id
 elit. Cras mattis consectetur purus sit amet fermentum. Maecenas
@@ -195,11 +196,11 @@ sit amet non magna.
 diff --git a/1234098 b/1234098
 new file mode 100644
 index 0000000..e69de29
-```
+{% endhighlight %}
 
-This tells us that we have errors on line 1, 2 and 7 of our commit. I've accomplished everything I set out to and now I'll be forced to follow good practices on my commit messages. 
+This tells us that we have errors on line 1, 2 and 7 of our commit. I've accomplished everything I set out to and now I'll be forced to follow good practices on my commit messages.
 
 
-I actually wrote this intially in Ruby, if you know me you know I am definitely not a python programmer, but had some problems I couldn't figure out with forking subprocesses for the editor after a second commit rejection. I needed it to stay in the error loop and check the message again but if you rejected your commit and then tried to use the exact same message with the errors again, it would succeed and commit to the repository. Someday soon I'll dig into that more but for now this python script will certainly do!
+I actually wrote this initially in Ruby, if you know me you know I am definitely not a python programmer, but had some problems I couldn't figure out with forking subprocesses for the editor after a second commit rejection. I needed it to stay in the error loop and check the message again but if you rejected your commit and then tried to use the exact same message with the errors again, it would succeed and commit to the repository. Someday soon I'll dig into that more but for now this python script will certainly do!
 
-Do you follow any guidelines on commit message format? 
+Do you follow any guidelines on commit message format?

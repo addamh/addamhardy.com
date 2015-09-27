@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "PGP"
-group: navigation
+group: blog
 ---
 
 

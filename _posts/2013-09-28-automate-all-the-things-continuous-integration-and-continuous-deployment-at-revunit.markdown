@@ -3,13 +3,11 @@ layout: post
 title: "Automate All The Things: Continuous Integration and Deployment at RevUnit"
 date: 2013-09-28 16:17
 comments: true
-categories: 
+categories:
 tags: [ci, continuous integration, process, travis ci]
 ---
 
-[cross post from my company blog]
-
-We are strong believers in the agile method of software development. We break down key features into user stories, do sprint planning, track velocity, unit and integration testing; all that good stuff. But we’ve had a few key pillars of agile development missing for a while and we recently rectified that. RevUnit’s process now fully incorporates continuous integration and continuous deployment. This enables us to automate more of our process which frees us up to focus on the important things — like implementing and shipping features!
+We are strong believers in the agile method of software development. We break down key features into user stories, do sprint planning, track velocity, unit and integration testing; all that good stuff. But we’ve had a few key pillars of agile development missing for a while and we recently rectified that. <!--more-->RevUnit’s process now fully incorporates continuous integration and continuous deployment. This enables us to automate more of our process which frees us up to focus on the important things — like implementing and shipping features!
 
 ##Automate all the things!
 
@@ -91,7 +89,7 @@ If it is an iOS or Android application, it will build a binary and automatically
 
 It’s really a fantastic process!
 
-As you can see, there are many checks for quality and functionality from the very beginning of the process all the way to the end. As well as backward/redundant checks to be sure everything that once was still is. And while it seems like a lot of steps, it is all automated! A great process should get out of your way and let you do your work. 
+As you can see, there are many checks for quality and functionality from the very beginning of the process all the way to the end. As well as backward/redundant checks to be sure everything that once was still is. And while it seems like a lot of steps, it is all automated! A great process should get out of your way and let you do your work.
 
 ##It’s Been A Long Journey
 
@@ -101,7 +99,7 @@ Our development process is really what sets us apart from our competitors in the
 
 Ways I see to improve it in the future:
 
-* I am going to develop some dashboards that will always be displayed on a large tv in the office. So we can always see at a glance if a project’s builds are failing. Or alternately, look up and see green across the board and know we are kicking ass at our job. :) 
+* I am going to develop some dashboards that will always be displayed on a large tv in the office. So we can always see at a glance if a project’s builds are failing. Or alternately, look up and see green across the board and know we are kicking ass at our job. :)
 
 * We use Hubot by GitHub as our chat bot and we’ll be building more Hubot scripts to further automate our workflow.
 
@@ -113,3 +111,4 @@ Ways I see to improve it in the future:
 
 * ‘Automate All The Things’ may become a running column on our blog about various ways to speed up and improve your workflow.
 
+[cross post from my company blog]
