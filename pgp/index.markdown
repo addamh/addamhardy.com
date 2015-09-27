@@ -38,7 +38,6 @@ If you know me IRL, you can verify my key by viewing my photoId in the key and m
 [Public key direct download](https://gist.github.com/addamh/6913348/raw/59c8653fdd9b5f86101a48ab9d55c5b2e8e687fc/addam-hardy.pub)
 
     -----BEGIN PGP PUBLIC KEY BLOCK-----
-    Version: GnuPG/MacGPG2 v2.0.20 (Darwin)
 
     mQINBFJWNjEBEAC2uIY0aPe3rO7Mq/OXMYf7/YVD1ZiIpk7RSsxXzuulDXcK7xpY
     FmOaUC44hLXBkiu1y01yhVQYkdTmRDt2Pr5PtmMoFKfXlC+8LhVIp+ka58DMZ+4f

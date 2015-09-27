@@ -2,7 +2,7 @@
  * Reset some basic elements
  */
 body, h1, h2, h3, h4, h5, h6,
-p, blockquote, pre, hr,
+blockquote, pre, hr,
 dl, dd, ol, ul, figure {
     margin: 0;
     padding: 0;
@@ -23,13 +23,16 @@ body {
     -webkit-text-size-adjust: 100%;
 }
 
-
+p {
+  font-size: 15px;
+  line-height: 20px;
+}
 
 /**
  * Set `margin-bottom` to maintain vertical rhythm
  */
 h1, h2, h3, h4, h5, h6,
-p, blockquote, pre,
+blockquote, pre,
 ul, ol, dl, figure,
 %vertical-rhythm {
     margin-bottom: 0;
@@ -110,13 +113,16 @@ a {
 blockquote {
     color: $grey-color;
     border-left: 4px solid $grey-color-light;
-    padding-left: $spacing-unit / 2;
     font-size: 18px;
-    letter-spacing: -1px;
     font-style: italic;
-
+    padding: 10px 15px;
+    margin: 20px 0;
+    padding-left: $spacing-unit / 2;
     > :last-child {
         margin-bottom: 0;
+    }
+    p {
+      font-size: 20px;
     }
 }
 
@@ -125,12 +131,10 @@ blockquote {
 /**
  * Code formatting
  */
-pre,
-code {
+pre {
     font-size: 15px;
-    border: 1px solid $grey-color-light;
     border-radius: 3px;
-    background-color: #eef;
+    background-color: #515151; color: #cccccc;
 }
 
 code {

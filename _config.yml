@@ -11,3 +11,9 @@ author:
 # Build settings
 markdown: kramdown
 excerpt_separator: <!--more-->
+paginate: 10
+paginate_path: "/blog/page/:num"
+
+# Disqus Comments
+disqus_short_name: addamhardy
+disqus_show_comment_count: true

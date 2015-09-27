@@ -6,7 +6,7 @@ group: blog
 ---
 
 <ul class="posts">
-  {% for post in site.posts %}
+  {% for post in paginator.posts %}
     <li>
        <h2><a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></h2>
        <span class="meta">
@@ -16,3 +16,30 @@ group: blog
      </li>
   {% endfor %}
 </ul>
+
+  {% if paginator.total_pages > 1 %}
+
+  <nav>
+  <ul class="pagination">
+    <li>
+      <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    {% for page in (1..paginator.total_pages) %}
+        {% if page == paginator.page %}
+          <li class='active'><a class='active' href="#">{{ page }}</a></li>
+        {% elsif page == 1 %}
+          <li><a href="{{ '/blog' | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a></li>
+        {% else %}
+          <li><a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a></li>
+        {% endif %}
+    {% endfor %}
+    <li>
+      <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+  {% endif %}

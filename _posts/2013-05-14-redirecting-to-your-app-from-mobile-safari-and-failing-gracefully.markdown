@@ -16,17 +16,19 @@ For those who haven't used custom URL schemas with iOS projects, you are able to
 
 ## The problem:
 
-  <img src="/assets/images/detect_app/unknownurl.png"/ style="width:200px; float: right; margin-left: 15px;">
+<img src="/assets/images/detect_app/unknownurl.png" style="width:200px; float: right; margin-left: 15px;">
 
-  When a user without the app clicks a link with this custom URL scheme and they don't have the app installed, and therefore don't have the custom URL scheme registered with the operating system on the device, they get this really ugly alert message. Ideally we'd say something like "Oops looks like you don't have the app installed" or something, but since iOS has no idea what that URL even is until you tell it what it is, it just says this: "Safari cannot open the page because the address is invalid."
+When a user without the app clicks a link with this custom URL scheme and they don't have the app installed, and therefore don't have the custom URL scheme registered with the operating system on the device, they get this really ugly alert message. Ideally we'd say something like "Oops looks like you don't have the app installed" or something, but since iOS has no idea what that URL even is until you tell it what it is, it just says this: "Safari cannot open the page because the address is invalid."
 
-  Now that's really informative! The user now has no idea what is really happening. We want them to think, "Doh, I don't have the app. I should go download it," but they really have no idea what is going on. This is a fault with the website for all they know. A bug. So how do we gracefully deal with this? It's a little dumb, but there is a way. Sometimes, most of the time really, when approached with stupid OS/memory/processing power/language capability/anything you can imagine constraints, we have to get creative with our solutions. And this situation definitely required a creative solution.
+Now that's really informative! The user now has no idea what is really happening. We want them to think, "Doh, I don't have the app. I should go download it," but they really have no idea what is going on. This is a fault with the website for all they know. A bug. So how do we gracefully deal with this? It's a little dumb, but there is a way. Sometimes, most of the time really, when approached with stupid OS/memory/processing power/language capability/anything you can imagine constraints, we have to get creative with our solutions. And this situation definitely required a creative solution.
 
 <h2 style="clear: both">The Solution:</h2>
 
 First off, here is the code:
 
-{% highlight java %}script (app.exist?) ? open_app() : open_appStore()
+{% highlight javascript %}
+
+(app.exist?) ? open_app() : open_appStore()
     $(".open_app").click(function(e){
         var id = $(e.target).data("product-id");
 

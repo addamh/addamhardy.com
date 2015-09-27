@@ -181,6 +181,7 @@
 .post-meta {
     font-size: $small-font-size;
     color: $grey-color;
+    padding: 10px 0;
 }
 
 .post-link {
@@ -194,12 +195,11 @@
  * Posts
  */
 .post-header {
-    margin-bottom: $spacing-unit;
+    margin-bottom: 15px;
 }
 
 .post-title {
-    font-size: 42px;
-    letter-spacing: -1px;
+    font-size: 36px;
     line-height: 1;
 
     @include media-query($on-laptop) {
@@ -209,10 +209,12 @@
 
 .post-content {
     margin-bottom: $spacing-unit;
-
+    .highlight {
+      margin-bottom: 10px;
+    }
     h2 {
         font-size: 32px;
-
+        padding: 20px 0;
         @include media-query($on-laptop) {
             font-size: 28px;
         }
@@ -220,6 +222,7 @@
 
     h3 {
         font-size: 26px;
+        margin-bottom: 15px;
 
         @include media-query($on-laptop) {
             font-size: 22px;
