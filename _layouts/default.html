@@ -58,6 +58,15 @@
             {% endif %}
               <a href="/about">About Me</a>
             </li>
+
+            {% if page.url == '/talks/index.html' %}
+              <li class='active' id="talks">
+            {% else %}
+              <li id="talks">
+            {% endif %}
+              <a href="/talks">Talks</a>
+            </li>
+
           </ul>
         </div>
       </div>
