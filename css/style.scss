@@ -390,10 +390,6 @@ p.meta {
    }
 }
 
-ul {
- margin-left: 20px !important;
-}
-
 article.blog-index {
   margin-bottom: 20px;
   padding-bottom: 20px;
@@ -418,6 +414,19 @@ article.blog-index {
         color: rgba(0,0,0,0.5);
         line-height: 24px;
       }
+    }
+  }
+}
+
+.posts {
+  list-style: none;
+  margin-left: 0;
+  li {
+    list-style: none;
+    margin-bottom: 25px;
+    .meta {
+      margin: 5px 0;
+      display: block;
     }
   }
 }
