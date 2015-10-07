@@ -890,9 +890,6 @@ p.meta {
     color: #ccc;
     text-decoration: none; }
 
-ul {
-  margin-left: 20px !important; }
-
 article.blog-index {
   margin-bottom: 20px;
   padding-bottom: 20px;
@@ -914,3 +911,13 @@ article.blog-index {
       text-transform: uppercase;
       color: rgba(0, 0, 0, 0.5);
       line-height: 24px; }
+
+.posts {
+  list-style: none;
+  margin-left: 0; }
+  .posts li {
+    list-style: none;
+    margin-bottom: 25px; }
+    .posts li .meta {
+      margin: 5px 0;
+      display: block; }
