@@ -912,12 +912,12 @@ article.blog-index {
       color: rgba(0, 0, 0, 0.5);
       line-height: 24px; }
 
-.posts {
+.posts.blog {
   list-style: none;
   margin-left: 0; }
-  .posts li {
+  .posts.blog li {
     list-style: none;
     margin-bottom: 25px; }
-    .posts li .meta {
+    .posts.blog li .meta {
       margin: 5px 0;
       display: block; }
