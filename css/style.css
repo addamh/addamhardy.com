@@ -584,6 +584,28 @@ pre {
   color: #f99157; }
 
 /* Literal.Number.Integer.Long */
+.navbar-inner {
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #2f4050;
+  background-image: none;
+  background-image: none;
+  background-image: none;
+  background-image: none;
+  background-image: none;
+  background-image: none;
+  filter: none;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1); }
+  .navbar-inner li.active a {
+    background-color: #293846 !important;
+    color: #FFF !important; }
+  .navbar-inner a {
+    color: #a7b1c2 !important; }
+    .navbar-inner a.active, .navbar-inner a:hover, .navbar-inner a.brand {
+      color: #FFF !important; }
+
 /* Override some defaults */
 html {
   min-height: 100%; }
@@ -705,7 +727,7 @@ strong {
   padding-top: 5px; }
 
 .side_bar {
-  border-left: 5px solid #333;
+  border-left: 5px solid #293846;
   color: black;
   float: right;
   padding-left: 5px;
