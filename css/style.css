@@ -875,3 +875,20 @@ article.blog-index {
   margin-bottom: 20px;
   padding-bottom: 20px;
   border-bottom: 1px dotted #aeaeae; }
+
+.talk-header {
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #ddd; }
+
+#talks li {
+  margin-bottom: 5px;
+  list-style-type: none; }
+  #talks li div {
+    padding: 5px 0; }
+    #talks li div .date {
+      float: right;
+      font-size: 12px;
+      text-transform: uppercase;
+      color: rgba(0, 0, 0, 0.5);
+      line-height: 24px; }
