@@ -1,6 +1,6 @@
 ---
-layout: page
-title: "PGP"
+layout: main
+title: "Talk to me with PGP Encryption"
 group: blog
 ---
 
