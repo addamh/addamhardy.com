@@ -1,6 +1,6 @@
 ---
 layout: main
-title: "Talk to me with PGP Encryption"
+title: "Talk to me. But like, encrypted and stuff."
 group: blog
 ---
 
