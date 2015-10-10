@@ -692,7 +692,7 @@ a {
 
 .posts_short {
   float: right;
-  width: 60%; }
+  width: 70%; }
   .posts_short li {
     line-height: 25px; }
 
@@ -701,7 +701,7 @@ strong {
 
 .currently_reading {
   float: left;
-  width: 40%; }
+  width: 25%; }
 
 .image_header {
   height: 250px;
