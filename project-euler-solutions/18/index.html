@@ -151,42 +151,42 @@ h3.answer_toggle:hover {
 <div class="divider">&nbsp;</div>
 
 <h3>Ruby </h3>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">smallTriangle</span><span class="o">.</span><span class="n">rb</span> <span class="ss">https</span><span class="p">:</span><span class="sr">//</span><span class="n">raw</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">addamh</span><span class="o">/</span><span class="n">euler</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="mo">01</span><span class="mi">8</span><span class="o">/</span><span class="n">smallTriangle</span><span class="o">.</span><span class="n">rb</span> <span class="n">download</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"> <span class="n">smallTriangle</span><span class="p">.</span><span class="nf">rb</span> <span class="n">https</span><span class="ss">:/</span><span class="o">/</span><span class="n">raw</span><span class="p">.</span><span class="nf">github</span><span class="p">.</span><span class="nf">com</span><span class="o">/</span><span class="n">addamh</span><span class="o">/</span><span class="n">euler</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="mo">01</span><span class="mi">8</span><span class="o">/</span><span class="n">smallTriangle</span><span class="p">.</span><span class="nf">rb</span> <span class="n">download</span>
 <span class="c1">#!/usr/bin/env ruby</span>
 
-<span class="n">tri</span> <span class="o">=</span> <span class="o">&lt;&lt;</span><span class="no">TRI</span>
-<span class="sh">75</span>
-<span class="sh">95 64</span>
-<span class="sh">17 47 82</span>
-<span class="sh">18 35 87 10</span>
-<span class="sh">20 04 82 47 65</span>
-<span class="sh">19 01 23 75 03 34</span>
-<span class="sh">88 02 77 73 07 63 67</span>
-<span class="sh">99 65 04 28 06 16 70 92</span>
-<span class="sh">41 41 26 56 83 40 80 70 33</span>
-<span class="sh">41 48 72 33 47 32 37 16 94 29</span>
-<span class="sh">53 71 44 65 25 43 91 52 97 51 14</span>
-<span class="sh">70 11 33 28 77 73 17 78 39 68 17 57</span>
-<span class="sh">91 71 52 38 17 14 91 43 58 50 27 29 48</span>
-<span class="sh">63 66 04 68 89 53 67 30 73 16 69 87 40 31</span>
-<span class="sh">04 62 98 27 23 09 70 98 73 93 38 53 60 04 23</span>
-<span class="no">TRI</span>
+<span class="n">tri</span> <span class="o">=</span> <span class="o">&lt;&lt;</span><span class="no">TRI</span><span class="sh">
+75
+95 64
+17 47 82
+18 35 87 10
+20 04 82 47 65
+19 01 23 75 03 34
+88 02 77 73 07 63 67
+99 65 04 28 06 16 70 92
+41 41 26 56 83 40 80 70 33
+41 48 72 33 47 32 37 16 94 29
+53 71 44 65 25 43 91 52 97 51 14
+70 11 33 28 77 73 17 78 39 68 17 57
+91 71 52 38 17 14 91 43 58 50 27 29 48
+63 66 04 68 89 53 67 30 73 16 69 87 40 31
+04 62 98 27 23 09 70 98 73 93 38 53 60 04 23
+</span><span class="no">TRI</span>
 
-<span class="n">rows</span> <span class="o">=</span> <span class="n">tri</span><span class="o">.</span><span class="n">each_line</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">line</span><span class="o">|</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:to_i</span><span class="p">)</span> <span class="p">}</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="n">tri</span><span class="p">.</span><span class="nf">each_line</span><span class="p">.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">line</span><span class="o">|</span> <span class="n">line</span><span class="p">.</span><span class="nf">split</span><span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:to_i</span><span class="p">)</span> <span class="p">}</span>
 
-<span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="p">(</span><span class="n">rows</span><span class="o">.</span><span class="n">length</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">downto</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span> <span class="k">do</span>
-  <span class="k">for</span> <span class="n">j</span> <span class="k">in</span> <span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">downto</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">to_a</span> <span class="k">do</span>
-    <span class="n">rows</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">+=</span> <span class="o">[</span><span class="n">rows</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">][</span><span class="n">j</span><span class="o">].</span><span class="n">to_i</span><span class="p">,</span><span class="n">rows</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">][</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">].</span><span class="n">to_i</span><span class="o">].</span><span class="n">max</span>
+<span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="p">(</span><span class="n">rows</span><span class="p">.</span><span class="nf">length</span><span class="o">-</span><span class="mi">2</span><span class="p">).</span><span class="nf">downto</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nf">to_a</span> <span class="k">do</span>
+  <span class="k">for</span> <span class="n">j</span> <span class="k">in</span> <span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="nf">downto</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nf">to_a</span> <span class="k">do</span>
+    <span class="n">rows</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="p">[</span><span class="n">rows</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">].</span><span class="nf">to_i</span><span class="p">,</span><span class="n">rows</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">].</span><span class="nf">to_i</span><span class="p">].</span><span class="nf">max</span>
   <span class="k">end</span>
 <span class="k">end</span>
 
-<span class="nb">p</span> <span class="n">rows</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">0</span><span class="o">]</span></code></pre></div>
+<span class="nb">p</span> <span class="n">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span></code></pre></figure>
 
 
-<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span> <span class="nb">time </span>ruby smallTriangle.rb
-<span class="go">real	0m0.489s</span>
-<span class="go">user	0m0.462s</span>
-<span class="go">sys	0m0.024s</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-console" data-lang="console">$ time ruby smallTriangle.rb
+real	0m0.489s
+user	0m0.462s
+sys	0m0.024s</code></pre></figure>
 
 
 
@@ -207,8 +207,8 @@ h3.answer_toggle:hover {
         
           
           // var disqus_developer = 1;
-          var disqus_identifier = 'http://addamhardy.com/project-euler-solutions/18/index.html';
-          var disqus_url = 'http://addamhardy.com/project-euler-solutions/18/index.html';
+          var disqus_identifier = 'http://addamhardy.com/project-euler-solutions/18/';
+          var disqus_url = 'http://addamhardy.com/project-euler-solutions/18/';
           var disqus_script = 'embed.js';
         
       (function () {
@@ -225,7 +225,7 @@ h3.answer_toggle:hover {
       </div>
 
       <footer>
-        <p>&copy; Addam Hardy 2012-2015
+        <p>&copy; Addam Hardy 2012-2016
         </p>
       </footer>
 

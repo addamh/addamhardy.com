@@ -130,48 +130,48 @@ h3.answer_toggle:hover {
 <div class="divider">&nbsp;</div>
 
 <h3>Ruby </h3>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">find_product</span><span class="o">.</span><span class="n">rb</span> <span class="ss">https</span><span class="p">:</span><span class="sr">//</span><span class="n">raw</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">addamh</span><span class="o">/</span><span class="n">euler</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="mo">00</span><span class="mi">8</span><span class="o">/</span><span class="n">find_product</span><span class="o">.</span><span class="n">rb</span> <span class="n">download</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"> <span class="n">find_product</span><span class="p">.</span><span class="nf">rb</span> <span class="n">https</span><span class="ss">:/</span><span class="o">/</span><span class="n">raw</span><span class="p">.</span><span class="nf">github</span><span class="p">.</span><span class="nf">com</span><span class="o">/</span><span class="n">addamh</span><span class="o">/</span><span class="n">euler</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="mo">00</span><span class="mi">8</span><span class="o">/</span><span class="n">find_product</span><span class="p">.</span><span class="nf">rb</span> <span class="n">download</span>
 <span class="c1">#!/usr/bin/env ruby</span>
 
-<span class="n">n</span> <span class="o">=</span> <span class="o">&lt;&lt;</span><span class="no">NUM</span>
-<span class="sh">73167176531330624919225119674426574742355349194934 </span>
-<span class="sh">96983520312774506326239578318016984801869478851843 </span>
-<span class="sh">85861560789112949495459501737958331952853208805511 </span>
-<span class="sh">12540698747158523863050715693290963295227443043557 </span>
-<span class="sh">66896648950445244523161731856403098711121722383113 </span>
-<span class="sh">62229893423380308135336276614282806444486645238749 </span>
-<span class="sh">30358907296290491560440772390713810515859307960866 </span>
-<span class="sh">70172427121883998797908792274921901699720888093776 </span>
-<span class="sh">65727333001053367881220235421809751254540594752243 </span>
-<span class="sh">52584907711670556013604839586446706324415722155397 </span>
-<span class="sh">53697817977846174064955149290862569321978468622482 </span>
-<span class="sh">83972241375657056057490261407972968652414535100474 </span>
-<span class="sh">82166370484403199890008895243450658541227588666881 </span>
-<span class="sh">16427171479924442928230863465674813919123162824586 </span>
-<span class="sh">17866458359124566529476545682848912883142607690042 </span>
-<span class="sh">24219022671055626321111109370544217506941658960408 </span>
-<span class="sh">07198403850962455444362981230987879927244284909188 </span>
-<span class="sh">84580156166097919133875499200524063689912560717606 </span>
-<span class="sh">05886116467109405077541002256983155200055935729725 </span>
-<span class="sh">71636269561882670428252483600823257530420752963450</span>
-<span class="no">NUM</span>
+<span class="n">n</span> <span class="o">=</span> <span class="o">&lt;&lt;</span><span class="no">NUM</span><span class="sh">
+73167176531330624919225119674426574742355349194934 
+96983520312774506326239578318016984801869478851843 
+85861560789112949495459501737958331952853208805511 
+12540698747158523863050715693290963295227443043557 
+66896648950445244523161731856403098711121722383113 
+62229893423380308135336276614282806444486645238749 
+30358907296290491560440772390713810515859307960866 
+70172427121883998797908792274921901699720888093776 
+65727333001053367881220235421809751254540594752243 
+52584907711670556013604839586446706324415722155397 
+53697817977846174064955149290862569321978468622482 
+83972241375657056057490261407972968652414535100474 
+82166370484403199890008895243450658541227588666881 
+16427171479924442928230863465674813919123162824586 
+17866458359124566529476545682848912883142607690042 
+24219022671055626321111109370544217506941658960408 
+07198403850962455444362981230987879927244284909188 
+84580156166097919133875499200524063689912560717606 
+05886116467109405077541002256983155200055935729725 
+71636269561882670428252483600823257530420752963450
+</span><span class="no">NUM</span>
 
-<span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
 <span class="nb">p</span> <span class="o">=</span> <span class="mi">0</span>
  
-<span class="k">while</span> <span class="n">n</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span>
-  <span class="n">np</span> <span class="o">=</span> <span class="n">n</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">to_i</span> <span class="o">*</span> <span class="n">n</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="n">to_i</span> <span class="o">*</span> <span class="n">n</span><span class="o">[</span><span class="mi">2</span><span class="o">].</span><span class="n">to_i</span> <span class="o">*</span> <span class="n">n</span><span class="o">[</span><span class="mi">3</span><span class="o">].</span><span class="n">to_i</span> <span class="o">*</span> <span class="n">n</span><span class="o">[</span><span class="mi">4</span><span class="o">].</span><span class="n">to_i</span>
+<span class="k">while</span> <span class="n">n</span><span class="p">.</span><span class="nf">size</span> <span class="o">&gt;</span> <span class="mi">0</span>
+  <span class="n">np</span> <span class="o">=</span> <span class="n">n</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nf">to_i</span> <span class="o">*</span> <span class="n">n</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nf">to_i</span> <span class="o">*</span> <span class="n">n</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="nf">to_i</span> <span class="o">*</span> <span class="n">n</span><span class="p">[</span><span class="mi">3</span><span class="p">].</span><span class="nf">to_i</span> <span class="o">*</span> <span class="n">n</span><span class="p">[</span><span class="mi">4</span><span class="p">].</span><span class="nf">to_i</span>
   <span class="nb">p</span> <span class="o">=</span> <span class="n">np</span> <span class="o">&gt;</span> <span class="nb">p</span> <span class="p">?</span> <span class="n">np</span> <span class="p">:</span> <span class="nb">p</span>
-  <span class="n">n</span><span class="o">.</span><span class="n">shift</span>
+  <span class="n">n</span><span class="p">.</span><span class="nf">shift</span>
 <span class="k">end</span>
  
-<span class="nb">p</span> <span class="nb">p</span></code></pre></div>
+<span class="nb">p</span> <span class="nb">p</span></code></pre></figure>
 
 
-<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span> <span class="nb">time </span>ruby find_product.rb
-<span class="go">real	0m0.027s</span>
-<span class="go">user	0m0.022s</span>
-<span class="go">sys	0m0.004s</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-console" data-lang="console">$ time ruby find_product.rb
+real	0m0.027s
+user	0m0.022s
+sys	0m0.004s</code></pre></figure>
 
 
 
@@ -192,8 +192,8 @@ h3.answer_toggle:hover {
         
           
           // var disqus_developer = 1;
-          var disqus_identifier = 'http://addamhardy.com/project-euler-solutions/8/index.html';
-          var disqus_url = 'http://addamhardy.com/project-euler-solutions/8/index.html';
+          var disqus_identifier = 'http://addamhardy.com/project-euler-solutions/8/';
+          var disqus_url = 'http://addamhardy.com/project-euler-solutions/8/';
           var disqus_script = 'embed.js';
         
       (function () {
@@ -210,7 +210,7 @@ h3.answer_toggle:hover {
       </div>
 
       <footer>
-        <p>&copy; Addam Hardy 2012-2015
+        <p>&copy; Addam Hardy 2012-2016
         </p>
       </footer>
 

@@ -118,26 +118,26 @@ h3.answer_toggle:hover {
 <div class="divider">&nbsp;</div>
 
 <h3>Ruby </h3>
-<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">palindrome</span><span class="o">.</span><span class="n">rb</span> <span class="ss">https</span><span class="p">:</span><span class="sr">//</span><span class="n">raw</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">addamh</span><span class="o">/</span><span class="n">euler</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="mo">004</span><span class="o">/</span><span class="n">palindrome</span><span class="o">.</span><span class="n">rb</span> <span class="n">download</span>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"> <span class="n">palindrome</span><span class="p">.</span><span class="nf">rb</span> <span class="n">https</span><span class="ss">:/</span><span class="o">/</span><span class="n">raw</span><span class="p">.</span><span class="nf">github</span><span class="p">.</span><span class="nf">com</span><span class="o">/</span><span class="n">addamh</span><span class="o">/</span><span class="n">euler</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="mo">004</span><span class="o">/</span><span class="n">palindrome</span><span class="p">.</span><span class="nf">rb</span> <span class="n">download</span>
 <span class="c1">#!/usr/bin/env ruby</span>
 
-<span class="n">store</span> <span class="o">=</span> <span class="nb">Array</span><span class="o">.</span><span class="n">new</span>
-<span class="p">(</span><span class="mi">100</span><span class="o">.</span><span class="n">.</span><span class="mi">999</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span>
-   <span class="p">(</span><span class="mi">100</span><span class="o">.</span><span class="n">.</span><span class="mi">999</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">y</span><span class="o">|</span>
+<span class="n">store</span> <span class="o">=</span> <span class="no">Array</span><span class="p">.</span><span class="nf">new</span>
+<span class="p">(</span><span class="mi">100</span><span class="p">.</span><span class="nf">.</span><span class="mi">999</span><span class="p">).</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span>
+   <span class="p">(</span><span class="mi">100</span><span class="p">.</span><span class="nf">.</span><span class="mi">999</span><span class="p">).</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">y</span><span class="o">|</span>
       <span class="n">product</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span>
-      <span class="k">if</span> <span class="n">product</span><span class="o">.</span><span class="n">to_s</span> <span class="o">==</span> <span class="n">product</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">reverse</span>
+      <span class="k">if</span> <span class="n">product</span><span class="p">.</span><span class="nf">to_s</span> <span class="o">==</span> <span class="n">product</span><span class="p">.</span><span class="nf">to_s</span><span class="p">.</span><span class="nf">reverse</span>
          <span class="n">store</span> <span class="o">&lt;&lt;</span> <span class="n">product</span>
       <span class="k">end</span>
    <span class="k">end</span>
 <span class="k">end</span>
-<span class="n">store</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">sort</span>
-<span class="nb">puts</span> <span class="n">store</span><span class="o">.</span><span class="n">last</span></code></pre></div>
+<span class="n">store</span> <span class="o">=</span> <span class="n">store</span><span class="p">.</span><span class="nf">sort</span>
+<span class="nb">puts</span> <span class="n">store</span><span class="p">.</span><span class="nf">last</span></code></pre></figure>
 
 
-<div class="highlight"><pre><code class="language-console" data-lang="console"><span class="gp">$</span> <span class="nb">time </span>ruby palindrome.rb
-<span class="go">real	0m1.137s</span>
-<span class="go">user	0m1.131s</span>
-<span class="go">sys	0m0.004s</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-console" data-lang="console">$ time ruby palindrome.rb
+real	0m1.137s
+user	0m1.131s
+sys	0m0.004s</code></pre></figure>
 
 
 
@@ -158,8 +158,8 @@ h3.answer_toggle:hover {
         
           
           // var disqus_developer = 1;
-          var disqus_identifier = 'http://addamhardy.com/project-euler-solutions/4/index.html';
-          var disqus_url = 'http://addamhardy.com/project-euler-solutions/4/index.html';
+          var disqus_identifier = 'http://addamhardy.com/project-euler-solutions/4/';
+          var disqus_url = 'http://addamhardy.com/project-euler-solutions/4/';
           var disqus_script = 'embed.js';
         
       (function () {
@@ -176,7 +176,7 @@ h3.answer_toggle:hover {
       </div>
 
       <footer>
-        <p>&copy; Addam Hardy 2012-2015
+        <p>&copy; Addam Hardy 2012-2016
         </p>
       </footer>
 

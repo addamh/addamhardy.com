@@ -73,7 +73,7 @@
   <article class="post-content">
     <p>We are strong believers in the agile method of software development. We break down key features into user stories, do sprint planning, track velocity, unit and integration testing; all that good stuff. But we’ve had a few key pillars of agile development missing for a while and we recently rectified that. <!--more-->RevUnit’s process now fully incorporates continuous integration and continuous deployment. This enables us to automate more of our process which frees us up to focus on the important things — like implementing and shipping features!</p>
 
-<h2 id="automate-all-the-things">Automate all the things!</h2>
+<p>##Automate all the things!</p>
 
 <p>Automating your workflow is vital for a streamlined development process. There are so many small tasks that a developer has to do in addition to their core duties that it can really drain not only the time the developer has but also their focus on the more important tasks at hand. With so much to do just to enable the ability to do the things we have to do, how do we get anything done at all?</p>
 
@@ -87,7 +87,7 @@
 
 <p>Specifically for this post, I’ll talk about how we automated our integration testing and deployment using Continuous Integration and Continuous Deployment.</p>
 
-<h2 id="what-is-continuous-integration">What Is Continuous Integration?</h2>
+<p>##What Is Continuous Integration?</p>
 
 <p>Continuous Integration is a software development practice where members of a team integrate their work frequently. This integration is trigged by every push of new commits to GitHub. Each time a developer pushes new code to GitHub our CI system clone’s that branch and runs all of the entire unit and integration test suite.</p>
 
@@ -97,7 +97,7 @@
 
 <p>The instance where CI really shines is in rapidly exposing regression failures. Without a thorough test suite and CI, a feature that was complete in week 2 of development and was destroyed by a feature that was completed in week 12 of development will never be exposed until the very end in a formal QA process. Obviously that is less than ideal. We need to know about defects immediately or it could really derail the speed and fluidity of our process and our ability to quickly deliver results to a client. This is especially important for defects in features that we already completed and tested thoroughly.</p>
 
-<h2 id="what-is-continuous-deployment">What Is Continuous Deployment?</h2>
+<p>##What Is Continuous Deployment?</p>
 
 <p>So we’ve automated our integration testing and building, what’s the final step? Deployment. This step of the process can take the longest time depending on the complexity of your application. I’ve even worked in a large corporate environment wherein if you wanted a deployment to the staging servers you had to contact a deployment team which could take up to a week to finally get deployed. That’s crazy!</p>
 
@@ -113,7 +113,7 @@
 
 <p>GitHub is fantastic at this and reported that their busiest day yet (as of a blog post in 2012 so I bet they’ve blown past this by now) was on 23 August 2012 with 563 builds and 175 deploys. [blog post by GitHub] That’s 175 deployments to production in a single day on an extremely active application with millions of concurrent users worldwide! No “Under Maintenance” pages. No scheduled outages or deployments. Just ship, ship, ship.</p>
 
-<h2 id="why-is-all-of-this-important">Why Is All Of This Important?</h2>
+<p>##Why Is All Of This Important?</p>
 
 <p>As small teams that seem to always be increasing the requirements and expectations, we have to find ways to increase our speed while not decreasing our quality. A tough task. Just not decreasing the quality and maintaining the status quo almost isn’t even an option either. We need to be increasing speed and increasing quality.</p>
 
@@ -129,7 +129,7 @@
 
 <p>Make life easier for yourself and your team at the same time as delivering better products to your users! It is possible.</p>
 
-<h2 id="our-workflow">Our Workflow</h2>
+<p>##Our Workflow</p>
 
 <p>We use GitHub for our source control and Travis CI as our hosted continuous integration system. HipChat keeps us connected and aware of action happening within our system and workflow. We also use a modified form of git flow for our branching strategy.</p>
 
@@ -167,7 +167,7 @@
 
 <p>As you can see, there are many checks for quality and functionality from the very beginning of the process all the way to the end. As well as backward/redundant checks to be sure everything that once was still is. And while it seems like a lot of steps, it is all automated! A great process should get out of your way and let you do your work.</p>
 
-<h2 id="its-been-a-long-journey">It’s Been A Long Journey</h2>
+<p>##It’s Been A Long Journey</p>
 
 <p>We are really excited about this process and it really enables us to stand by our commitment to delivering quality code to our clients and their users. This process executed well almost completely removes the need for a QA period prior to production release which cuts time and cost for our clients.</p>
 
@@ -184,7 +184,7 @@
   </li>
 </ul>
 
-<h2 id="notes">Notes:</h2>
+<p>##Notes:</p>
 
 <ul>
   <li>
@@ -234,7 +234,7 @@
       </div>
 
       <footer>
-        <p>&copy; Addam Hardy 2012-2015
+        <p>&copy; Addam Hardy 2012-2016
         </p>
       </footer>
 

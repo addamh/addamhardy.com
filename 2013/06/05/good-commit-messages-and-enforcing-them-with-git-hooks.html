@@ -75,35 +75,29 @@
 <!--more-->
 A great commit message:</p>
 
-<p>```
-Capitalized, short (50 chars or less) summary</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>Capitalized, short (50 chars or less) summary
 
-<p>More detailed explanatory text, if necessary.  Wrap it to about 72
+More detailed explanatory text, if necessary.  Wrap it to about 72
 characters or so.  In some contexts, the first line is treated as the
 subject of an email and the rest of the text as the body.  The blank
 line separating the summary from the body is critical (unless you omit
 the body entirely); tools like rebase can get confused if you run the
-two together.</p>
+two together.
 
-<p>Write your commit message in the imperative: “Fix bug” and not “Fixed bug”
-or “Fixes bug.”  This convention matches up with commit messages generated
-by commands like git merge and git revert.</p>
+Write your commit message in the imperative: "Fix bug" and not "Fixed bug"
+or "Fixes bug."  This convention matches up with commit messages generated
+by commands like git merge and git revert.
 
-<p>Further paragraphs come after blank lines.</p>
+Further paragraphs come after blank lines.
 
-<ul>
-  <li>
-    <p>Bullet points are okay, too</p>
-  </li>
-  <li>
-    <p>Typically a hyphen or asterisk is used for the bullet, preceded by a
-single space, with blank lines in between, but conventions vary here</p>
-  </li>
-  <li>
-    <p>Use a hanging indent
-```</p>
-  </li>
-</ul>
+- Bullet points are okay, too
+
+- Typically a hyphen or asterisk is used for the bullet, preceded by a
+  single space, with blank lines in between, but conventions vary here
+
+- Use a hanging indent
+</code></pre>
+</div>
 
 <p>Key points of a well formed commit message:</p>
 
@@ -122,7 +116,7 @@ single space, with blank lines in between, but conventions vary here</p>
   <li>Third line starts the in-depth description</li>
 </ul>
 
-<p>Be sure to write your summary in the present tense imperative. For example, instead of <code>Adds new copy to homepage</code> use <code>Add new copy to homepage</code> or instead of <code>Fixes bug #234234</code> use <code>Fix bug #234234</code>. This folows the convention that git itself uses. Have you ever noticed when you merge a branch the commit message is <code>Merge [branch]</code> and not <code>Merges [branch]</code> or <code>Merged [branch]</code>?</p>
+<p>Be sure to write your summary in the present tense imperative. For example, instead of <code class="highlighter-rouge">Adds new copy to homepage</code> use <code class="highlighter-rouge">Add new copy to homepage</code> or instead of <code class="highlighter-rouge">Fixes bug #234234</code> use <code class="highlighter-rouge">Fix bug #234234</code>. This folows the convention that git itself uses. Have you ever noticed when you merge a branch the commit message is <code class="highlighter-rouge">Merge [branch]</code> and not <code class="highlighter-rouge">Merges [branch]</code> or <code class="highlighter-rouge">Merged [branch]</code>?</p>
 
 <h2 id="why">Why?</h2>
 
@@ -132,17 +126,17 @@ single space, with blank lines in between, but conventions vary here</p>
 
 <p>Git provides several hooks into git events for you to do some pre-defined action prior to or immediately after a commit.</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">[</span>master<span class="o">][</span>~/dev<span class="o">]</span> ls .git/hooks
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">[</span>master][~/dev] ls .git/hooks
 applypatch-msg.sample     post-update.sample        pre-commit.sample         prepare-commit-msg.sample
-commit-msg.sample         pre-applypatch.sample     pre-rebase.sample         update.sample</code></pre></div>
+commit-msg.sample         pre-applypatch.sample     pre-rebase.sample         update.sample</code></pre></figure>
 
-<p>I want to validate the commit message after the user creates the message but prior to it being committed to the repository. The specific hook I need for this is the <code>commit-msg</code> hook. If you remove the <code>.sample</code> from these files git will run them at their appropriate times. They are shell scripts and I could have written my message checker in a shell script like bash but I’m really not good at awk and sed and all that crazy shell scripting voodoo. So I just use the commit-msg shell script to call my own python script.</p>
+<p>I want to validate the commit message after the user creates the message but prior to it being committed to the repository. The specific hook I need for this is the <code class="highlighter-rouge">commit-msg</code> hook. If you remove the <code class="highlighter-rouge">.sample</code> from these files git will run them at their appropriate times. They are shell scripts and I could have written my message checker in a shell script like bash but I’m really not good at awk and sed and all that crazy shell scripting voodoo. So I just use the commit-msg shell script to call my own python script.</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">commit-msg
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">commit-msg
 <span class="c">#!/bin/sh</span>
 
 <span class="nb">exec</span> &lt; /dev/tty
-.git/hooks/validate-commit.py <span class="nv">$1</span></code></pre></div>
+.git/hooks/validate-commit.py <span class="nv">$1</span></code></pre></figure>
 
 <p>What I want this script to do:</p>
 
@@ -156,17 +150,17 @@ commit-msg.sample         pre-applypatch.sample     pre-rebase.sample         up
 
 <p>After a few beers and some tinkering I ended up with this messy bit of python code:</p>
 
-<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#!/usr/bin/python</span>
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c">#!/usr/bin/python</span>
 
 <span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="n">call</span>
 
-<span class="k">print</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;EDITOR&#39;</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'EDITOR'</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;EDITOR&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="s">&#39;none&#39;</span><span class="p">:</span>
-  <span class="n">editor</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">&#39;EDITOR&#39;</span><span class="p">]</span>
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'EDITOR'</span><span class="p">)</span> <span class="o">!=</span> <span class="s">'none'</span><span class="p">:</span>
+  <span class="n">editor</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">'EDITOR'</span><span class="p">]</span>
 <span class="k">else</span><span class="p">:</span>
-  <span class="n">editor</span> <span class="o">=</span> <span class="s">&quot;vim&quot;</span>
+  <span class="n">editor</span> <span class="o">=</span> <span class="s">"vim"</span>
 
 <span class="n">message_file</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
@@ -174,14 +168,14 @@ commit-msg.sample         pre-applypatch.sample     pre-rebase.sample         up
     <span class="n">real_lineno</span> <span class="o">=</span> <span class="n">lineno</span> <span class="o">+</span> <span class="mi">1</span>
     <span class="k">if</span> <span class="n">lineno</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s">&quot;Error </span><span class="si">%d</span><span class="s">: First line should be less than 50 characters &quot;</span> \
-                    <span class="s">&quot;in length.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">real_lineno</span><span class="p">,)</span>
+            <span class="k">return</span> <span class="s">"Error </span><span class="si">%</span><span class="s">d: First line should be less than 50 characters "</span> \
+                    <span class="s">"in length."</span> <span class="o">%</span> <span class="p">(</span><span class="n">real_lineno</span><span class="p">,)</span>
     <span class="k">if</span> <span class="n">lineno</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">line</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s">&quot;Error </span><span class="si">%d</span><span class="s">: Second line should be empty.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">real_lineno</span><span class="p">,)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;#&#39;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="s">"Error </span><span class="si">%</span><span class="s">d: Second line should be empty."</span> <span class="o">%</span> <span class="p">(</span><span class="n">real_lineno</span><span class="p">,)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">'#'</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">72</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s">&quot;Error </span><span class="si">%d</span><span class="s">: No line should be over 72 characters long.&quot;</span> <span class="o">%</span> <span class="p">(</span>
+            <span class="k">return</span> <span class="s">"Error </span><span class="si">%</span><span class="s">d: No line should be over 72 characters long."</span> <span class="o">%</span> <span class="p">(</span>
                     <span class="n">real_lineno</span><span class="p">,)</span>
     <span class="k">return</span> <span class="bp">False</span>
 
@@ -197,22 +191,22 @@ commit-msg.sample         pre-applypatch.sample     pre-rebase.sample         up
             <span class="k">if</span> <span class="n">e</span><span class="p">:</span>
                 <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">errors</span><span class="p">:</span>
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">message_file</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">commit_fd</span><span class="p">:</span>
-            <span class="n">commit_fd</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%s</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="s">&#39;# GIT COMMIT MESSAGE FORMAT ERRORS:&#39;</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">message_file</span><span class="p">,</span> <span class="s">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">commit_fd</span><span class="p">:</span>
+            <span class="n">commit_fd</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">'</span><span class="si">%</span><span class="s">s</span><span class="se">\n</span><span class="s">'</span> <span class="o">%</span> <span class="s">'# GIT COMMIT MESSAGE FORMAT ERRORS:'</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">error</span> <span class="ow">in</span> <span class="n">errors</span><span class="p">:</span>
-                <span class="n">commit_fd</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;#    </span><span class="si">%s</span><span class="se">\n</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">error</span><span class="p">,))</span>
+                <span class="n">commit_fd</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">'#    </span><span class="si">%</span><span class="s">s</span><span class="se">\n</span><span class="s">'</span> <span class="o">%</span> <span class="p">(</span><span class="n">error</span><span class="p">,))</span>
             <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">commit_msg</span><span class="p">:</span>
                 <span class="n">commit_fd</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
-        <span class="n">re_edit</span> <span class="o">=</span> <span class="nb">raw_input</span><span class="p">(</span><span class="s">&#39;Invalid git commit message format.  Press y to edit and n to cancel the commit. [y/n]&#39;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">re_edit</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;n&#39;</span><span class="p">,</span><span class="s">&#39;no&#39;</span><span class="p">):</span>
-            <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">call</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">editor</span><span class="p">,</span> <span class="n">message_file</span><span class="p">),</span> <span class="n">shell</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">re_edit</span> <span class="o">=</span> <span class="nb">raw_input</span><span class="p">(</span><span class="s">'Invalid git commit message format.  Press y to edit and n to cancel the commit. [y/n]'</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">re_edit</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="p">(</span><span class="s">'n'</span><span class="p">,</span><span class="s">'no'</span><span class="p">):</span>
+            <span class="n">sys</span><span class="o">.</span><span class="nb">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">call</span><span class="p">(</span><span class="s">'</span><span class="si">%</span><span class="s">s </span><span class="si">%</span><span class="s">s'</span> <span class="o">%</span> <span class="p">(</span><span class="n">editor</span><span class="p">,</span> <span class="n">message_file</span><span class="p">),</span> <span class="n">shell</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
         <span class="k">continue</span>
-    <span class="k">break</span></code></pre></div>
+    <span class="k">break</span></code></pre></figure>
 
 <p>Now if I try to commit a badly formed commit message like this:</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">COMMIT_EDITMSG
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> COMMIT_EDITMSG
 Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis
 ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id
 elit. Cras mattis consectetur purus sit amet fermentum. Maecenas
@@ -224,22 +218,22 @@ cursus magna, vel scelerisque nisl consectetur et. Sed posuere consectetur est a
 sit amet non magna.
 
 <span class="c"># Please enter the commit message for your changes. Lines starting</span>
-<span class="c"># with &#39;#&#39; will be ignored, and an empty message aborts the commit.</span>
+<span class="c"># with '#' will be ignored, and an empty message aborts the commit.</span>
 <span class="c"># On branch master</span>
 <span class="c"># Changes to be committed:</span>
-<span class="c">#   (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span>
+<span class="c">#   (use "git reset HEAD &lt;file&gt;..." to unstage)</span>
 <span class="c">#</span>
 <span class="c">#&gt;      new file:   31234</span>
 <span class="c">#</span>
 diff --git a/31234 b/31234
 new file mode 100644
-index 0000000..e69de29</code></pre></div>
+index 0000000..e69de29</code></pre></figure>
 
-<p>It will kick me back to the shell prompt me with this message: <code>Invalid git commit message format.  Press y to edit and n to cancel the commit. [y/n]</code></p>
+<p>It will kick me back to the shell prompt me with this message: <code class="highlighter-rouge">Invalid git commit message format.  Press y to edit and n to cancel the commit. [y/n]</code></p>
 
-<p>Once you press <code>y</code> to edit your commit it will kick you back to your commit and allow you to fix the bad formatting <strong>and</strong> even tell you which lines were incorrect and why!</p>
+<p>Once you press <code class="highlighter-rouge">y</code> to edit your commit it will kick you back to your commit and allow you to fix the bad formatting <strong>and</strong> even tell you which lines were incorrect and why!</p>
 
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">COMMIT_EDITMSG
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> COMMIT_EDITMSG
 Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis
 ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id
 elit. Cras mattis consectetur purus sit amet fermentum. Maecenas
@@ -256,16 +250,16 @@ sit amet non magna.
 <span class="c">#    Error 7: No line should be over 72 characters long.</span>
 
 <span class="c"># Please enter the commit message for your changes. Lines starting</span>
-<span class="c"># with &#39;#&#39; will be ignored, and an empty message aborts the commit.</span>
+<span class="c"># with '#' will be ignored, and an empty message aborts the commit.</span>
 <span class="c"># On branch master</span>
 <span class="c"># Changes to be committed:</span>
-<span class="c">#   (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span>
+<span class="c">#   (use "git reset HEAD &lt;file&gt;..." to unstage)</span>
 <span class="c">#</span>
 <span class="c">#&gt;      new file:   1234098</span>
 <span class="c">#</span>
 diff --git a/1234098 b/1234098
 new file mode 100644
-index 0000000..e69de29</code></pre></div>
+index 0000000..e69de29</code></pre></figure>
 
 <p>This tells us that we have errors on line 1, 2 and 7 of our commit. I’ve accomplished everything I set out to and now I’ll be forced to follow good practices on my commit messages.</p>
 
@@ -307,7 +301,7 @@ index 0000000..e69de29</code></pre></div>
       </div>
 
       <footer>
-        <p>&copy; Addam Hardy 2012-2015
+        <p>&copy; Addam Hardy 2012-2016
         </p>
       </footer>
 
