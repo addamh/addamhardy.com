@@ -8,9 +8,8 @@ github_username:  addamh
 author:
   name: Addam Hardy
 
-gems:
-  - jekyll-archives
-  
+gems: [jekyll-paginate]
+
 # Build settings
 markdown: kramdown
 excerpt_separator: <!--more-->

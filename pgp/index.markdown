@@ -13,27 +13,27 @@ If you need to talk to me privately about hacking the gibsons or other potential
 
 117B95DEE2A61EDF
 
-##Fingerprint
+## Fingerprint
 
 5864 BB19 7BE9 6165 6EBA 2E85 117B 95DE E2A6 1EDF
 
-##Length
+## Length
 
 4096
 
-##Key Server
+## Key Server
 
 keys.gnupg.net
 
-##Email
+## Email
 
 addam.hardy (at) gmail.com
 
-##Do you know me IRL?
+## Do you know me IRL?
 
 If you know me IRL, you can verify my key by viewing my photoId in the key and making sure I am the person you know/remember meeting.
 
-##Finally, the key
+## Finally, the key
 
 [Public key direct download](https://gist.github.com/addamh/6913348/raw/59c8653fdd9b5f86101a48ab9d55c5b2e8e687fc/addam-hardy.pub)
 
