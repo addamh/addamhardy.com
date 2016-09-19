@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Addam Hardy [Automate your AWS Resources with CloudFormation]</title>
+    <meta name="description" content="">
+    <meta name="author" content="Addam Hardy">
+
+    <link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all">
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">addamhardy.com</a>
+          <ul class="nav">
+            
+              <li id="blog">
+            
+              <a href="/blog">Blog</a>
+            </li>
+
+            
+              <li id="pgp">
+            
+              <a href="/pgp">PGP</a>
+            </li>
+
+            
+              <li id="euler">
+            
+              <a href="/project-euler-solutions">Project Euler</a>
+            </li>
+
+            <!-- 
+              <li id="projects">
+            
+              <a href="/projects">Projects</a>
+            </li> -->
+
+            
+              <li id="about">
+            
+              <a href="/about">About Me</a>
+            </li>
+
+            
+              <li id="talks">
+            
+              <a href="/talks">Talks</a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="content">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Automate your AWS Resources with CloudFormation</h1>
+    <p class="post-meta">Sep 17, 2016</p>
+  </header>
+
+  <article class="post-content">
+    <p><em>Reposted from my company blog at <a href="http://hirelofty.com/blog/automate-your-aws-resources-cloudformation/">Lofty Labs</a> on 20 September 2016</em></p>
+
+<p>Amazon Web Services provides every resource you could possibly need to run a distributed web architecture at any scale. AWS is home to everything from a few of our clients who are only running a few servers, to Netflix who runs thousands of servers delivering content to millions of customers, and everything in between. <!--more-->The scalability and diversity of AWS services are unmatched in the hosted services space. In fact it can be staggering to the uninitiated when you first login – there are so many possibilities. On top of there being so many options, it kind of feels like reverting back to Windows NT system administration. There’s five thousand panels with a ten million places to click. You can setup any system your heart desires but you need to know the 110 clicks and 30 text fields you need to fill out in order to get there. If something goes wrong and you need to rebuild it, you have those 110 clicks and 30 text fields to fill out again. Hope you wrote down everything you need to do the first time!</p>
+
+<p>Amazon saw this obvious pain point and built CloudFormation. AWS CloudFormation allows you to model your entire system as a “stack” in a JSON file. A “stack” is every AWS component necessary for your system to operate and it is bundled as a single atomic unit. This could be 15 EC2 servers, 3 ELBs, 10 IAM users, 6 S3 buckets, and any number of other components that are all configured to work together. This creates a change of perspective when thinking about your AWS resources. You no longer think of each component by itself and how to configure them to work together, but as a single wholistic stack. If you ever want to change any sub-component, you don’t change it directly; You modify the definition of the stack as a whole and then redeploy. You can do this via <code class="highlighter-rouge">change sets</code>, but we’ll leave that for another post to discuss. Using this JSON definition file we can spin up any number of AWS components as a single unit. If there are any errors in the creation of the stack, AWS automatically rolls back every component. Think of it as a database transaction. If we create 10 EC2 Servers, 2 Elastic Load Balancers, and 15 Route53 DNS records successfully then the stack creation fails on creating an S3 bucket because you typed the name of the bucket incorrectly, AWS removes all of those 10 EC2 Servers, 2 Elastic Load Balancers, and 15 Route53 DNS records and notifies you of the failure. CloudFormation actions are treated as all-or-nothing transactions.</p>
+
+<p><img src="/images/2016-09-17-automate-your-aws-resources-with-cloudformation/stack-resources.png" alt="stack resources" /></p>
+
+<p>Imagine then you no longer need a stack and you want to remove it. Before CloudFormation you would have to go to each service and delete all of the components. This may be easy if you are running a small infrastructure, but imagine if you had hundreds or thousands of AWS components. It could take ages! With CloudFormation you can delete a stack and it removes all components as a single unit.</p>
+
+<p><code class="highlighter-rouge">Infrastructure as code</code> is a mantra that has become popular in the past few years but most solutions relate to configuration of existing resources and the software components within them. CloudFormation allows you to take that a step further and not just store the configuration of your infrastructure as code, but store the components themselves as code.</p>
+
+<p>That’s enough high level explanation. Let’s look at an example.</p>
+
+<h1 id="template-section-breakdown">Template Section Breakdown</h1>
+<hr />
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"AWSTemplateFormatVersion"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2010-09-09"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"Description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"..."</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"Parameters"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nt">"Mappings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nt">"Conditions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+  </span><span class="s2">"Resources"</span><span class="err">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="nt">"Outputs"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>Notice there are 6 sections in a CloudFormation template: Description, Parameters, Mappings, Conditions, Resources, and Outputs.</p>
+
+<h2 id="awstemplateformatversion">AWSTemplateFormatVersion</h2>
+
+<p>The AWSTemplateFormatVersion section identifies the capabilities of the template. The latest template format version is 2010-09-09 and is currently the only valid value. This section is optional.</p>
+
+<h2 id="description">Description</h2>
+
+<p>The description allows you to provide arbitrary comments about your template. It is a JSON literal string that is between 0 and 1024 bytes in length. You cannot set the description via a parameter or function result.</p>
+
+<h2 id="parameters">Parameters</h2>
+
+<p>The optional Parameters section enables you to pass values into your template at stack creation time. Using parameters you can replace hard-coded values with variables set at runtime. Parameters allow you to make your stack definitions more reusable. Once you’ve set a parameter in the parameter section like this:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="s2">"Parameters"</span><span class="err">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"EC2Node"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The instance type of server (e.g. t2.micro)."</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"Type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"String"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"Default"</span><span class="p">:</span><span class="w"> </span><span class="s2">"m4.large"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"AllowedValues"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"t2.micro"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"t1.micro"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"t2.medium"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"m1.small"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"t2.medium"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"m4.large"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>Hard-coded one scenario use templates like this:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="s2">"EC2Node"</span><span class="err">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"Type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWS::EC2::Instance"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"Properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"InstanceType"</span><span class="p">:</span><span class="w"> </span><span class="err">'t</span><span class="mi">2</span><span class="err">.micro'</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>Become more modular and reusable like this:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="s2">"EC2Node"</span><span class="err">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"Type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWS::EC2::Instance"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"Properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"InstanceType"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"Ref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EC2Node"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>Now the <code class="highlighter-rouge">InstanceType</code> of the <code class="highlighter-rouge">EC2Node</code> is set via a variable that AWS prompts you for at runtime.</p>
+
+<h2 id="conditions">Conditions</h2>
+
+<p>Conditions are defined in the top-level <code class="highlighter-rouge">Conditions</code> section of the CloudFormation template using intrinsic functions that evaluate to a boolean condition at runtime. You can then use those boolean values to control resource creation. It sounds a little complicated but let’s look at an example.</p>
+
+<p>Consider an example where you have a staging and production stack. In the production stack you want to create an instance for Kibana log monitoring; You’ve decided in the staging stack you don’t really need that extra node.</p>
+
+<p>Using a combination of <code class="highlighter-rouge">Parameters</code> and <code class="highlighter-rouge">Conditions</code> we can accomplish this without having to have two different stack definition files.</p>
+
+<p>Example:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"AWSTemplateFormatVersion"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2010-09-09"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"Parameters"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"EnvType"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"Description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Environment type."</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Default"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"staging"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"String"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"AllowedValues"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"production"</span><span class="p">,</span><span class="w"> </span><span class="s2">"staging"</span><span class="p">],</span><span class="w">
+      </span><span class="nt">"ConstraintDescription"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"must specify prod or test."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"Conditions"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"CreateProdResources"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"Fn::Equals"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">"Ref"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"EnvType"</span><span class="p">},</span><span class="w"> </span><span class="s2">"production"</span><span class="p">]}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"Resources"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"KibanaNode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"Type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"AWS::EC2::Instance"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Condition"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CreateProdResources"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Properties"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"ImageId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ami-7f418316"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>In this example AWS will ask you at runtime what you want to set the <code class="highlighter-rouge">EnvType</code> parameter to. If you set it to <code class="highlighter-rouge">production</code>, the <code class="highlighter-rouge">CreateProdResources</code> condition will evaluate to <code class="highlighter-rouge">true</code> and when AWS evaluates the <code class="highlighter-rouge">KibanaNode</code> resource definition, it will recognize the <code class="highlighter-rouge">true</code> value of the <code class="highlighter-rouge">CreateProdResources</code> condition and create the <code class="highlighter-rouge">KibanaNode</code>. Inversely, if you had set <code class="highlighter-rouge">EnvType</code> to <code class="highlighter-rouge">staging</code>, causing the <code class="highlighter-rouge">CreateProdResources</code> condition to evaluate to <code class="highlighter-rouge">false</code>, AWS would skip creating the <code class="highlighter-rouge">KibanaNode</code> resource.</p>
+
+<h2 id="mappings">Mappings</h2>
+
+<p><code class="highlighter-rouge">Mappings</code> is an optional section where you can build a key value store to help simplify your stack definition file. A common usage is mapping AMI IDs to regions. In this example you need to pull the AMI available in the region you are currently working in.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="s2">"Mappings"</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"RegionMap"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"us-east-1"</span><span class="w">      </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"32"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ami-6411e20d"</span><span class="p">},</span><span class="w">
+    </span><span class="nt">"us-west-1"</span><span class="w">      </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"32"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ami-c9c7978c"</span><span class="p">},</span><span class="w">
+    </span><span class="nt">"eu-west-1"</span><span class="w">      </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"32"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ami-37c2f643"</span><span class="p">},</span><span class="w">
+    </span><span class="nt">"ap-southeast-1"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"32"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ami-66f28c34"</span><span class="p">},</span><span class="w">
+    </span><span class="nt">"ap-northeast-1"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"32"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ami-9c03a89d"</span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>After you have setup this mapping, you can access it in the resources section of the template.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="s2">"Resources"</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"myEC2Instance"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"Type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"AWS::EC2::Instance"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"Properties"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"ImageId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"Fn::FindInMap"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"RegionMap"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"Ref"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"AWS::Region"</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="s2">"32"</span><span class="p">]},</span><span class="w">
+      </span><span class="nt">"InstanceType"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"m1.small"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>In this example, the <code class="highlighter-rouge">Fn::FindInMap</code> function will reference the AWS region you are currently working in via the globally available variable <code class="highlighter-rouge">AWS::Region</code> and map that region to the correct AMI that you have available for that region.</p>
+
+<h2 id="resources">Resources</h2>
+
+<p>As the previous sections were optional, the resources section is the required segment of the CloudFormation stack definition file where you declare all of the AWS resources you want as part of your stack.</p>
+
+<p>In this example, we will setup a <code class="highlighter-rouge">t2.micro</code> EC2 instance, an S3 Bucket, and an RDS Database:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="s2">"Resources"</span><span class="err">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"AppInstance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"Type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWS::EC2::Instance"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"Properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"ImageId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ami-9c03a89d"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"InstanceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"t2.micro"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"KeyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deploy-key"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"S3AssetsBucket"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"Type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWS::S3::Bucket"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"DeletionPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Retain"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"Properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"BucketName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"static-assets-bucket"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"CorsConfiguration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"CorsRules"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"AllowedMethods"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="s2">"GET"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nt">"AllowedOrigins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="s2">"*"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"Database"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"Type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWS::RDS::DBInstance"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"Properties"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"AllocatedStorage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10gb"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"BackupRetentionPeriod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"DBInstanceClass"</span><span class="p">:</span><span class="w"> </span><span class="s2">"db.t2.micro"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"DBInstanceIdentifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"app-database"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"DBName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"database_name"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"Engine"</span><span class="p">:</span><span class="w"> </span><span class="s2">"postgres"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"EngineVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9.4.5"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"LicenseModel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"postgresql-license"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"MasterUsername"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rootUser"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"MasterUserPassword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"myRootUserPassword"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"MultiAZ"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"StorageType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gp2"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>You can setup any number of AWS resources in the <code class="highlighter-rouge">Resources</code> section. Before getting started on your own resource definitions, you should read through <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html">the Resource Type documentation</a> on Amazon’s official CloudFormation documentation. Another great resource is just <a href="https://github.com/search?utf8=%E2%9C%93&amp;q=cloudformation">digging around github</a> for real world examples of CloudFormation being used in the wild.</p>
+
+<h2 id="outputs">Outputs</h2>
+
+<p>The Outputs section enables you to return one or more values to the user in response to the AWS CloudFormation describe-stacks command. To declare the Outputs section, the double-quoted key name Outputs is followed by a single colon. All outputs declared in the Outputs section are contained within a single set of braces, and are delimited by a comma.</p>
+
+<p>You can use this section to get quick access to facts about your stack you may find useful in the future. Instead of going to the RDS section of AWS and looking up the node that is associated with the stack you are looking for so that you can find the public DNS name, you can just set that fact up as a fact in the outputs section like below:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="s2">"Outputs"</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nt">"RDSDatabaseEndpointDetail"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RDSDatabaseEndpointDetails"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"Value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"Fn::GetAtt"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"Database"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Endpoint.Address"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>Outputs are evaluated as the very last step after a successful stack build. Using the example above, <code class="highlighter-rouge">RDSDatabaseEndpointDetail</code> will show up in the CloudFormation panel for quick reference.</p>
+
+<p><img src="/images/2016-09-17-automate-your-aws-resources-with-cloudformation/intro-cloudformation-stack-outputs.png" alt="outputs" /></p>
+
+<p>You can also get access to the outputs from the AWS CLI tool via the <code class="highlighter-rouge">describe-stacks</code> function.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="err">➜</span><span class="w"> </span><span class="err">aws</span><span class="w"> </span><span class="err">cloudformation</span><span class="w"> </span><span class="err">describe-stacks</span><span class="w"> </span><span class="err">--stack-name</span><span class="w"> </span><span class="err">staging</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">jq</span><span class="w"> </span><span class="err">'.Stacks</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">.</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="err">.Outputs'</span><span class="w">
+</span><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RDSDatabaseEndpointDetails"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"OutputKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RDSDatabaseEndpointDetail"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"OutputValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rds-staging.cg27inc0gx.us-west-2.rds.amazonaws.com"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>(You may be wondering what <code class="highlighter-rouge">jq</code> is. It’s a really awesome command line json parser. <a href="https://stedolan.github.io/jq/">Check it out.</a>)</p>
+
+<h1 id="so-many-things-to-remember">So many things to remember!</h1>
+
+<p>AWS CloudFormation is an incredibly useful tool for building your AWS application stacks in a scaleable and manageable way. I’ve only touched the surface of introducing you to CloudFormation and as always encourage you to read through Amazon’s official <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html">docs</a>. In future posts on CloudFormation we will discuss how to automate the creation of stacks and templates using Ansible.</p>
+
+<p>Have you used CloudFormation for your AWS work? If you have any questions about CloudFormation or anything in this post, please let us know in the comments!</p>
+
+  </article>
+
+  
+    <section>
+      <h1>Comments</h1>
+      <div id="disqus_thread" aria-live="polite"></div>
+    </section>
+  
+
+  
+  
+  <script type="text/javascript">
+        var disqus_shortname = 'addamhardy';
+        
+          
+          // var disqus_developer = 1;
+          var disqus_identifier = 'http://addamhardy.com/2016/09/17/automate-your-aws-resources-with-cloudformation.html';
+          var disqus_url = 'http://addamhardy.com/2016/09/17/automate-your-aws-resources-with-cloudformation.html';
+          var disqus_script = 'embed.js';
+        
+      (function () {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }());
+  </script>
+  
+
+
+</div>
+
+      </div>
+
+      <footer>
+        <p>&copy; Addam Hardy 2012-2016
+        </p>
+      </footer>
+
+    </div> <!-- /container -->
+
+
+  </body>
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-30687512-1']);
+	  _gaq.push(['_setDomainName', 'addamhardy.com']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+</html>
