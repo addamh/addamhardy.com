@@ -152,6 +152,10 @@ body {
 
 /* Personal Styles */
 
+p {
+  font-family: Helvetica;
+}
+
 a {
   color: #2b8cbe;
   &:hover {
@@ -216,7 +220,7 @@ strong {
 	color: black;
 	float: right;
 	padding-left: 5px;
-	margin-top: -90px;
+	margin-top: -130px;
 	width: 170px;
 }
 .pitch {
