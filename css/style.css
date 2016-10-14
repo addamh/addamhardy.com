@@ -20,7 +20,7 @@ body {
   -webkit-text-size-adjust: 100%; }
 
 p {
-  font-size: 15px;
+  font-size: 13px;
   line-height: 20px; }
 
 /**
@@ -51,7 +51,7 @@ figcaption {
  * Lists
  */
 ul, ol {
-  margin-left: 30px; }
+  margin: 15px 30px; }
 
 li > ul,
 li > ol {
@@ -676,6 +676,9 @@ body {
   color: #FFF; }
 
 /* Personal Styles */
+p {
+  font-family: Helvetica; }
+
 a {
   color: #2b8cbe; }
   a:hover {
@@ -727,7 +730,7 @@ strong {
   color: black;
   float: right;
   padding-left: 5px;
-  margin-top: -90px;
+  margin-top: -130px;
   width: 170px; }
 
 .pitch {
