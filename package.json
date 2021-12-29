@@ -1,0 +1,32 @@
+{
+  "name": "gatsby-theme-code-notes-workspace",
+  "private": true,
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "prebuild": "yarn clean",
+    "build": "yarn workspace site build",
+    "predev": "yarn clean",
+    "dev": "yarn workspace site dev",
+    "clean": "yarn workspace site clean",
+    "start": "yarn workspace site start",
+    "lint": "eslint './gatsby-theme-code-notes/src/**/*'"
+  },
+  "workspaces": [
+    "gatsby-theme-code-notes",
+    "site"
+  ],
+  "dependencies": {
+    "eslint": "^7.24.0",
+    "eslint-config-prettier": "^8.2.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^6.0.0",
+    "jest": "^26.6.3",
+    "jest-emotion": "^11.0.0",
+    "lint-staged": "^10.5.4",
+    "prettier": "^2.2.1"
+  }
+}

@@ -1,4 +1,5 @@
-_site
-.sass-cache
-.deploy/
-.DS_Store
+.cache
+public
+node_modules
+/mtc-vectors.txt
+.env

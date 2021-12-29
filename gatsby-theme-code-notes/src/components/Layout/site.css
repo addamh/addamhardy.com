@@ -1,0 +1,149 @@
+/* Page header tweaks */
+.page-header {
+    padding: 20px 20px 10px;
+    margin: -20px -20px 20px;
+  }
+  
+  .topbar .btn {
+    border: 0;
+  }
+  
+  
+  /* tag_box ======================================================== */
+  
+  .tag_box {
+      list-style:none;
+      margin:0;
+      padding:5px 0 ;
+      overflow:hidden;
+  }
+  .tag_box li {
+      line-height:28px;
+  }
+  .tag_box.inline li {
+      float:left;
+  }
+  .tag_box a {
+      padding: 3px 6px;
+      margin: 2px;
+      background: #eee;
+      color:#005F6B;
+      border-radius: 3px;
+      text-decoration:none;
+  }
+  .tag_box a span{
+      vertical-align:super;
+      font-size:0.8em;
+  }
+  .tag_box a.active {
+      background:#57A957;
+      border:1px solid #4C964D;
+      color:#FFF;
+  }
+  
+  /* Personal Styles */
+  
+  .posts_short {
+    li {
+      line-height: 25px;
+    }
+  }
+  
+  strong {
+      margin-bottom: 5px;
+  }
+  
+  .currently_reading {
+      float: left;
+      width: 40%;
+  }
+  
+  .image_header {
+      height: 250px;
+      width: 250px;
+      float: left;
+  }
+  
+  .top_container {
+      margin-bottom: 15px;
+      height: 275px;
+  }
+  .name {
+      float: right;
+      margin-right: 25px;
+  }
+  .name h1 {
+      font-size: 75pt;
+      line-height: 70px;
+  }
+  .gr_grid_book_container {
+      padding-left: 10px !important;
+  }
+  .gr_grid_container {
+      padding-top: 5px;
+  }
+  .side_bar {
+      border-left: 5px solid #333;
+      color: black;
+      float: right;
+      padding-left: 5px;
+      margin-top: -90px;
+      width: 170px;
+  }
+  .pitch {
+      width: 460px;
+      float: left;
+      margin-left: 15px;
+      margin-top: 30px;
+      background-color: #EEE;
+      padding: 10px;
+  }
+  .availability {
+      float: right;
+      top: -31px;
+      position: relative;
+  }
+  .pitch_footer {
+      width: 455px;
+      float: left;
+      margin-left: 35px;
+      margin-top: 5px;
+  }
+  .social_icons {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+  }
+  .alert-block {
+      margin-top: 5px;
+  }
+  .document_icons { height: 120px; }
+  .document_icons div {
+      width: 250px;
+      text-align: center;
+      font-weight: bold;
+      padding-top: 10px;
+  }
+  .tex {
+      margin-right: 150px;
+      float: right;
+  }
+  .pdf {
+      float: left;
+      margin-left: 150px;
+  }
+  .bio {
+      width: 90%;
+      margin-top: 5px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: justify;
+  }
+  span.date {
+      font-size: 11px;
+      color: #aeaeae;
+  }
+  a.blog_link {
+      font-size: 16px;
+  }
+  

@@ -1,0 +1,98 @@
+{
+  "name": "gatsby-theme-code-notes",
+  "description": "A Gatsby theme for publishing code-related notes and snippets",
+  "version": "2.3.0",
+  "main": "index.js",
+  "author": {
+    "name": "Zander Martineau",
+    "url": "https://zander.wtf"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mrmartineau/gatsby-theme-code-notes"
+  },
+  "bugs": {
+    "url": "https://github.com/mrmartineau/gatsby-theme-code-notes/issues"
+  },
+  "scripts": {
+    "build": "gatsby build",
+    "clean": "gatsby clean",
+    "dev": "gatsby develop",
+    "release": "dotenv release-it"
+  },
+  "license": "MIT",
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "gatsby-theme",
+    "markdown",
+    "mdx"
+  ],
+  "peerDependencies": {
+    "gatsby": "^2.28.0 || ^3.0.0",
+    "react": "^16.13.0 || ^17.0.0",
+    "react-dom": "^16.13.0 || ^17.0.0"
+  },
+  "files": [
+    "src",
+    "gatsby-*.js",
+    "tsconfig.json"
+  ],
+  "dependencies": {
+    "@alexcarpenter/slugify": "^1.0.6",
+    "@hookit/local-storage": "^0.1.0",
+    "@mdx-js/mdx": "^1.6.5",
+    "@mdx-js/react": "^1.6.5",
+    "@theme-ui/presets": "0.7.3",
+    "@theme-ui/prism": "0.7.3",
+    "color-hash": "^2.0.0",
+    "copee": "^1.0.6",
+    "gatsby-core-utils": "^2.3.0",
+    "gatsby-plugin-catch-links": "^3.3.0",
+    "gatsby-plugin-local-search": "^2.0.1",
+    "gatsby-plugin-mdx": "^2.3.0",
+    "gatsby-plugin-meta-redirect": "^1.1.1",
+    "gatsby-plugin-og-image": "^0.0.1",
+    "gatsby-plugin-react-helmet": "^4.3.0",
+    "gatsby-plugin-redirects": "^1.0.0",
+    "gatsby-plugin-sharp": "^3.3.1",
+    "gatsby-plugin-theme-ui": "0.7.3",
+    "gatsby-plugin-typescript": "^3.3.0",
+    "gatsby-remark-double-brackets-link": "^0.1.8",
+    "gatsby-remark-images": "^5.0.0",
+    "gatsby-source-filesystem": "^3.3.0",
+    "gatsby-transformer-markdown-references": "^0.1.5",
+    "gatsby-transformer-sharp": "^3.3.0",
+    "lodash": "^4.17.21",
+    "mkdirp": "^1.0.3",
+    "querystring": "^0.2.1",
+    "react-helmet": "^6.1.0",
+    "react-icons": "^4.2.0",
+    "react-rough-notation": "^1.0.0",
+    "react-use-flexsearch": "^0.1.1",
+    "remark-emoji": "^2.2.0",
+    "remark-github": "^10.0.1",
+    "remark-slug": "^6.0.0",
+    "remark-squeeze-paragraphs": "^4.0.0",
+    "remark-truncate-links": "^1.0.3",
+    "remark-unwrap-images": "^2.0.0",
+    "text-cleaner": "^1.2.1",
+    "theme-ui": "0.7.3",
+    "typescript": "^4.2.4"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.41",
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.3",
+    "@types/react-helmet": "^6.1.1",
+    "dotenv-cli": "^4.0.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "gatsby": "^3.3.1",
+    "husky": "^6.0.0",
+    "lint-staged": "^10.5.4",
+    "prettier": "^2.2.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "release-it": "^14.6.1"
+  }
+}
