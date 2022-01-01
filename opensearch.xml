@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>Gatsby Theme Code Notes Example</ShortName>
+    <Url type="text/html" template="https://code-notes-example.netlify.app?search={searchTerms}"/>
+    <Description>A Gatsby theme for storing your code-related notes</Description>
+    <Tags>front-end</Tags>
+    <Contact>https://twitter.com/MrMartineau</Contact>
+</OpenSearchDescription>
