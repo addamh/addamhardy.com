@@ -1,7 +1,7 @@
 module.exports = (options) => {
   const {
     siteUrl = '',
-    siteShortName = 'Code Notes Search',
+    siteShortName = 'Notes Search',
     siteDescription = null,
     siteTags = null,
     siteContact = null,

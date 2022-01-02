@@ -36,18 +36,33 @@ export const NoteListItem: FunctionComponent<NoteListItemProps> = ({
         sx={{
           display: [null, 'flex'],
           justifyContent: 'space-between',
-          overflow: 'hidden',
+          // overflow: 'hidden',
         }}
       >
         <Heading
           as="h3"
           variant="noteListItem"
-          sx={{ mr: '3', py: 1, minWidth: 260 }}
+          sx={{ mr: '3', py: 1, minWidth: 260, maxWidth: 650 }}
         >
           <Box as="span" sx={{ position: 'absolute', left: 1 }}>
             {noteEmoji}
           </Box>
-          {title}
+          {title} 
+          {showDate && dateModified && modifiedTimestamp && (
+            <Text
+              as="time"
+              variant="dateModified"
+              dateTime={modifiedTimestamp}
+              sx={{
+                ml: 2,
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+              }}
+            >
+              {dateModified}
+            </Text>
+          )}
         </Heading>
         <Flex
           sx={{
@@ -64,21 +79,6 @@ export const NoteListItem: FunctionComponent<NoteListItemProps> = ({
                 textOverflow: 'ellipsis',
               }}
             />
-          )}
-          {showDate && dateModified && modifiedTimestamp && (
-            <Text
-              as="time"
-              variant="dateModified"
-              dateTime={modifiedTimestamp}
-              sx={{
-                ml: 2,
-                whiteSpace: 'nowrap',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-              }}
-            >
-              {dateModified}
-            </Text>
           )}
         </Flex>
       </Link>

@@ -11,7 +11,8 @@
     "dev": "yarn workspace site dev",
     "clean": "yarn workspace site clean",
     "start": "yarn workspace site start",
-    "lint": "eslint './gatsby-theme-code-notes/src/**/*'"
+    "lint": "eslint './gatsby-theme-code-notes/src/**/*'",
+    "deploy": "yarn workspace site deploy"
   },
   "workspaces": [
     "gatsby-theme-code-notes",

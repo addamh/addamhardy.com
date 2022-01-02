@@ -4,7 +4,7 @@ title: "Automate All The Things: Continuous Integration and Deployment at RevUni
 date: 2013-09-28 16:17
 comments: true
 categories:
-tags: [ci, continuous integration, process, travis ci]
+tags: [CI, process, travis ci]
 ---
 
 We are strong believers in the agile method of software development. We break down key features into user stories, do sprint planning, track velocity, unit and integration testing; all that good stuff. But we’ve had a few key pillars of agile development missing for a while and we recently rectified that. <!--more-->RevUnit’s process now fully incorporates continuous integration and continuous deployment. This enables us to automate more of our process which frees us up to focus on the important things — like implementing and shipping features!

@@ -52,6 +52,8 @@ export const NoteLayout: FunctionComponent<NoteLayoutProps> = ({
   const [colorMode, setColorMode] = useColorMode()
   const { query } = useContext(SearchContext)
 
+  const isNotesListPage = path === '/notes'
+
   return (
     <Fragment>
       <Helmet
@@ -142,14 +144,7 @@ export const NoteLayout: FunctionComponent<NoteLayoutProps> = ({
             />
           </Flex>
 
-          {/* <Box
-              sx={{
-                flexGrow: 1,
-                mb: 6,
-              }}
-            >
-              <SearchInput />
-            </Box> */}
+          {isNotesListPage? <Box sx={{mb: 6,}}><SearchInput /></Box> : ''}
 
           {query ? <SearchResults /> : children}
         </Container>

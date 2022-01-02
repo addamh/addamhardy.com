@@ -19,7 +19,7 @@ const HomePage = ({ pageContext, location }) => {
             <h1 class="text-xl">
               Coder. <small>engineer. analyst. linguist.</small>
             </h1>
-            <span class="availability bg-green-500 p-1 px-3 rounded-md text-sm">
+            <span class="availability bg-green-600 p-1 px-3 rounded-md text-sm dark:text-gray-100">
               Available For Hire
             </span>
           </div>
@@ -51,6 +51,10 @@ const HomePage = ({ pageContext, location }) => {
                     <h4>
                       <a target="_blank" href="http://www.linkedin.com/in/addamh/">addamh</a>
                     </h4>
+                    <h3>Call Sign:</h3>
+                    <h4>
+                      N5HAX
+                    </h4>                    
                   </div>
                 </div>
               </div>

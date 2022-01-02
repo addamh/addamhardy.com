@@ -1,0 +1,395 @@
+---
+emoji: ✏️
+title: "I finally rewrote my resume. In LaTeX."
+description: ""
+category:
+tags: [LaTeX, resume]
+comments: true
+modified: 2012-08-28
+---
+
+import resumeImg1 from '../../assets/images/resume/resume-1.png'
+import resumeImg2 from '../../assets/images/resume/resume-2.png'
+
+I had been needing to rewrite my resume for a while. I've always had it in a doc file of course but I wanted to be super nerd-o and update it in LaTeX. And here it is!  
+  
+It was quite a bitch to work through all this and figure everything out but I found a nice example to work off of and it was fun to finally learn LaTeX. (Which is apparently pronounced /ˈlɑːtɛk/ or if you don't read dictionary, lay-tek). I've published it on Github ([link](https://github.com/addamh/resume)) if you'd like to fork it and write your own resume in LaTeX. The code and resulting compiled PDF are below. Let me know what you think!  
+  
+The code:  
+  
+```LaTeX
+\documentclass[letterpaper,13pt]{article}
+
+\newlength{\outerbordwidth}
+
+\pagestyle{empty}
+
+\raggedbottom
+
+\raggedright
+
+\usepackage[svgnames]{xcolor}
+
+\usepackage{framed}
+
+\usepackage{tocloft}
+
+%-----------------------------------------------------------
+
+\setlength{\outerbordwidth}{1pt}  % Width of border outside of title bars
+
+\definecolor{shadecolor}{gray}{0.75}  % Outer background color of title bars (0 = black, 1 = white)
+
+\definecolor{shadecolorB}{gray}{0.93}  % Inner background color of title bars
+
+%-----------------------------------------------------------
+
+%Margin setup
+
+\setlength{\evensidemargin}{-0.25in}
+
+\setlength{\headheight}{-0.25in}
+
+\setlength{\headsep}{0in}
+
+\setlength{\oddsidemargin}{-0.25in}
+
+\setlength{\paperheight}{11in}
+
+\setlength{\paperwidth}{8.5in}
+
+\setlength{\tabcolsep}{0in}
+
+\setlength{\textheight}{10in}
+
+\setlength{\textwidth}{7in}
+
+\setlength{\topmargin}{-0.3in}
+
+\setlength{\topskip}{0in}
+
+\setlength{\voffset}{0.1in}
+
+\setlength{\parskip}{1pt plus 1pt minus 1pt}
+
+%-----------------------------------------------------------
+
+%Custom commands
+
+\newcommand{\resitem}[1]{\item #1 \vspace{-2pt}}
+
+\newcommand{\resheading}[1]{\vspace{8pt}
+
+  \parbox{\textwidth}{\setlength{\FrameSep}{\outerbordwidth}
+
+    \begin{shaded}
+
+\setlength{\fboxsep}{0pt}\framebox[\textwidth][l]{\setlength{\fboxsep}{4pt}\fcolorbox{shadecolorB}{shadecolorB}{\textbf{\sffamily{\mbox{~}\makebox[6.762in][l]{\large #1} \vphantom{p\^{E}}}}}}
+
+    \end{shaded}
+
+  }\vspace{-10pt}
+
+}
+
+
+\newcommand{\ressubheading}[4]{
+
+\begin{tabular*}{6.5in}{l@{\cftdotfill{\cftsecdotsep}\extracolsep{\fill}}r}
+
+		\textbf{#1} & #2 \\
+
+		\textit{#3} & \textit{#4} \\
+
+\end{tabular*}\vspace{-4pt}}
+
+
+\newcommand{\singleline}[3]{
+
+\begin{tabular*}{6.5in}{l@{\cftdotfill{\cftsecdotsep}\extracolsep{\fill}}r}
+
+		\textbf{#1} & #2 \\
+
+		& \textit{#3} \\
+
+\end{tabular*}\vspace{-4pt}}
+
+%-----------------------------------------------------------
+
+\begin{document}
+
+\begin{tabular*}{7in}{l@{\extracolsep{\fill}}r}
+
+\textbf{\Large Addam Hardy} & \textbf{\today} \\
+
+Lead Software Engineer & addam.hardy@gmail.com \\
+
+6358 Copper Ridge Lane, Fayetteville, AR, 72704 &  \\
+
+(808) 640-8169 \\
+
+\end{tabular*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\resheading{Goal}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vspace{10pt}
+
+Find a secure position in a small team environment passionate about innovation, communication and test driven development, that is focused on results and progress instead of process. Less a “job” and more a group of close friends that work well together and are driven to push each other past their limits.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\resheading{Research and Technical Experience}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item
+
+	\ressubheading{Simply Measured, Inc}{Seattle, WA}{Lead Software Engineer}{September 2015 - Current}
+
+	\begin{itemize}
+
+		\resitem{Leading user application architectural design and development on Simply Measured's Consumer Research Division (formally known as Datarank).}
+
+	\end{itemize}
+	
+	
+\item
+
+	\ressubheading{Datarank, Inc}{Fayetteville, AR}{Lead Developer, Web \& Mobile}{March 2014 - September 2015}
+
+	\begin{itemize}
+
+		\resitem{Leading architectural design and development on Datarank's web and mobile applications. Specializing in Ruby on Rails and EmberJS.}
+	    \resitem{Datarank was acquired by Simply Measured in September of 2015}
+
+	\end{itemize}
+	
+\item
+
+	\ressubheading{RevUnit, LLC.}{Bentonville, AR}{Lead Developer}{February 2013 - March 2014}
+
+	\begin{itemize}
+
+		\resitem{Leading engineering design and implementation for RevUnit's clients on a wide range of digital products. Focusing on iOS and Android mobile applications, Ruby on Rails web applications and Single Page Javascript applications using Backbone and Ember.js.}
+
+	\end{itemize}
+
+\item
+
+	\ressubheading{IdeaLoop, LLC.}{Dallas, TX; Pittsburgh, PA}{Contract Developer}{October 2012 - February 2013}
+
+	\begin{itemize}
+
+		\resitem{Javascript developer for IdeaLoop clients. Primarily focused on enterprise level javascript applications.}
+
+	\end{itemize}
+
+\item
+
+	\ressubheading{MobileFWD, LLC.}{Fayetteville, AR}{Senior Developer}{May 2012 - October 2012}
+
+	\begin{itemize}
+
+		\resitem{Developer on the Trivi.al and Piction.al iOS games as well as developed Ruby on Rails applications for back-end administration of the app for management and user monitization and engagement analytics.}
+
+	\end{itemize}
+	
+\item
+
+	\ressubheading{SocialVolt, Inc.}{Overland Park, KS}{User Interface/Ruby On Rails Developer}{November 2011 - May 2012}
+
+	\begin{itemize}
+
+		\resitem{Worked as the user interface developer and augment to the back-end team on a \texttt{Ruby on Rails} enterprise level social media management platform. Took color-comps from the designer and implemented them to spec using \texttt{CSS3} and \texttt{HTML5} with \texttt{SASS} and \texttt{Javascript.}}
+
+	\end{itemize}
+	
+\item
+
+	\ressubheading{NORMES, University of Arkansas}{Fayetteville, AR}{Ruby On Rails Developer}{February 2011 - November 2011}
+
+	\begin{itemize}
+
+		\resitem{Developed a Ruby on Rails testing application to be used by the Arkansas Department of Education for the collection and analysis of education metrics.}
+
+	\end{itemize}
+	
+\item
+
+	\ressubheading{MissionFocus, LLC.}{Columbia, Maryland}{DCGS Cloud Software Engineer}{November 2011 - May 2012}
+
+	\begin{itemize}
+
+		\resitem{Developed Map/Reduce algorithms to process and alalyze HUMINT reports for U.S. Army data sources.}
+		
+		\resitem{Developed front-end \texttt{javascript} applications using \texttt{ExtJS} framework to enable easy access to the reports stored on the \texttt{HADOOP} file system.}
+
+	\end{itemize}
+	
+\item
+
+	\ressubheading{National Security Agency/Central Security Service}{Honolulu, HI}{RTRG Software Engineer}{April 2007 - June 2010}
+
+	\begin{itemize}
+
+		\resitem{Contributed to the creation of APIs into previously unopened national technical databases to continue to push the collaboration and information sharing methodology. By doing so successfully collaborated with several national databases to expose their data through web-based APIs.}
+		
+		\resitem{Co-created, developed and designed all versions and phases of the current implementation of the Dark Mist Framework. An integrated, plugin-based web 2.0 framework capable of being applied to many missions and data-sets - This has saved hundreds of man-hours in analysis and has significantly decreased the initial training for new analysts. Working as a Senior Developer on the project developing new ideas and methods to implement.}
+
+%		\resitem{Performed project manager duties by collecting, prioritizing, and assigning requirements and tasks to the team. Reviewing and approving code by the other developer on the team.}
+		
+		\resitem{Developed a parser to database over 120,000 archived reports to enable statistics and text searching of all reports with instantly returned results; vastly increasing trend analysis potential of a high value target.}
+		
+		\resitem{Maintained the technical status and operation of several high priority databases used 24/7 for the execution of signals analysis in the Pacific. Optimized for maximum reliability and up-time for the customer.}
+		
+		\resitem{Identified weaknesses and potential improvements in workflows and analytical processes used by several missions and designed and developed software, processes, and technologies to greatly increase efficiency, decrease duplication of effort, enhance collaboration and directly impact the overall success of the mission.}
+		
+	\end{itemize}
+
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\resheading{Selected Open Source Projects and Publications {\mdseries(github.com/addamh)}}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\begin{itemize}
+%
+%\item \ressubheading{Tesseract}{Ruby on Rails}{Developer availability platform for Northwest Arkansas dev community}{Summer 2012}
+%
+% 	\begin{itemize}
+%
+%    \resitem{Platform for freelance developers in Northwest Arkansas to connect with potential employers and recruiters by allowing them to display their skills and availablity in a central location.}
+%    
+%	\end{itemize}
+%
+%\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\resheading{Technical Skills}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{itemize}
+
+\item {\bf Programming:} Ruby, Ruby on Rails, Objective-C, Java, Perl, PHP, Javascript, Python, Ajax Frameworks, Object-Oriented design 
+	\begin{itemize}
+		\item Ultimately, I am a software engineer. Not only by trade but by personal interests and hobbies. I could list many different languages I have had experience with but the most important point is that I am personally driven to learn and research new things all the time. I know several languages and techniques and if I don’t know it, I can probably learn it easily and quickly apply it to any task I am given. 
+	\end{itemize}
+
+\item {\bf Test/Behavior Driven Development:} Cucumber, Selenium, Capybara, RSpec, OCMock, GHUnit
+
+\item {\bf Database Systems:} PostgreSQL, MySQL, Oracle, DB2, SQLite
+
+\item {\bf Cloud Analytics/Storage:} Hadoop, Hbase, Cloudbase, Elastic Search
+
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\resheading{Military Experience}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{itemize}
+
+\item
+
+	\ressubheading{U.S. Army}{}{Cryptologic Linguist/Signals Intelligence Interceptor}{2004-2011}
+
+\end{itemize}
+
+\linebreak
+
+% I don't need these sections for most of the jobs I'm applying for right now
+% so I commented these sections out. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\resheading{Intelligence Experience}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\begin{itemize}
+%
+%\item \ressubheading{Signals Intelligence Analyst}{NSA/CSS Hawaii}{Analyst for Asian/Pacific Theater Targets}{2006 - 2007}
+%
+%\begin{itemize}
+%
+%		\resitem{Developed summary reporting on a high value target in a team atmosphere which maintained global awareness for policy and decision makers on the rapidly changing state of military units, disposition of forces, and wartime capabilities and technologies of a potential enemy.}
+%		\resitem{Researched and produced various technical and non-technical related reports on a high value target that helped to maintain awareness for policy makers of war-time capabilities and intentions.}
+%		\resitem{Ensured in a team environment the up-to-date knowledge of the North Korean target by maintaining national databases.}
+%		\resitem{Contributed to long-term trend analysis of signals intelligence to provide input to SIGINT assessments.}
+%		
+%	\end{itemize}
+%
+%\end{itemize}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\resheading{Clearances and Polygraphs}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\begin{itemize}
+%
+%\item \singleline{Counter Intelligence Polygraph}{NSA/CSS Hawaii}{August 2006}
+%
+%\item \ressubheading{TS/SCI}{NSA/CSS Hawaii}{}{2006-2011}
+%
+%\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\resheading{Education}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{itemize}
+
+\item
+
+	\ressubheading{University of Arkansas}{Fayetteville, AR}{B.Sc Computer Science}{2011 - 2015}
+
+\item
+
+	\ressubheading{Defense Language Institute}{Monterey, CA}{A.Arts Korean Language, Korean Basic Course}{2004-2006}
+	
+\item
+
+	\ressubheading{Goodfellow AFB}{San Angelo, TX}{Signals Intelligence Interceptor Course}{2006}
+	
+
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\resheading{Language Ability}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{itemize}
+
+\item
+
+	\ressubheading{Korean}{}{DLPT certified professional fluency}{}
+
+\item
+
+	\ressubheading{French}{}{Functional fluency}{}
+	
+\end{itemize}
+
+\end{document}
+
+```
+
+
+The compiled result:
+
+<img src={resumeImg1} />

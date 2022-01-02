@@ -9,6 +9,7 @@ const ErrorPage = ({ pageContext, location }) => {
       basePath={pageContext.basePath}
       hasUntagged={pageContext.hasUntagged}
       tags={pageContext.tags}
+      pages={pageContext.pages}
       title={'404'}
     >
       <section>

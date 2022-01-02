@@ -105,7 +105,7 @@ module.exports = (options) => {
           engine: 'flexsearch',
           engineOptions: flexSearchEngineOptions,
           query: `{
-            allNotes: allMdx {
+            allNotes: allMdx(filter: { frontmatter: { page: { eq: null }, active: { ne: false } } }) {
               edges {
                 node {
                   id

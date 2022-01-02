@@ -48,7 +48,7 @@ exports.createPages = async ({ graphql, actions }, options) => {
   const mdxPages = await graphql(
     `
       {
-        allPages: allMdx(filter: { frontmatter: { page: { eq: true }, active: { ne: false } } }) {
+        allPages: allMdx(filter: { frontmatter: { page: { eq: true }, active: { ne: false }} }) {
           edges {
             node {
               id
@@ -74,7 +74,7 @@ exports.createPages = async ({ graphql, actions }, options) => {
   const mdxNotes = await graphql(
     `
       {
-        allNotes: allMdx(filter: { frontmatter: { page: { eq: null } } }) {
+        allNotes: allMdx(filter: { frontmatter: { page: { eq: null }, active: { ne: false } } }) {
           edges {
             node {
               id
@@ -94,7 +94,7 @@ exports.createPages = async ({ graphql, actions }, options) => {
           }
         }
 
-        untagged: allMdx(filter: { frontmatter: { tags: { eq: null }, page: { eq: null } } }) {
+        untagged: allMdx(filter: { frontmatter: { tags: { eq: null }, page: { eq: null }, active: { ne: false } } }) {
           edges {
             node {
               id
@@ -155,7 +155,7 @@ exports.createPages = async ({ graphql, actions }, options) => {
       index === notesData.length - 1 ? null : notesData[index + 1].node
     const next = index === 0 ? null : notesData[index - 1].node
     const slug = slugify(note.node.fields.slug)
-    console.log('333', slugifiedPages)
+
     createPage({
       path: slug,
       component: path.join(__dirname, './src/templates', 'Note.js'),
@@ -166,7 +166,7 @@ exports.createPages = async ({ graphql, actions }, options) => {
         hasUntagged,
         basePath,
         tags: slugifiedTags,
-        pages: [],
+        pages: slugifiedPages,
       },
     })
   })

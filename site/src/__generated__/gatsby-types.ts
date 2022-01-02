@@ -1667,6 +1667,7 @@ export type SitePageContext = {
   readonly hasUntagged: Maybe<Scalars['Boolean']>,
   readonly basePath: Maybe<Scalars['String']>,
   readonly tags: Maybe<ReadonlyArray<Maybe<SitePageContextTags>>>,
+  readonly pages: Maybe<ReadonlyArray<Maybe<SitePageContextTags>>>,
   readonly tag: Maybe<Scalars['String']>,
 };
 

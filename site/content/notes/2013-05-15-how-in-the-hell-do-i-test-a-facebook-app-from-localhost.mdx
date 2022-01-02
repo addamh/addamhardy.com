@@ -1,21 +1,24 @@
 ---
-emoji: ✏️
+emoji: 💡
 title: "How In The Hell Do I Test A Facebook App From localhost?"
 modified: 2013-05-15
 tags: [facebook, networking, security]
 ---
 
+import localhostErrorNoAuthImg from '../../assets/images/facebook-localhost/localhost-error-noauth.png'
+import hidingBeforeImg from '../../assets/images/facebook-localhost/localhost-error.png'
+
 So no shit, there you are, building a web app that is using the Facebook SDK/API. You've followed all the integration tutorials. You've got all the code in place. You're ready to go. You fire up the Sidekiq and your Rails server with Foreman, and you finally click on your pretty little Facebook login button. And then...<!--more-->
 
-<img src="/assets/images/facebook-localhost/localhost-error-noauth.png"/>
+<img src={localhostErrorNoAuthImg} />
 
 ---
 
-##DOH, right?
+## DOH, right?
 
 Then you want to punch yourself. Why didn't I put localhost into the app domains? I better go ahead and do that. You log into Facebook and put localhost in there. And then...
 
-<img src="/assets/images/facebook-localhost/localhost-error.png"/>
+<img src={hidingBeforeImg} />
 
 ---
 
@@ -27,7 +30,7 @@ Solution:
 
 * Add the production URL to your /etc/hosts file and redirect back to localhost
 
-{% highlight bash %} /etc/hosts
+```bash
 ##
 # Host Database
 #
@@ -39,14 +42,14 @@ Solution:
 ::1               localhost
 fe80::1%lo0       localhost
 127.0.0.1 app.btiques.com
-{% endhighlight %}
+```
 
 After you change your hosts file on a Mac you always have to flush the cache and force OSX to re-query the DNS servers. Run this command and you should be good to go.
 
 
-{% highlight bash %} Run this to clear your cache
+Run this to clear your cache
+```bash
 dscacheutil -flushcache
-{% endhighlight %}
-
+```
 
 Now, have a beer and relax before you kill somebody. This shit can get stressful.

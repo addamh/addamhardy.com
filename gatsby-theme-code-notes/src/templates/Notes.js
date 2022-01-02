@@ -20,7 +20,7 @@ export const pageQuery = graphql`
   }
 
   query {
-    allMdx(filter: {frontmatter: {page: {eq: null}}}) {
+    allMdx(filter: {frontmatter: {page: {eq: null}, active: { ne: false }}}) {
       edges {
         node {
           ...AllPages

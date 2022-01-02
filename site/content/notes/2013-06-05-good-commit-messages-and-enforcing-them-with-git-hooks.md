@@ -1,5 +1,5 @@
 ---
-emoji: ✏️
+emoji: 💡
 title: "Good Commit Messages And Enforcing Them With Git Hooks"
 modified: 2013-06-05
 tags: [git]
