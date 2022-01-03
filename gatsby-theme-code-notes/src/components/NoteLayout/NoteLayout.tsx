@@ -114,7 +114,7 @@ export const NoteLayout: FunctionComponent<NoteLayoutProps> = ({
           overflowX: 'hidden',
           overflowY: 'auto',
           zIndex: 'low',
-          // p: [3, 6],
+          p: [3, 6],
           bg: 'contentBg',
           transform: [
             navOpen && `translateX(${theme.sizes.sidebar})`,
