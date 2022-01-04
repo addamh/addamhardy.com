@@ -11,7 +11,7 @@ interface NoteListProps {
 
 export const NoteList: FunctionComponent<NoteListProps> = ({ notes }) => {
   const { items, requestSort, sortConfig } = useSortableData(notes, {
-    key: 'modified',
+    key: 'modifiedTimestamp',
     direction: 'descending',
   })
 
