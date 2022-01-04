@@ -101,9 +101,11 @@ export const NotePage: FunctionComponent<NotePageProps> = ({
                 fontSize: 7,
                 lineHeight: 1,
                 mb: 3,
+                float: 'left',
+                mr: 2
               }}
             >
-              <span role="img">{emoji}</span>
+              <span style={{verticalAlign: 'middle'}} role="img">{emoji}</span>
             </Box>
           )}
 
