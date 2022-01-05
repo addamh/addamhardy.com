@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { Box } from 'theme-ui'
 import pdfImg from '../../assets/images/pdf.png'
 import texImg from '../../assets/images/tex.png'
-import resumePdf from '../../assets/Addam_Hardy_Resume_04-01-2022.pdf'
+import resumePdf from '../../assets/Addam_Hardy_Resume_04-01-2022-18-52-17.pdf'
 
 export default ({
 }) => {
