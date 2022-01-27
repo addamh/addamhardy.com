@@ -72,6 +72,14 @@ export const Layout: FunctionComponent<LayoutProps> = ({
             title={openSearch.siteShortName}
           />
         )}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-QBT52HLKJW"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-QBT52HLKJW');
+        </script>
       </Helmet>
       <Global
         key="global-styles"
