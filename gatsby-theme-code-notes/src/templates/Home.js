@@ -14,35 +14,35 @@ const HomePage = ({ pageContext, location }) => {
       title={'about me'}
     >
       <Box>
-        <div class="content">
-          <div class="w-full pt-4">
-            <h1 class="text-xl">
+        <div className="content">
+          <div className="w-full pt-4">
+            <h1 className="text-xl">
               Coder. <small>engineer. analyst. linguist.</small>
             </h1>
-            <span class="availability bg-green-600 p-1 px-3 rounded-md text-sm dark:text-gray-100">
+            <span className="availability bg-green-600 p-1 px-3 rounded-md text-sm dark:text-gray-100">
               Available For Hire
             </span>
           </div>
 
-          <div class="grid sm:grid-cols-1 md:grid-cols-4 w-full">
-            <div class="">
+          <div className="grid sm:grid-cols-1 md:grid-cols-4 w-full">
+            <div className="">
               <img src={meImg} />
             </div>
 
-            <div class="md:col-span-3 md:pl-4">
-              <h1 class="text-4xl md:text-8xl pt-2">Addam Hardy</h1>
-              <div class="grid md:grid-cols-4 mt-4">
-                <div class="col-span-3 pr-1">
-                  <p class="mt-0">
+            <div className="md:col-span-3 md:pl-4">
+              <h1 className="text-4xl md:text-8xl pt-2">Addam Hardy</h1>
+              <div className="grid md:grid-cols-4 mt-4">
+                <div className="col-span-3 pr-1">
+                  <p className="mt-0">
                     Python, Go, Ruby, Javascript, and anything-at-all hacker.
                     Passionate about leadership, data engineering, data science, user driven applications, system
                     architecture design, DIY hardware, amateur radio, and linguistics.
                   </p>
-                  <p class="mt-4">💁‍♀️ I do lots of things.</p>
+                  <p className="mt-4">💁‍♀️ I do lots of things.</p>
                 </div>
 
-                <div class="h-full hidden md:block">
-                  <div class="border-2 border-l-slate-200 px-4 border-transparent h-full">
+                <div className="h-full hidden md:block">
+                  <div className="border-2 border-l-slate-200 px-4 border-transparent h-full">
                     <h3>Github:</h3>
                     <h4>
                       <a target="_blank" href="http://www.github.com/addamh">addamh</a>

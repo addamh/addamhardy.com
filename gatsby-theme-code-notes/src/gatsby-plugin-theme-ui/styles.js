@@ -41,7 +41,7 @@ export const styles = {
   h1: {
     ...heading,
     fontSize: 7,
-    '&:first-child': {
+    '&:first-of-type': {
       mt: 0,
     },
   },

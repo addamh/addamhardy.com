@@ -61,6 +61,7 @@ export const TagNav: FunctionComponent<TagNavProps> = ({
                 textTransform: 'uppercase',
                 color: 'textStrong',
               }}
+              key={item.fields.slug}
               to={item.fields.slug}
               as={GatsbyLink}
               onClick={() => setQuery('')}
